@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CraftController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,24 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', [CraftController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/detail/{craft:slug}', [CraftController::class, 'show']);
+Route::get('/categories', function () {
+  return view('categories', [
+    'categories' => Category::all()
+  ]);
+});
+Route::get('/categories/{category:slug}', function (Category $category) {
+  return view('category', [
+    'crafts' => $category->crafts,
+    'category' => $category->name
+  ]);
+});
+Route::get('/craftsman/{category:slug}', function (Category $category) {
+  return view('category', [
+    'crafts' => $category->crafts,
+    'category' => $category->name
+  ]);
+});

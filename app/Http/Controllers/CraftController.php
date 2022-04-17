@@ -10,7 +10,8 @@ class CraftController extends Controller
   public function index()
   {
     return view('crafts', [
-      "crafts" => Craft::all()
+      "title" => "Semua Kerajinan",
+      "crafts" => Craft::with(['craftsman', 'category'])->latest()->get()
     ]);
   }
 

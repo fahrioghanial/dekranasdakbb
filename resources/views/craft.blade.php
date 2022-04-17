@@ -21,9 +21,10 @@
         <a href="/categories/{{ $craft->category->slug }}">{{ $craft->category->name }}</a>
       </h1>
       <h2>Harga: {{ $craft->price }}</h2>
-      <h2>Pembuat: <a href="#">{{ $craft->user->name }}</a></h2>
-      {{-- <h2>Kontak: {{ $craft->user->contact }}</h2>
-      <h2>Alamat: {{ $craft->user->address }}</h2> --}}
+      <h2>Pembuat: <a href="/craftsman/{{ $craft->craftsman->username }}">{{ $craft->craftsman->name }}</a></h2>
+      <h2>Kontak: {{ $craft->craftsman->contact }}</h2>
+      <h2>Alamat: {{ $craft->craftsman->address }}</h2>
+      <h2>Media Sosial: {{ $craft->craftsman->social_media }}</h2>
       <h2>Ukuran: {{ $craft->size }}</h2>
       <h2>Warna: {{ $craft->color }}</h2>
       <h2>Motif: {{ $craft->motive }}</h2>

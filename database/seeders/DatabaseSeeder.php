@@ -19,11 +19,15 @@ class DatabaseSeeder extends Seeder
   {
     User::factory(5)->create();
 
-    // User::create([
-    //   'name' => 'Farah',
-    //   'email' => 'farah@gmail.com',
-    //   'password' => bcrypt('12345')
-    // ]);
+    User::create([
+      'name' => 'Fahrio Ghanial',
+      'username' => 'fahrioghanial',
+      'email' => 'fahrioghanial@gmail.com',
+      'password' => bcrypt('12345'),
+      'contact' => '085324XXXXXX',
+      'address' => 'Jl. Angsana 4 no 10',
+      'social_media' => '@fahrioghanial'
+    ]);
 
     Category::create([
       'name' => 'Pakaian',
@@ -44,7 +48,6 @@ class DatabaseSeeder extends Seeder
       'title' => 'Kebaya Panjang',
       'category_id' => 1,
       'user_id' => 1,
-      'slug' => 'kebaya-panjang',
       'price' => 'Rp245.000',
       'size' => 'normal',
       'color' => 'yellow',
@@ -55,7 +58,6 @@ class DatabaseSeeder extends Seeder
       'title' => 'Tas Gendong',
       'category_id' => 2,
       'user_id' => 1,
-      'slug' => 'tas-gendong',
       'price' => 'Rp45.000',
       'size' => 'normal',
       'color' => 'yellow',
@@ -65,8 +67,7 @@ class DatabaseSeeder extends Seeder
     Craft::create([
       'title' => 'Baju Adat',
       'category_id' => 1,
-      'user_id' => 1,
-      'slug' => 'baju-adat',
+      'user_id' => 2,
       'price' => 'Rp145.000',
       'size' => 'normal',
       'color' => 'yellow',
@@ -76,9 +77,18 @@ class DatabaseSeeder extends Seeder
     Craft::create([
       'title' => 'Kalung Antik',
       'category_id' => 3,
-      'user_id' => 1,
-      'slug' => 'kalung-antik',
+      'user_id' => 2,
       'price' => 'Rp105.000',
+      'size' => 'normal',
+      'color' => 'yellow',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Tas Serut',
+      'category_id' => 2,
+      'user_id' => 1,
+      'price' => 'Rp125.000',
       'size' => 'normal',
       'color' => 'yellow',
       'motive' => 'batik'

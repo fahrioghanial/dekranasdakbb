@@ -4,7 +4,9 @@ use App\Http\Controllers\CraftController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardCraftController;
 use App\Models\Category;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +20,34 @@ use App\Models\Category;
 */
 
 Route::get('/', [CraftController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
-Route::get('/detail/{craft:slug}', [CraftController::class, 'show']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/detail/{craft}', [CraftController::class, 'show']);
 Route::get('/categories', function () {
   return view('categories', [
     'categories' => Category::all()
   ]);
 });
 Route::get('/categories/{category:slug}', function (Category $category) {
-  return view('category', [
-    'crafts' => $category->crafts,
-    'category' => $category->name
+  return view('crafts', [
+    'title' => "Kategori kerajinan: $category->name",
+    'crafts' => $category->crafts->load(['craftsman', 'category'])
   ]);
 });
-Route::get('/craftsman/{category:slug}', function (Category $category) {
-  return view('category', [
-    'crafts' => $category->crafts,
-    'category' => $category->name
+Route::get('/craftsman/{craftsman:username}', function (User $craftsman) {
+  return view('crafts', [
+    'title' => "Kerajinan oleh: $craftsman->name",
+    'crafts' => $craftsman->crafts->load(['craftsman', 'category'])
   ]);
 });
+
+Route::get('/dashboard', function () {
+  return view('dashboard.index');
+})->middleware('auth');
+
+Route::resource('/dashboard/crafts', DashboardCraftController::class)->middleware('auth');

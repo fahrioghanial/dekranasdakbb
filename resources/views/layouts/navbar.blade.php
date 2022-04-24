@@ -18,14 +18,13 @@
       </form>
 
       @auth
-
       <div class="btn-group">
         <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           Selamat datang, {{ auth()->user()->name }}
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/dashboard">Kerajinan Saya</a></li>
-          <li><a class="dropdown-item" href="#">Edit Informasi Pribadi</a></li>
+          <li><a class="dropdown-item" href="/dashboard/crafts">Kerajinan Saya</a></li>
+          <li><a class="dropdown-item" href="/dashboard/user">Profil Saya</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>

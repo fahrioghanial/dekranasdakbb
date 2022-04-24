@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardCraftController;
+use App\Http\Controllers\NewCraftController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use App\Models\User;
 
@@ -28,6 +30,7 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/detail/{craft}', [CraftController::class, 'show']);
+
 Route::get('/categories', function () {
   return view('categories', [
     'categories' => Category::all()
@@ -39,6 +42,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     'crafts' => $category->crafts->load(['craftsman', 'category'])
   ]);
 });
+
 Route::get('/craftsman/{craftsman:username}', function (User $craftsman) {
   return view('crafts', [
     'title' => "Kerajinan oleh: $craftsman->name",
@@ -51,3 +55,5 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 Route::resource('/dashboard/crafts', DashboardCraftController::class)->middleware('auth');
+
+Route::resource('/dashboard/user', ProfileController::class)->middleware('auth');

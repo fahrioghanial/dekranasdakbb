@@ -9,7 +9,7 @@ class Craft extends Model
 {
   use HasFactory;
 
-  protected $fillable = ['title', 'category_id', 'user_id', 'slug', 'price', 'craftsman_name', 'craftsman_contact', 'craftsman_address', 'size', 'color', 'motive'];
+  protected $fillable = ['title', 'category_id', 'user_id', 'price', 'image', 'size', 'color', 'motive'];
 
   public function category()
   {

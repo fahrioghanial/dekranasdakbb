@@ -18,6 +18,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Foto</th>
         <th scope="col">Judul</th>
         <th scope="col">Kategori</th>
         <th scope="col">Harga</th>
@@ -26,8 +27,11 @@
     </thead>
     <tbody>
       @foreach ($crafts as $craft)
-      <tr>
+      <tr class="align-middle">
         <td>{{ $loop->iteration }}</td>
+        <td>
+          <img src="{{ asset('storage/'. $craft->image)  }}" class="img-fluid" width="200" alt="{{ $craft->title }}">
+        </td>
         <td>{{ $craft->title }}</td>
         <td>{{ $craft->category->name }}</td>
         <td>{{ $craft->price }}</td>

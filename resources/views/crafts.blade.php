@@ -21,7 +21,7 @@
       @foreach ($crafts as $craft)
       <div class="col">
         <div class="card shadow-md">
-          <img class="card-img-top" src="/img/contoh-logo.jpg" alt="logo">
+          <img class="card-img-top" src="{{ asset('storage/'. $craft->image) }}" alt="{{ $craft->title }}">
           <div class="card-body">
             <h1 class="card-title">{{ $craft->title }}</h1>
             <p class="card-text">{{ $craft->price }}</p>

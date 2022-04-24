@@ -18,11 +18,11 @@ return new class extends Migration
       $table->foreignId('category_id');
       $table->foreignId('user_id');
       $table->string('title');
+      $table->string('image')->nullable();
       $table->string('price')->nullable();
       $table->string('size')->nullable();
       $table->string('color')->nullable();
       $table->string('motive')->nullable();
-      $table->timestamp('published_at')->nullable();
       $table->timestamps();
     });
   }

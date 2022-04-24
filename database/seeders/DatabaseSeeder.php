@@ -17,8 +17,6 @@ class DatabaseSeeder extends Seeder
    */
   public function run()
   {
-    User::factory(5)->create();
-
     User::create([
       'name' => 'Fahrio Ghanial',
       'username' => 'fahrioghanial',
@@ -28,6 +26,9 @@ class DatabaseSeeder extends Seeder
       'address' => 'Jl. Angsana 4 no 10',
       'social_media' => '@fahrioghanial'
     ]);
+
+    User::factory(5)->create();
+
 
     Category::create([
       'name' => 'Pakaian',
@@ -46,51 +47,56 @@ class DatabaseSeeder extends Seeder
 
     Craft::create([
       'title' => 'Kebaya Panjang',
+      'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 1,
       'user_id' => 1,
       'price' => 'Rp245.000',
       'size' => 'normal',
-      'color' => 'yellow',
+      'color' => 'kuning',
       'motive' => 'batik'
     ]);
 
     Craft::create([
       'title' => 'Tas Gendong',
+      'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 2,
       'user_id' => 1,
       'price' => 'Rp45.000',
       'size' => 'normal',
-      'color' => 'yellow',
+      'color' => 'kuning',
       'motive' => 'batik'
     ]);
 
     Craft::create([
       'title' => 'Baju Adat',
+      'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 1,
       'user_id' => 2,
       'price' => 'Rp145.000',
       'size' => 'normal',
-      'color' => 'yellow',
+      'color' => 'kuning',
       'motive' => 'batik'
     ]);
 
     Craft::create([
       'title' => 'Kalung Antik',
+      'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 3,
       'user_id' => 2,
       'price' => 'Rp105.000',
       'size' => 'normal',
-      'color' => 'yellow',
+      'color' => 'kuning',
       'motive' => 'batik'
     ]);
 
     Craft::create([
       'title' => 'Tas Serut',
+      'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 2,
       'user_id' => 1,
       'price' => 'Rp125.000',
       'size' => 'normal',
-      'color' => 'yellow',
+      'color' => 'kuning',
       'motive' => 'batik'
     ]);
   }

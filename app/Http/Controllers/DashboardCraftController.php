@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Craft;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardCraftController extends Controller
 {
@@ -15,9 +16,9 @@ class DashboardCraftController extends Controller
    */
   public function index()
   {
-    $post = Craft::where('user_id', auth()->user()->id)->get();
+    $crafts = Craft::where('user_id', auth()->user()->id)->get();
     return view('dashboard.crafts.index', [
-      'crafts' => $post
+      'crafts' => $crafts
     ]);
   }
 
@@ -42,6 +43,7 @@ class DashboardCraftController extends Controller
   public function store(Request $request)
   {
     $validatedData = $request->validate([
+      'image' => 'image|file|required',
       'title' => 'required|max:255',
       'category_id' => 'required',
       'price' => 'required',
@@ -50,6 +52,7 @@ class DashboardCraftController extends Controller
       'motive' => '',
     ]);
 
+    $validatedData['image'] = $request->file('image')->store('craft-images');
     $validatedData['user_id'] = auth()->user()->id;
 
     Craft::create($validatedData);
@@ -78,6 +81,7 @@ class DashboardCraftController extends Controller
    */
   public function edit(Craft $craft)
   {
+    // dd($craft);
     return view('dashboard.crafts.edit', [
       'craft' => $craft,
       'categories' => Category::all()
@@ -94,6 +98,7 @@ class DashboardCraftController extends Controller
   public function update(Request $request, Craft $craft)
   {
     $validatedData = $request->validate([
+      'image' => 'image|file|required',
       'title' => 'required|max:255',
       'category_id' => 'required',
       'price' => 'required',
@@ -102,6 +107,10 @@ class DashboardCraftController extends Controller
       'motive' => '',
     ]);
 
+    if ($request->oldImage != "craft-images/contoh-foto.jpg") {
+      Storage::delete($request->oldImage);
+    }
+    $validatedData['image'] = $request->file('image')->store('craft-images');
     $validatedData['user_id'] = auth()->user()->id;
 
     Craft::where('id', $craft->id)->update($validatedData);
@@ -117,6 +126,10 @@ class DashboardCraftController extends Controller
    */
   public function destroy(Craft $craft)
   {
+    if ($craft->image != "craft-images/contoh-foto.jpg") {
+      Storage::delete($craft->image);
+    }
+
     Craft::destroy($craft->id);
 
     return redirect('/dashboard/crafts')->with('success', 'Kerajinan berhasil dihapus!');

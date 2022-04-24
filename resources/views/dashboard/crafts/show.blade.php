@@ -6,6 +6,7 @@
 </div>
 
 <div class="p-5 bg-light">
+  <img src="{{ asset('storage/'. $craft->image)  }}" class="img-fluid mt-3" alt="{{ $craft->title }}">
   <h1>Judul: {{ $craft->title }}</h1>
   <h1>Kategory:
     <a href="/categories/{{ $craft->category->slug }}">{{ $craft->category->name }}</a>

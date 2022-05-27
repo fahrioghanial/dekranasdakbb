@@ -13,12 +13,22 @@
 </div>
 
 <div class="p-5 bg-light">
-  <h1>Nama Lengkap: {{ $user->name }}</h1>
-  <h1>Username (Nama Pengguna): {{ $user->username }} </h1>
+  <img src="{{ asset('storage/'. $user->profile_picture)  }}" class="img-fluid mt-3" alt="{{ $user->name }}">
+  <h2>Nama Lengkap: {{ $user->name }}</h2>
+  <h2>Username (Nama Pengguna): {{ $user->username }} </h2>
+  <h2>Status Keanggotaan: {{ $user->status_keanggotaan? "Diterima" : "Menunggu Persetujuan" }} </h2>
   <h2>Email: {{ $user->email }}</h2>
-  <h2>Kontak: {{ $user->contact }}</h2>
+  <h2>Nomor HP: {{ $user->contact }}</h2>
+  <h2>Nomor KTP: {{ $user->noktp }}</h2>
   <h2>Alamat: {{ $user->address }}</h2>
-  <h2>Media Sosial: {{ $user->social_media }}</h2>
+  <h2>RT: {{ $user->rt }}</h2>
+  <h2>RW: {{ $user->rw }}</h2>
+  <h2>Kecamatan: {{ $user->kecamatan }}</h2>
+  <h2>Kelurahan/Desa: {{ $user->kelurahan_desa }}</h2>
+  <h2>Kode Pos: {{ $user->kodepos }}</h2>
+  <h2>Facebook: {{ $user->facebook }}</h2>
+  <h2>Instagram: {{ $user->instagram }}</h2>
+  <h2>Twitter: {{ $user->twitter }}</h2>
   <a href="/dashboard/user/{{ $user->id }}/edit" class="btn btn-warning"><span data-feather="edit"></span> Edit</a>
 </div>
 </div>

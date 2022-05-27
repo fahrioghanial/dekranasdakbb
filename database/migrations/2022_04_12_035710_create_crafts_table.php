@@ -23,6 +23,7 @@ return new class extends Migration
       $table->string('size')->nullable();
       $table->string('color')->nullable();
       $table->string('motive')->nullable();
+      $table->boolean('is_confirmed')->default(false);
       $table->timestamps();
     });
   }

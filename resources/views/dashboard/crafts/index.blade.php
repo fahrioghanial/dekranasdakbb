@@ -22,6 +22,7 @@
         <th scope="col">Judul</th>
         <th scope="col">Kategori</th>
         <th scope="col">Harga</th>
+        <th scope="col">Status Persetujuan</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>
@@ -35,6 +36,7 @@
         <td>{{ $craft->title }}</td>
         <td>{{ $craft->category->name }}</td>
         <td>{{ $craft->price }}</td>
+        <td>{{ $craft->is_confirmed ? "Disetujui" : "Menunggu Persetujuan" }}</td>
         <td>
           <a href="/dashboard/crafts/{{ $craft->id }}" class="badge bg-info"><span data-feather="eye"></span> Detail</a>
           <a href="/dashboard/crafts/{{ $craft->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span>

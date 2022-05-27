@@ -1,47 +1,136 @@
-<header class="p-3 bg-dark text-white">
+<header class=" bg-[#dc3545] text-white top-0 left-0 w-full flex items-center font-asap fixed z-[9999]">
   <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 mx-3 text-white text-decoration-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2"
-          viewBox="0 0 16 16">
-          <path
-            d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3L2.95.4ZM7.5 1H3.75L1.5 4h6V1Zm1 0v3h6l-2.25-3H8.5ZM15 5H1v10h14V5Z" />
-        </svg>
-      </a>
-
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 text-white">Produk</a></li>
-      </ul>
-
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control form-control-dark" placeholder="Cari Produk" aria-label="Search">
-      </form>
-
-      @auth
-      <div class="btn-group">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Selamat datang, {{ auth()->user()->name }}
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/dashboard/crafts">Kerajinan Saya</a></li>
-          <li><a class="dropdown-item" href="/dashboard/user">Profil Saya</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li>
-            <form action="/logout" method="post">
-              @csrf
-              <button type="submit" class="dropdown-item">Keluar</button>
-            </form>
-          </li>
-        </ul>
+    <div class="flex items-center justify-between relative">
+      <div class="flex items-center py-2">
+        <a class="W-full self-center hover:shadow-xl mr-2" href="/info">
+          <img src={{ asset('img/kbb.svg')}} alt="KBB" class="w-14 h-14 m-auto" />
+        </a>
+        <a class="W-full self-center hover:shadow-xl" href="/info">
+          <img src={{ asset('img/LogoDekranasda.jpg')}} alt="Dekranasda" class="w-14 h-14 rounded-full m-auto" />
+        </a>
+        <p class="md:text-3xl text-base font-semibold md:ml-5 ml-2">DEKRANASDA KBB</p>
       </div>
-      @else
-      <div class="text-end">
-        <a href="/login" class="btn btn-outline-light me-2">Masuk</a>
-        <a href="/register" class="btn btn-warning">Daftar</a>
+      <div class="flex items-center gap-3 ">
+        <a class="rounded-lg py-2 px-3 hover:bg-red-300 border-2 d-none d-md-block text-xl font-semibold"
+          href="/crafts">
+          Produk Kami
+        </a>
+        @auth
+        <div class="btn-group d-none d-md-block">
+          <button type="button" class="text-md font-bold bg-blue-600 text-white py-2 px-3 rounded-lg dropdown-toggle"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Selamat datang, {{ auth()->user()->name }}
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/dashboard">Dasbor Saya</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <form action="/logout" method="post">
+                @csrf
+                <button type="submit" class="dropdown-item">Keluar</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+        @else
+        <a class="rounded-lg py-2 px-3 hover:bg-red-300 border-2 d-none d-md-block text-xl font-semibold" href="/login">
+          Masuk
+        </a>
+        <a class="rounded-lg  py-2 px-3 hover:bg-red-300 border-2 mr-3 d-none d-md-block text-xl font-semibold"
+          href="/register">
+          Daftar
+        </a>
+        @endauth
+
+        {{-- Offcanvas --}}
+
+        <a class="text-5xl" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+          aria-controls="offcanvasWithBothOptions" role="button">
+          <i class="bi bi-list"></i>
+        </a>
+        <div class="offcanvas offcanvas-top md:px-16 bg-[#dc3545]" data-bs-scroll="true" tabindex="1"
+          id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-2xl " id="offcanvasWithBothOptionsLabel">DEKRANASDA KBB</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div class="flex flex-col md:flex-row text-base md:text-2xl gap-3">
+              @auth
+              <div class="btn-group d-block d-md-none">
+                <button type="button" class="font-bold bg-blue-600 text-white py-2 px-3 rounded-lg dropdown-toggle"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Selamat datang, {{ auth()->user()->name }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/dashboard">Dasbor Saya</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <form action="/logout" method="post">
+                      @csrf
+                      <button type="submit" class="dropdown-item">Keluar</button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+              @else
+              <a class="rounded-lg py-2 px-3 hover:bg-red-300 border-2 d-block d-md-none font-semibold" href="/login">
+                Masuk
+              </a>
+              <a class="rounded-lg  py-2 px-3 hover:bg-red-300 border-2 d-block d-md-none font-semibold"
+                href="/register">
+                Daftar
+              </a>
+              @endauth
+              <div class="md:mr-3">
+                <button data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false"
+                  aria-controls="collapseExample">
+                  Perajin <i class="bi bi-caret-down-fill"></i>
+                </button>
+                <div class="collapse" id="collapseExample1">
+                  <div class="flex flex-col gap-1 text-white ml-3">
+                    <a href="/crafts"><i class="bi bi-dot"></i> Produk Kami</a>
+                    <a href="/member"><i class="bi bi-dot"></i> Anggota Kami</a>
+                    <a href="/benefit"><i class="bi bi-dot"></i> Keuntungan Menjadi Anggota</a>
+                    <a href="/howto"><i class="bi bi-dot"></i> Tata Cara Menjadi Anggota</a>
+                  </div>
+                </div>
+              </div>
+              <div class="md:mr-3">
+                <button data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false"
+                  aria-controls="collapseExample">
+                  Berita & Kegiatan <i class="bi bi-caret-down-fill"></i>
+                </button>
+                <div class="collapse" id="collapseExample2">
+                  <div class="flex flex-col gap-1 text-white ml-3">
+                    <a href="#"><i class="bi bi-dot"></i> Berita Terkini</a>
+                    <a href="#"><i class="bi bi-dot"></i> Calendar of Event</a>
+                  </div>
+                </div>
+              </div>
+              <div class="md:mr-3">
+                <button data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false"
+                  aria-controls="collapseExample">
+                  Tentang Kami <i class="bi bi-caret-down-fill"></i>
+                </button>
+                <div class="collapse" id="collapseExample3">
+                  <div class="flex flex-col gap-1 text-white ml-3">
+                    <a href="/aboutus"><i class="bi bi-dot"></i> Profil</a>
+                    <a href="/organization"><i class="bi bi-dot"></i> Struktur Organisasi</a>
+                  </div>
+                </div>
+              </div>
+              <a class="hover:text-red-300" href="/contact">
+                Kontak
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      @endauth
     </div>
   </div>
 </header>

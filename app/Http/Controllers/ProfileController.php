@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -60,6 +61,9 @@ class ProfileController extends Controller
    */
   public function edit(User $user)
   {
+    if ($user->id != auth()->user()->id) {
+      abort(403);
+    }
     return view('dashboard.profile.edit', [
       'user' => $user,
     ]);
@@ -74,13 +78,24 @@ class ProfileController extends Controller
    */
   public function update(Request $request, User $user)
   {
+    if ($user->id != auth()->user()->id) {
+      abort(403);
+    }
     // dd(Hash::check($request->old_password, $user->password));
     $rules = [
       'name' => 'required|max:255',
       // 'password' => 'required|min:5|max:255',
-      'contact' => '',
-      'address' => '',
-      'social_media' => '',
+      'contact' => 'required',
+      'address' => 'required',
+      'rt' => 'required|numeric',
+      'rw' => 'required|numeric',
+      'kodepos' => 'required|numeric',
+      // 'profile_picture' => 'image|file|required',
+      'kecamatan' => 'required',
+      'kelurahan_desa' => 'required',
+      'instagram' => '',
+      'facebook' => '',
+      'twitter' => '',
     ];
 
     if ($request->username != $user->username) {
@@ -88,6 +103,13 @@ class ProfileController extends Controller
     }
     if ($request->email != $user->email) {
       $rules['email'] = 'required|email|unique:users';
+    }
+    if ($request->noktp != $user->noktp) {
+      $rules['noktp'] = 'required|numeric|unique:users';
+    }
+
+    if ($request->profile_picture) {
+      $rules['profile_picture'] = 'image|file|required';
     }
 
     if ($request->old_password) {
@@ -99,9 +121,17 @@ class ProfileController extends Controller
     }
 
     $validatedData = $request->validate($rules);
+
     if ($request->old_password) {
       $validatedData['password'] = bcrypt($validatedData['password']);
     }
+
+    if ($request->oldImage != "profile-pictures/contoh-foto.png" && $request->profile_picture) {
+      Storage::delete($request->oldImage);
+    }
+    if ($request->profile_picture) {
+      $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
+    } else $validatedData['profile_picture'] = $request->oldImage;
 
     User::where('id', $user->id)->update($validatedData);
 

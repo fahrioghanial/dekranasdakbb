@@ -20,11 +20,21 @@ return new class extends Migration
       $table->string('email')->unique();
       $table->string('contact');
       $table->text('address');
-      $table->string('social_media')->nullable();
-      $table->timestamp('email_verified_at')->nullable();
+      $table->string('noktp')->unique();
+      $table->integer('rt');
+      $table->integer('rw');
+      $table->string('kecamatan');
+      $table->integer('kodepos');
+      $table->string('kelurahan_desa');
+      $table->string('profile_picture');
+      $table->boolean('status_keanggotaan')->default(false);
+      $table->string('facebook')->nullable();
+      $table->string('instagram')->nullable();
+      $table->string('twitter')->nullable();
       $table->string('password');
       $table->rememberToken();
       $table->timestamps();
+      $table->boolean('is_admin')->default(false);
     });
   }
 

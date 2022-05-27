@@ -19,11 +19,18 @@ class RegisterController extends Controller
       'username' => 'required|min:5|max:255|unique:users',
       'email' => 'required|email|unique:users',
       'password' => 'required|min:5|max:255',
-      'contact' => '',
-      'address' => '',
-      'social_media' => '',
+      'contact' => 'required',
+      'address' => 'required',
+      'rt' => 'required|numeric',
+      'rw' => 'required|numeric',
+      'noktp' => 'required|numeric|unique:users',
+      'kodepos' => 'required|numeric',
+      'profile_picture' => 'image|file|required',
+      'kecamatan' => 'required',
+      'kelurahan_desa' => 'required',
     ]);
 
+    $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
     $validatedData['password'] = bcrypt($validatedData['password']);
 
     User::create($validatedData);

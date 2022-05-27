@@ -1,12 +1,25 @@
-<div class="container">
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-        </ul>
-        <p class="text-center text-muted">© 2021 Company, Inc</p>
-    </footer>
-</div>
+<footer class="border-t-4 pt-7 px-2 md:px-16 bg-[#dc3545] text-white ">
+  <div class="container">
+    <div class="flex flex-col md:flex-row pb-4">
+      <div class="w-full mb-5">
+        <p class="text-2xl mb-2">Waktu Kerja</p>
+        <p>Senin-Jumat: 08.00 - 16.00 WIB</p>
+        <p>Sabtu: 10.00 - 14.00 WIB</p>
+        <p>Minggu: LIBUR</p>
+        <p>022-567-8910</p>
+      </div>
+      <div class="w-full mb-5">
+        <p class="text-2xl mb-2">Domisili Kantor</p>
+        <p>Desa Mekarsari</p>
+        <p>Kecamatan Ngamprah</p>
+        <p>Kabupaten Bandung Barat</p>
+      </div>
+      <div>
+        <img src={{ asset('img/LogoDekranasda.jpg')}} alt="Dekranasda" class="w-44 h-44 rounded-full m-auto mb-2" />
+        <a href="/" class="text-sm md:text-base">
+          @www.dekranasda.bandungbaratkab.go.id
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

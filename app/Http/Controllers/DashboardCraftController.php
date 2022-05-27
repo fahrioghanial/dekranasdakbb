@@ -68,6 +68,9 @@ class DashboardCraftController extends Controller
    */
   public function show(Craft $craft)
   {
+    if ($craft->craftsman->id != auth()->user()->id) {
+      abort(403);
+    }
     return view('dashboard.crafts.show', [
       'craft' => $craft
     ]);
@@ -82,6 +85,9 @@ class DashboardCraftController extends Controller
   public function edit(Craft $craft)
   {
     // dd($craft);
+    if ($craft->craftsman->id != auth()->user()->id) {
+      abort(403);
+    }
     return view('dashboard.crafts.edit', [
       'craft' => $craft,
       'categories' => Category::all()
@@ -97,21 +103,30 @@ class DashboardCraftController extends Controller
    */
   public function update(Request $request, Craft $craft)
   {
-    $validatedData = $request->validate([
-      'image' => 'image|file|required',
+    if ($craft->craftsman->id != auth()->user()->id) {
+      abort(403);
+    }
+    $rules = [
+      // 'image' => 'image|file|required',
       'title' => 'required|max:255',
       'category_id' => 'required',
       'price' => 'required',
       'size' => '',
       'color' => '',
       'motive' => '',
-    ]);
+    ];
 
-    if ($request->oldImage != "craft-images/contoh-foto.jpg") {
+    if ($request->image) {
+      $rules['image'] = 'image|file|required';
+    }
+
+    if ($request->oldImage != "craft-images/contoh-foto.jpg" && $request->image) {
       Storage::delete($request->oldImage);
     }
-    $validatedData['image'] = $request->file('image')->store('craft-images');
-    $validatedData['user_id'] = auth()->user()->id;
+    $validatedData = $request->validate($rules);
+    if ($request->image) {
+      $validatedData['image'] = $request->file('image')->store('craft-images');
+    } else $validatedData['image'] = $request->oldImage;
 
     Craft::where('id', $craft->id)->update($validatedData);
 
@@ -126,6 +141,9 @@ class DashboardCraftController extends Controller
    */
   public function destroy(Craft $craft)
   {
+    if ($craft->craftsman->id != auth()->user()->id) {
+      abort(403);
+    }
     if ($craft->image != "craft-images/contoh-foto.jpg") {
       Storage::delete($craft->image);
     }
@@ -133,5 +151,31 @@ class DashboardCraftController extends Controller
     Craft::destroy($craft->id);
 
     return redirect('/dashboard/crafts')->with('success', 'Kerajinan berhasil dihapus!');
+  }
+
+  public function admin(Craft $craft)
+  {
+    $validatedData = [
+      'is_confirmed' => ''
+    ];
+    if ($craft->is_confirmed) {
+      $validatedData['is_confirmed'] = false;
+      Craft::where('id', $craft->id)->update($validatedData);
+      return redirect('/dashboard/craftsadmin')->with('success', 'Izin kerajinan berhasil dihapus!');
+    } else {
+      $validatedData['is_confirmed'] = true;
+      Craft::where('id', $craft->id)->update($validatedData);
+      return redirect('/dashboard/craftsadmin')->with('success', 'Kerajinan berhasil disetujui!');
+    }
+  }
+
+  public function confirmAll()
+  {
+    $validatedData = [
+      'is_confirmed' => ''
+    ];
+    $validatedData['is_confirmed'] = true;
+    Craft::where('is_confirmed', 0)->update($validatedData);
+    return redirect('/dashboard/craftsadmin')->with('success', 'Semua kerajinan berhasil disetujui!');
   }
 }

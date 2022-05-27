@@ -10,14 +10,13 @@
     @method('put')
     @csrf
     <div class="mb-3">
-      <label for="image" class="form-label">Foto Kerajinan</label>
+      <label for="image" class="form-label d-block">Foto Kerajinan</label>
       <input type="hidden" name="oldImage" value="{{ $craft->image }}">
       @if ($craft->image)
       <img src="{{ asset('storage/'. $craft->image) }}" class="img-preview img-fluid mb-3">
       @else
       <img class="img-preview img-fluid mb-3">
       @endif
-
       <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image"
         onchange="previewImage()">
       @error('image')

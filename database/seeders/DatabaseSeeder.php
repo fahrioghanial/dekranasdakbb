@@ -24,7 +24,18 @@ class DatabaseSeeder extends Seeder
       'password' => bcrypt('12345'),
       'contact' => '085324XXXXXX',
       'address' => 'Jl. Angsana 4 no 10',
-      'social_media' => '@fahrioghanial'
+      'rt' => 5,
+      'rw' => 20,
+      'kodepos' => 40212,
+      'noktp' => "3273112323123",
+      'kecamatan' => "Margaasih",
+      'kelurahan_desa' => "Lagadar",
+      'facebook' => '@fahrioghanial',
+      'instagram' => '@fahrioghanial',
+      'twitter' => '@fahrioghanial',
+      'profile_picture' => 'profile-pictures/contoh-foto.png',
+      'status_keanggotaan' => true,
+      'is_admin' => true
     ]);
 
     User::factory(5)->create();

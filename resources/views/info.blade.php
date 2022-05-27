@@ -12,6 +12,7 @@
 <section id="home" class="mb-32">
   <div class="container m-auto pt-28">
     <div class="flex flex-col gap-10">
+      @if ($articles->count() == 3)
       <div class="w-4/5 m-auto">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
@@ -24,24 +25,24 @@
           </div>
           <div class="carousel-inner text-2xl rounded-lg">
             <div class="carousel-item active">
-              <img src={{ asset('https://picsum.photos/id/1033/1920/1080')}} class="d-block w-100" alt="...">
+              <img src="{{ asset('storage/'. $articles[0]->cover) }}" alt="{{ $articles[0]->title }}"
+                class="d-block w-100">
             </div>
             <div class="carousel-caption d-none d-md-block font-bold">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h5>{{ $articles[0]->title }}</h5>
             </div>
             <div class="carousel-item">
-              <img src={{ asset('https://picsum.photos/id/1063/1920/1080')}} class="d-block w-100" alt="...">
+              <img src="{{ asset('storage/'. $articles[1]->cover) }}" alt="{{ $articles[1]->title }}"
+                class="d-block w-100">
               <div class="carousel-caption d-none d-md-block font-bold">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
+                <h5>{{ $articles[1]->title }}</h5>
               </div>
             </div>
             <div class="carousel-item">
-              <img src={{ asset('https://picsum.photos/id/1070/1920/1080')}} class="d-block w-100" alt="...">
+              <img src="{{ asset('storage/'. $articles[2]->cover) }}" alt="{{ $articles[2]->title }}"
+                class="d-block w-100">
               <div class="carousel-caption d-none d-md-block font-bold">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5>{{ $articles[2]->title }}</h5>
               </div>
             </div>
           </div>
@@ -57,6 +58,7 @@
           </button>
         </div>
       </div>
+      @endif
 
       <div class="border-b-4 border-black"></div>
 

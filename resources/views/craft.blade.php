@@ -26,7 +26,9 @@
       <div class="flex flex-col md:text-xl">
         <h2>Kontak: {{ $craft->craftsman->contact }}</h2>
         <h2>Alamat: {{ $craft->craftsman->address }}</h2>
-        <h2>Media Sosial: {{ $craft->craftsman->social_media }}</h2>
+        <h2>Facebook: {{ $craft->craftsman->facebook }}</h2>
+        <h2>Instagram: {{ $craft->craftsman->instagram }}</h2>
+        <h2>Twitter: {{ $craft->craftsman->twitter }}</h2>
         <h2>Ukuran: {{ $craft->size }}</h2>
         <h2>Warna: {{ $craft->color }}</h2>
         <h2 class="mb-4">Motif: {{ $craft->motive }}</h2>

@@ -140,18 +140,9 @@
                   </div>
                 </div>
               </div>
-              <div class="md:mr-3">
-                <button data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false"
-                  aria-controls="collapseExample">
-                  Berita & Kegiatan <i class="bi bi-caret-down-fill"></i>
-                </button>
-                <div class="collapse" id="collapseExample2">
-                  <div class="flex flex-col gap-1 text-white ml-3">
-                    <a href="#"><i class="bi bi-dot"></i> Berita Terkini</a>
-                    <a href="#"><i class="bi bi-dot"></i> Calendar of Event</a>
-                  </div>
-                </div>
-              </div>
+              <a class="hover:text-red-300 md:mr-3" href="/articles">
+                Artikel
+              </a>
               <div class="md:mr-3">
                 <button data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false"
                   aria-controls="collapseExample">

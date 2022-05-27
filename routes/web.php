@@ -7,9 +7,12 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardCraftController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AdminArticleController;
 use App\Models\Craft;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +29,9 @@ Route::get('/', function () {
   return view('index');
 });
 Route::get('/info', function () {
-  return view('info');
+  return view('info', [
+    'articles' => Article::with(['user'])->where('is_show', 1)->latest()->take(3)->get()
+  ]);
 });
 Route::get('/benefit', function () {
   return view('benefit');
@@ -43,7 +48,13 @@ Route::get('/aboutus', function () {
 Route::get('/organization', function () {
   return view('organization');
 });
+
 Route::get('/crafts', [CraftController::class, 'index']);
+Route::get('/detail/{craft}', [CraftController::class, 'show']);
+
+Route::get('/articles', [ArticleController::class, 'index']);
+Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
@@ -51,7 +62,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/detail/{craft}', [CraftController::class, 'show']);
 
 Route::get('/member', function () {
   return view('member', [
@@ -135,5 +145,32 @@ Route::get('/dashboard/adminuser/membership/{user:username}', function (User $us
     $validatedData['status_keanggotaan'] = true;
     User::where('id', $user->id)->update($validatedData);
     return redirect('/dashboard/adminuser')->with('success', 'Keanggotaan perajin berhasil diterima!');
+  }
+})->middleware('admin');
+
+// Dasbor Artikel
+Route::get('/dashboard/articles/checkSlug', [AdminArticleController::class, 'checkSlug'])->middleware('admin');
+Route::resource('/dashboard/articles', AdminArticleController::class)->middleware('admin');
+Route::get('/dashboard/publish-article/publishall', function () {
+  $validatedData = [
+    'is_show' => ''
+  ];
+  $validatedData['is_show'] = true;
+  Article::where('is_show', 0)->where('user_id', auth()->user()->id)->update($validatedData);
+  return redirect('/dashboard/articles')->with('success', 'Semua artikel berhasil dipublikasikan!');
+})->middleware('admin');
+
+Route::get('/dashboard/publish-article/{article}', function (Article $article) {
+  $validatedData = [
+    'is_show' => ''
+  ];
+  if ($article->is_show) {
+    $validatedData['is_show'] = false;
+    Article::where('id', $article->id)->update($validatedData);
+    return redirect('/dashboard/articles')->with('success', 'Artikel berhasil disembunyikan!');
+  } else {
+    $validatedData['is_show'] = true;
+    Article::where('id', $article->id)->update($validatedData);
+    return redirect('/dashboard/articles')->with('success', 'Artikel berhasil dipublikasikan!');
   }
 })->middleware('admin');

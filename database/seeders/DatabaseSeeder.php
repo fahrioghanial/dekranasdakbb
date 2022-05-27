@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Craft;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Article;
 
 class DatabaseSeeder extends Seeder
 {
@@ -39,6 +40,42 @@ class DatabaseSeeder extends Seeder
     ]);
 
     User::factory(5)->create();
+
+    Article::create([
+      'user_id' => 1,
+      'title' => 'Artikel 1 Dekranasda KBB',
+      'slug' => 'artikel-1-dekranasda-kbb',
+      'cover' => 'article-covers/contoh-cover.jpg',
+      'content' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis ante sed enim accumsan mattis. Vivamus convallis odio in enim tristique, quis maximus nulla dapibus. Morbi mollis purus nec nunc gravida, sit amet lobortis mauris convallis. Aenean viverra hendrerit neque in consequat. Sed et volutpat urna. Etiam in facilisis elit. Etiam imperdiet iaculis felis a volutpat. Mauris mattis at ex nec aliquam.
+      In non placerat diam. Suspendisse quis ipsum a metus tempus congue. Ut pharetra finibus posuere. Aliquam eleifend neque id nulla imperdiet pharetra. Suspendisse in tellus ut mauris venenatis scelerisque. Vivamus pulvinar, leo vitae dapibus mattis, nulla eros rutrum quam, ut sollicitudin ante odio ac elit. Phasellus augue urna, venenatis at dolor vel, posuere sagittis risus. Vivamus vitae auctor nulla, quis luctus nisl. Suspendisse laoreet, turpis dictum semper scelerisque, dui ipsum cursus diam, ac cursus lorem orci nec dui. Donec semper leo sit amet mauris malesuada hendrerit et a elit."
+    ]);
+
+    Article::create([
+      'user_id' => 1,
+      'title' => 'Artikel 2 Dekranasda KBB',
+      'slug' => 'artikel-2-dekranasda-kbb',
+      'cover' => 'article-covers/contoh-cover.jpg',
+      'content' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis ante sed enim accumsan mattis. Vivamus convallis odio in enim tristique, quis maximus nulla dapibus. Morbi mollis purus nec nunc gravida, sit amet lobortis mauris convallis. Aenean viverra hendrerit neque in consequat. Sed et volutpat urna. Etiam in facilisis elit. Etiam imperdiet iaculis felis a volutpat. Mauris mattis at ex nec aliquam.
+      In non placerat diam. Suspendisse quis ipsum a metus tempus congue. Ut pharetra finibus posuere. Aliquam eleifend neque id nulla imperdiet pharetra. Suspendisse in tellus ut mauris venenatis scelerisque. Vivamus pulvinar, leo vitae dapibus mattis, nulla eros rutrum quam, ut sollicitudin ante odio ac elit. Phasellus augue urna, venenatis at dolor vel, posuere sagittis risus. Vivamus vitae auctor nulla, quis luctus nisl. Suspendisse laoreet, turpis dictum semper scelerisque, dui ipsum cursus diam, ac cursus lorem orci nec dui. Donec semper leo sit amet mauris malesuada hendrerit et a elit."
+    ]);
+
+    Article::create([
+      'user_id' => 2,
+      'title' => 'Artikel 3 Dekranasda KBB',
+      'slug' => 'artikel-3-dekranasda-kbb',
+      'cover' => 'article-covers/contoh-cover.jpg',
+      'content' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis ante sed enim accumsan mattis. Vivamus convallis odio in enim tristique, quis maximus nulla dapibus. Morbi mollis purus nec nunc gravida, sit amet lobortis mauris convallis. Aenean viverra hendrerit neque in consequat. Sed et volutpat urna. Etiam in facilisis elit. Etiam imperdiet iaculis felis a volutpat. Mauris mattis at ex nec aliquam.
+      In non placerat diam. Suspendisse quis ipsum a metus tempus congue. Ut pharetra finibus posuere. Aliquam eleifend neque id nulla imperdiet pharetra. Suspendisse in tellus ut mauris venenatis scelerisque. Vivamus pulvinar, leo vitae dapibus mattis, nulla eros rutrum quam, ut sollicitudin ante odio ac elit. Phasellus augue urna, venenatis at dolor vel, posuere sagittis risus. Vivamus vitae auctor nulla, quis luctus nisl. Suspendisse laoreet, turpis dictum semper scelerisque, dui ipsum cursus diam, ac cursus lorem orci nec dui. Donec semper leo sit amet mauris malesuada hendrerit et a elit."
+    ]);
+
+    Article::create([
+      'user_id' => 1,
+      'title' => 'Artikel 4 Dekranasda KBB',
+      'slug' => 'artikel-4-dekranasda-kbb',
+      'cover' => 'article-covers/contoh-cover.jpg',
+      'content' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis ante sed enim accumsan mattis. Vivamus convallis odio in enim tristique, quis maximus nulla dapibus. Morbi mollis purus nec nunc gravida, sit amet lobortis mauris convallis. Aenean viverra hendrerit neque in consequat. Sed et volutpat urna. Etiam in facilisis elit. Etiam imperdiet iaculis felis a volutpat. Mauris mattis at ex nec aliquam.
+      In non placerat diam. Suspendisse quis ipsum a metus tempus congue. Ut pharetra finibus posuere. Aliquam eleifend neque id nulla imperdiet pharetra. Suspendisse in tellus ut mauris venenatis scelerisque. Vivamus pulvinar, leo vitae dapibus mattis, nulla eros rutrum quam, ut sollicitudin ante odio ac elit. Phasellus augue urna, venenatis at dolor vel, posuere sagittis risus. Vivamus vitae auctor nulla, quis luctus nisl. Suspendisse laoreet, turpis dictum semper scelerisque, dui ipsum cursus diam, ac cursus lorem orci nec dui. Donec semper leo sit amet mauris malesuada hendrerit et a elit."
+    ]);
 
 
     Category::create([

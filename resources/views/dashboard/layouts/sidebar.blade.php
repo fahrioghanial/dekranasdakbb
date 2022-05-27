@@ -40,6 +40,12 @@
           Data Perajin
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/articles*') ? 'active' : ''}}" href="/dashboard/articles">
+          <span data-feather="book-open"></span>
+          Artikel Saya
+        </a>
+      </li>
     </ul>
     @endcan
   </div>

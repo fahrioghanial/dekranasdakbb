@@ -28,6 +28,17 @@
   <h2>Facebook: {{ $user->facebook }}</h2>
   <h2>Instagram: {{ $user->instagram }}</h2>
   <h2>Twitter: {{ $user->twitter }}</h2>
+  <a href="/dashboard/adminuser" class="btn btn-info"><span data-feather="arrow-left"></span>
+    Kembali</a>
+  @if ($user->status_keanggotaan)
+  <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-danger"><span
+      data-feather="x-circle"></span>
+    Cabut Keanggotaan</a>
+  @else
+  <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-success"><span
+      data-feather="check-circle"></span>
+    Terima</a>
+  @endif
 </div>
 </div>
 @endsection

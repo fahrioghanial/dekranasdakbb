@@ -4,4 +4,7 @@
 
 ## Running the App
 
--   Command: _php artisan serve_
+Command:
+
+-   run the server: _php artisan serve_
+-   build tailwind process: _npm run watch_

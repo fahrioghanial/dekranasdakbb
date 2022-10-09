@@ -9,7 +9,7 @@
 @endsection
 
 @section('body')
-<section id="home" class="mb-32">
+<section id="home" class="pb-32 text-black">
   <div class="container m-auto pt-28">
     <div class="flex flex-col gap-10">
       @if ($articles->count() == 3)

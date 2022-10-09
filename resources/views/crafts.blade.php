@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('navbar')
-@include('layouts.navbarproduk', ['categories' => $categories])
+@include('layouts.navbar', ['categories' => $categories])
 @endsection
 
 @section('footer')

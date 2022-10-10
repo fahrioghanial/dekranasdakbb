@@ -10,7 +10,7 @@
 
 @section('body')
 <section id="home" class="mb-32">
-  <div class="container m-auto pt-28">
+  <div class="container m-auto pt-28 text-black">
     <div class="flex flex-col gap-10">
       <div>
         <h1 class="md:text-4xl text-2xl font-bold">Struktur Organisasi</h1>

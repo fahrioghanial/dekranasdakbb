@@ -10,7 +10,7 @@
 
 @section('body')
 <section id="home" class="mb-32">
-  <div class="container m-auto pt-28">
+  <div class="container m-auto pt-28 text-black">
     <div class="flex flex-col md:flex-row gap-10">
       <img src={{ asset('img/benefit.jpg')}} alt="Benefit" class="md:w-1/3 w-full m-auto" />
       <div class="">

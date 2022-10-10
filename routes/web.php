@@ -28,11 +28,6 @@ use App\Models\Article;
 Route::get('/', function () {
   return view('index');
 });
-Route::get('/info', function () {
-  return view('info', [
-    'articles' => Article::with(['user'])->where('is_show', 1)->latest()->take(3)->get()
-  ]);
-});
 Route::get('/benefit', function () {
   return view('benefit');
 });
@@ -50,7 +45,7 @@ Route::get('/organization', function () {
 });
 
 Route::get('/crafts', [CraftController::class, 'index']);
-Route::get('/detail/{craft}', [CraftController::class, 'show']);
+Route::get('/craft/detail/{craft}', [CraftController::class, 'show']);
 
 Route::get('/articles', [ArticleController::class, 'index']);
 Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);

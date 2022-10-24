@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Craft;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -16,7 +17,7 @@ class AdminCategoryController extends Controller
   public function index()
   {
     return view('dashboard.categories.index', [
-      'categories' => Category::all()
+      'categories' => Category::withCount('crafts')->get()
     ]);
   }
 

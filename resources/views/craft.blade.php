@@ -11,15 +11,15 @@
 @section('body')
 <section id="home" class="mb-32">
   <div class="container m-auto pt-28 text-black">
-    @if ($craft->is_confirmed)
+    @if ($craft->is_confirmed && $craft->craftsman->status_keanggotaan)
     <h1 class="font-bold md:text-5xl text-2xl mb-2">{{ $craft->title }}
       <div class="btn btn-secondary rounded-full hover:bg-slate-700 text-2xl"><a
-          href="/categories/{{ $craft->category->slug }}">{{
+          href="/crafts?category={{ $craft->category->slug }}">{{
           $craft->category->name }}</a></div>
     </h1>
-    <h2 class="font-bold md:text-4xl text-2xl mb-2">{{ $craft->price }}</h2>
-    <h1 class="font-semibold md:text-2xl text-xl mb-5">Oleh <a class="hover:text-[#DBC8AC]"
-        href="/craftsman/{{ $craft->craftsman->username }}">{{
+    <h2 class="font-bold md:text-4xl text-2xl mb-2">Rp{{ $craft->price }}</h2>
+    <h1 class="font-semibold md:text-2xl text-xl mb-5">Oleh <a class="hover:text-[#DBC8AC] text-blue-700"
+        href="/crafts?craftsman={{ $craft->craftsman->username }}">{{
         $craft->craftsman->name }}</a>
     </h1>
     <div class="flex flex-col md:flex-row gap-10 mb-7 bg-white rounded-md items-start">

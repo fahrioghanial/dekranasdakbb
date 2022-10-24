@@ -1,56 +1,72 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Buat Artikel Baru</h1>
-</div>
-
-<div class="col-lg-8 mb-5">
-  <form method="post" action="/dashboard/articles" enctype="multipart/form-data">
-    @csrf
-    <div class="mb-3">
-      <label for="cover" class="form-label">Cover</label>
-      <img class="img-preview img-fluid">
-      <input class="form-control @error('cover') is-invalid @enderror" type="file" id="cover" name="cover"
-        onchange="previewImage()">
-      @error('cover')
-      <div class="invalid-feedback">
-        {{ $message }}
+<div class="mx-2 md:ml-80 pt-24 pb-5 md:mr-5 text-white">
+  <p class="text-2xl font-semibold mb-5">Buat Artikel Baru</p>
+  <div class="md:w-1/2 bg-white p-3 rounded-md">
+    <form method="post" action="/dashboard/articles" enctype="multipart/form-data">
+      @csrf
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Cover</span>
+        </label>
+        <img class="img-preview w-1/2">
+        <input type="file" name="cover" class="p-2 rounded-md w-full @error('cover') border-red-600 @enderror bg-white"
+          id="cover" placeholder="Cover" onchange="previewImage()">
+        @error('cover')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
       </div>
-      @enderror
-    </div>
-    <div class="mb-3">
-      <label for="title" class="form-label">Judul</label>
-      <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-        value="{{ old('title') }}">
-      @error('title')
-      <div class="invalid-feedback">
-        {{ $message }}
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Judul Artikel</span>
+        </label>
+        <input type="text" name="title"
+          class="input input-bordered w-full {{ $errors->has('title')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="title" placeholder="Judul Artikel" autofocus value="{{ old('title') }}">
+        @error('title')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
       </div>
-      @enderror
-    </div>
-    <div class="mb-3">
-      <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
-        value="{{ old('slug') }}" readonly>
-      @error('slug')
-      <div class="invalid-feedback">
-        {{ $message }}
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Slug</span>
+        </label>
+        <input type="text" name="slug"
+          class="input input-bordered w-full {{ $errors->has('slug')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="slug" value="{{ old('slug') }}" readonly>
+        @error('slug')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
       </div>
-      @enderror
-    </div>
-    <div class="mb-3">
-      <label for="content" class="form-label">Konten</label>
-      <input id="content" type="hidden" name="content" value="{{ old('content') }}">
-      <trix-editor input="content"></trix-editor>
-      @error('content')
-      <div class="invalid-feedback">
-        {{ $message }}
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Konten</span>
+        </label>
+        <input id="content" type="hidden" name="content" value="{{ old('content') }}" class="">
+        <trix-editor input="content" class="text-black"></trix-editor>
+        @error('content')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
       </div>
-      @enderror
-    </div>
-    <button type="submit" class="btn btn-primary">Simpan</button>
-  </form>
+      <div class="flex flex-col gap-3 mt-5">
+        <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
+          type="submit">Simpan</button>
+        <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
+          href="/dashboard/articles">
+          Batal
+        </a>
+      </div>
+    </form>
+  </div>
 </div>
 
 <script>
@@ -68,13 +84,13 @@
     }
   }
 
-  const title = document.querySelector('#title');
-  const slug = document.querySelector('#slug');
+  // const title = document.querySelector('#title');
+  // const slug = document.querySelector('#slug');
 
-  title.addEventListener('change', function() {
-    fetch('/dashboard/articles/checkSlug?title='+ title.value)
+  document.querySelector('#title').addEventListener('change', function() {
+    fetch('/dashboard/articles/checkSlug?title='+ document.querySelector('#title').value)
     .then(response => response.json())
-    .then(data => slug.value = data.slug)
+    .then(data => document.querySelector('#slug').value = data.slug)
   })
 
   document.addEventListener('trix-file-accept', function (e) {

@@ -11,7 +11,16 @@
 @section('body')
 <section id="home" class="mb-32">
   <div class="container m-auto pt-28 text-black">
-    <h1 class="font-bold md:text-4xl text-2xl mb-10">Artikel</h1>
+    <h1 class="font-bold md:text-4xl text-2xl mb-2">Artikel</h1>
+    <h1 class="font-bold md:text-3xl text-xl mb-5">{{ $title }}</h1>
+    <form action="/articles" class="mb-3">
+      <div class="flex w-1/2">
+        <input type="text" name="search" class="input input-bordered bg-white w-4/5 text-black" id="search"
+          placeholder="Cari Artikel..." value="{{ request('search') }}">
+        <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg text-white text-xl font-semibold"
+          type="submit">Cari</button>
+      </div>
+    </form>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
       @if ($articles->count())
       @foreach ($articles as $article)
@@ -36,5 +45,7 @@
       <h1 class="font-bold md:text-4xl text-2xl mb-2">Artikel Tidak Ditemukan</h1>
       @endif
     </div>
+    {{ $articles->links() }}
+  </div>
 </section>
 @endsection

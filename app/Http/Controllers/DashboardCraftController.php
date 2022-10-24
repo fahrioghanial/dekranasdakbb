@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Craft;
 use App\Models\Category;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,8 +46,9 @@ class DashboardCraftController extends Controller
     $validatedData = $request->validate([
       'image' => 'image|file|required',
       'title' => 'required|max:255',
+      'slug' => 'required',
       'category_id' => 'required',
-      'price' => 'required',
+      'price' => 'required|numeric',
       'size' => '',
       'color' => '',
       'motive' => '',
@@ -109,8 +111,9 @@ class DashboardCraftController extends Controller
     $rules = [
       // 'image' => 'image|file|required',
       'title' => 'required|max:255',
+      'slug' => 'required',
       'category_id' => 'required',
-      'price' => 'required',
+      'price' => 'required|numeric',
       'size' => '',
       'color' => '',
       'motive' => '',
@@ -177,5 +180,11 @@ class DashboardCraftController extends Controller
     $validatedData['is_confirmed'] = true;
     Craft::where('is_confirmed', 0)->update($validatedData);
     return redirect('/dashboard/craftsadmin')->with('success', 'Semua kerajinan berhasil disetujui!');
+  }
+
+  public function checkSlug(Request $request)
+  {
+    $slug = SlugService::createSlug(Craft::class, 'slug', $request->title);
+    return response()->json(['slug' => $slug]);
   }
 }

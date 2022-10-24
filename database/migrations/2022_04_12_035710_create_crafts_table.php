@@ -18,8 +18,9 @@ return new class extends Migration
       $table->foreignId('category_id');
       $table->foreignId('user_id');
       $table->string('title');
+      $table->string('slug')->unique();
       $table->string('image')->nullable();
-      $table->string('price')->nullable();
+      $table->integer('price')->nullable();
       $table->string('size')->nullable();
       $table->string('color')->nullable();
       $table->string('motive')->nullable();

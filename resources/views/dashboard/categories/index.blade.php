@@ -1,46 +1,62 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-@if(session()->has('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  {{ session('success') }}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Kategori Produk</h1>
+<div class="mx-2 md:ml-80 pt-24 pb-5 md:mr-5 text-white">
+  @if(session()->has('success'))
+  <div class="alert alert-success mb-3">
+    {{ session('success') }}
+  </div>
+  @endif
+  <p class="text-2xl font-semibold mb-5">Kategori Produk</p>
+  <a href="/dashboard/categories/create" class="btn btn-info mb-4">Buat Kategori baru</a>
+  <div class="p-2 bg-white rounded-lg w-fit">
+    <table class="" id="kategori">
+      <!-- head -->
+      <thead class="">
+        <tr class="">
+          <th class="bg-slate-900">#</th>
+          <th class="bg-slate-900">Nama Kategori</th>
+          <th class="bg-slate-900">Jumlah Produk</th>
+          <th class="bg-slate-900">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($categories as $category)
+        <tr>
+          <td class="bg-slate-900">{{ $loop->iteration }}</td>
+          <td class="bg-slate-900">{{ $category->name }}</td>
+          <td class="bg-slate-900">{{ $category->crafts_count }}</td>
+          <td class="bg-slate-900">
+            <div class="flex flex-col gap-1">
+              <a href="/dashboard/categories/{{ $category->id }}/edit" class="btn btn-xs btn-warning btn-outline">
+                Ubah</a>
+              <form action="/dashboard/categories/{{ $category->id }}" method="post" class="w-full">
+                @method('delete')
+                @csrf
+                <button class="btn btn-xs btn-error btn-outline w-full" onclick="return confirm('Hapus Kategori?')">
+                  Hapus</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<div class="table-responsive">
-  <a href="/dashboard/categories/create" class="btn btn-primary mb-4">Buat Kategori baru</a>
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nama Kategori</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($categories as $category)
-      <tr class="align-middle">
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $category->name }}</td>
-        <td>
-          <a href="/dashboard/categories/{{ $category->id }}/edit" class="badge bg-warning"><span
-              data-feather="edit"></span>
-            Edit</a>
-          <form action="/dashboard/categories/{{ $category->id }}" method="post" class="d-inline">
-            @method('delete')
-            @csrf
-            <button class="badge bg-danger border-0" onclick="return confirm('Hapus Kategori?')"><span
-                data-feather="x-circle"></span>
-              Hapus</button>
-          </form>
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-</div>
+<script>
+  $(document).ready( function () {
+    $('#kategori').DataTable({
+      language: {
+            url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Indonesian.json'
+        },
+      // scrollX: true,
+      // scrollY: '200px',
+      // scrollCollapse: true,
+      // paging: false,
+    });
+  } );
+</script>
 @endsection

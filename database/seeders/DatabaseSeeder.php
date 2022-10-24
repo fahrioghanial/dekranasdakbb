@@ -95,10 +95,11 @@ class DatabaseSeeder extends Seeder
 
     Craft::create([
       'title' => 'Kebaya Panjang',
+      'slug' => 'kebaya-panjang',
       'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 1,
       'user_id' => 1,
-      'price' => 'Rp245.000',
+      'price' => '245000',
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -106,10 +107,11 @@ class DatabaseSeeder extends Seeder
 
     Craft::create([
       'title' => 'Tas Gendong',
+      'slug' => 'tas-gendong',
       'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 2,
       'user_id' => 1,
-      'price' => 'Rp45.000',
+      'price' => '45000',
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -117,10 +119,11 @@ class DatabaseSeeder extends Seeder
 
     Craft::create([
       'title' => 'Baju Adat',
+      'slug' => 'baju-adat',
       'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 1,
       'user_id' => 2,
-      'price' => 'Rp145.000',
+      'price' => '145000',
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -128,10 +131,11 @@ class DatabaseSeeder extends Seeder
 
     Craft::create([
       'title' => 'Kalung Antik',
+      'slug' => 'kalung-antik',
       'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 3,
       'user_id' => 2,
-      'price' => 'Rp105.000',
+      'price' => '105000',
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -139,10 +143,35 @@ class DatabaseSeeder extends Seeder
 
     Craft::create([
       'title' => 'Tas Serut',
+      'slug' => 'tas-serut',
       'image' => 'craft-images/contoh-foto.jpg',
       'category_id' => 2,
       'user_id' => 1,
-      'price' => 'Rp125.000',
+      'price' => '125000',
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Outer Tenun',
+      'slug' => 'outer-tenun',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 1,
+      'user_id' => 3,
+      'price' => '125000',
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Kalung Tanduk',
+      'slug' => 'kalung-tanduk',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 3,
+      'user_id' => 4,
+      'price' => '125000',
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'

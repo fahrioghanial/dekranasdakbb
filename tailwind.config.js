@@ -1,11 +1,12 @@
 module.exports = {
-    content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
-    ],
-    theme: {
-        extend: {},
-    },
-    plugins: [require("daisyui")],
+  content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php'
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [require("daisyui")],
 };

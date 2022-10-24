@@ -1,76 +1,117 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Edit Kerajinan</h1>
-</div>
-
-<div class="col-lg-8 mb-5">
-  <form method="post" action="/dashboard/crafts/{{ $craft->id }}" enctype="multipart/form-data">
-    @method('put')
-    @csrf
-    <div class="mb-3">
-      <label for="image" class="form-label d-block">Foto Kerajinan</label>
-      <input type="hidden" name="oldImage" value="{{ $craft->image }}">
-      @if ($craft->image)
-      <img src="{{ asset('storage/'. $craft->image) }}" class="img-preview img-fluid mb-3">
-      @else
-      <img class="img-preview img-fluid mb-3">
-      @endif
-      <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image"
-        onchange="previewImage()">
-      @error('image')
-      <div class="invalid-feedback">
-        {{ $message }}
-      </div>
-      @enderror
-    </div>
-    <div class="mb-3">
-      <label for="title" class="form-label">Judul</label>
-      <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-        value="{{ old('title', $craft->title) }}">
-      @error('title')
-      <div class="invalid-feedback">
-        {{ $message }}
-      </div>
-      @enderror
-    </div>
-    <div class="mb-3">
-      <label for="category_id" class="form-label">Kategori</label>
-      <select class="form-select" name="category_id">
-        @foreach($categories as $category)
-        @if(old('category_id', $craft->category_id) == $category->id)
-        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+<div class="mx-2 md:ml-80 pt-24 pb-5 md:mr-5 text-white">
+  <p class="text-2xl font-semibold mb-5">Ubah Kerajinan</p>
+  <div class="md:w-1/2 bg-white p-3 rounded-md">
+    <form method="post" action="/dashboard/crafts/{{ $craft->id }}" enctype="multipart/form-data">
+      @method('put')
+      @csrf
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Foto Kerajinan</span>
+        </label>
+        <input type="hidden" name="oldImage" value="{{ $craft->image }}">
+        @if ($craft->image)
+        <img src="{{ asset('storage/'. $craft->image) }}" class="img-preview w-1/2">
         @else
-        <option value="{{ $category->id }}">{{ $category->name }}</option>
+        <img class="img-preview w-1/2">
         @endif
-        @endforeach
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="price" class="form-label">Harga</label>
-      <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price"
-        value="{{ old('price', $craft->price) }}">
-      @error('price')
-      <div class="invalid-feedback">
-        {{ $message }}
+        <input type="file" name="image" class="p-2 rounded-md w-full @error('image') border-red-600 @enderror bg-white"
+          id="image" placeholder="Foto Kerajinan" onchange="previewImage()">
+        @error('image')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
       </div>
-      @enderror
-    </div>
-    <div class="mb-3">
-      <label for="size" class="form-label">Ukuran</label>
-      <input type="text" class="form-control" id="size" name="size" value="{{ old('size',$craft->size) }}">
-    </div>
-    <div class="mb-3">
-      <label for="color" class="form-label">Warna</label>
-      <input type="text" class="form-control" id="color" name="color" value="{{ old('color', $craft->color) }}">
-    </div>
-    <div class="mb-3">
-      <label for="motive" class="form-label">Motif</label>
-      <input type="text" class="form-control" id="motive" name="motive" value="{{ old('motive', $craft->motive) }}">
-    </div>
-    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-  </form>
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Judul</span>
+        </label>
+        <input type="text" name="title"
+          class="input input-bordered w-full {{ $errors->has('title')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="title" placeholder="Judul Kerajinan" autofocus value="{{ old('title', $craft->title) }}">
+        @error('title')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Slug</span>
+        </label>
+        <input type="text" name="slug"
+          class="input input-bordered w-full {{ $errors->has('slug')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="slug" value="{{ old('slug', $craft->slug) }}" readonly>
+        @error('slug')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text text-black">Kategori</span>
+          </label>
+          <select class="select border-black border-1 bg-white text-base text-black" name="category_id">
+            @foreach($categories as $category)
+            @if(old('category_id', $craft->category_id) == $category->id)
+            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+            @else
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endif
+            @endforeach
+          </select>
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text text-black">Harga (Tuliskan tanpa (Rp) dan titik)</span>
+            <span class="label-text text-xs text-black">Contoh: 120000</span>
+          </label>
+          <input type="text" name="price"
+            class="input input-bordered w-full {{ $errors->has('price')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+            id="price" placeholder="Harga" value="{{ old('price', $craft->price) }}">
+          @error('price')
+          <div class="text-rose-500">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text text-black">Ukuran</span>
+          </label>
+          <input type="text" name="size"
+            class="input input-bordered w-full {{ $errors->has('size')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+            id="size" placeholder="Ukuran" value="{{ old('size', $craft->size) }}">
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text text-black">Warna</span>
+          </label>
+          <input type="text" name="color"
+            class="input input-bordered w-full {{ $errors->has('color')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+            id="color" placeholder="Warna" value="{{ old('color', $craft->color) }}">
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text text-black">Motif</span>
+          </label>
+          <input type="text" name="motive"
+            class="input input-bordered w-full {{ $errors->has('motive')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+            id="motive" placeholder="Motif" value="{{ old('motive', $craft->motive) }}">
+        </div>
+        <div class="flex flex-col gap-3 mt-5">
+          <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
+            type="submit">Simpan Perubahan</button>
+          <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
+            href="/dashboard/crafts">
+            Batal
+          </a>
+        </div>
+    </form>
+  </div>
 </div>
 
 <script>
@@ -87,6 +128,12 @@
       imgPreview.src = oFREvent.target.result;
     }
   }
+
+  document.querySelector('#title').addEventListener('change', (event) => {
+    fetch('/dashboard/crafts/checkSlug?title='+ document.querySelector('#title').value)
+    .then(response => response.json())
+    .then(data => {document.querySelector('#slug').value = data.slug; console.log(data)})
+  })
 </script>
 
 @endsection

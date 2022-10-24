@@ -1,45 +1,63 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Buat Kategori Baru</h1>
-</div>
-
-<div class="col-lg-8 mb-5">
-  <form method="post" action="/dashboard/categories" enctype="multipart/form-data">
-    @csrf
-    <div class="mb-3">
-      <label for="name" class="form-label">Nama Kategori</label>
-      <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-        value="{{ old('name') }}">
-      @error('name')
-      <div class="invalid-feedback">
-        {{ $message }}
+<div class="mx-2 md:ml-80 pt-24 pb-80 md:mr-5 text-white">
+  <p class="text-2xl font-semibold mb-5">Buat Kategori Baru</p>
+  <div class="md:w-1/2 bg-white p-3 rounded-md">
+    <form method="post" action="/dashboard/categories" enctype="multipart/form-data">
+      @csrf
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Nama Kategori</span>
+        </label>
+        <input type="text" name="name"
+          class="input input-bordered w-full {{ $errors->has('name')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="name" placeholder="Nama Kategori" autofocus value="{{ old('name') }}">
+        @error('name')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
       </div>
-      @enderror
-    </div>
-    <div class="mb-3">
-      <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
-        value="{{ old('slug') }}" readonly>
-      @error('slug')
-      <div class="invalid-feedback">
-        {{ $message }}
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Slug</span>
+        </label>
+        <input type="text" name="slug"
+          class="input input-bordered w-full {{ $errors->has('slug')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="slug" value="{{ old('slug') }}" readonly>
+        @error('slug')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
       </div>
-      @enderror
-    </div>
-    <button type="submit" class="btn btn-primary">Simpan</button>
-  </form>
+      <div class="flex flex-col gap-3 mt-5">
+        <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
+          type="submit">Simpan</button>
+        <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
+          href="/dashboard/categories">
+          Batal
+        </a>
+      </div>
+    </form>
+  </div>
 </div>
 
 <script>
-  const name = document.querySelector('#name');
-  const slug = document.querySelector('#slug');
+  // const name = document.querySelector('#name');
+  // const slug = document.querySelector('#slug');
 
-  name.addEventListener('change', function() {
-    fetch('/dashboard/categories/checkSlug?name='+ name.value)
+  // name.addEventListener('change',  function() {
+  //   fetch('/dashboard/categories/checkSlug?name='+ name.value)
+  //   .then(response => response.json())
+  //   .then(data => slug.value = data.slug)
+  // })
+
+  document.querySelector('#name').addEventListener('change', (event) => {
+    fetch('/dashboard/categories/checkSlug?name='+ document.querySelector('#name').value)
     .then(response => response.json())
-    .then(data => slug.value = data.slug)
+    .then(data => {document.querySelector('#slug').value = data.slug; console.log(data)})
   })
 </script>
 @endsection

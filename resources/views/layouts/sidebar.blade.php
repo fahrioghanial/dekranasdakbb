@@ -2,7 +2,7 @@
 <div class="collapse collapse-arrow hover:bg-[#B73E3E]">
   <input type="checkbox" />
   <div class="collapse-title text-xl font-medium">
-    Perajin
+    Produk & Anggota
   </div>
   <div class="collapse-content flex flex-col font-medium">
     <a class="hover:bg-[#DBC8AC] hover:text-black" href="/crafts"><i class="bi bi-dot"></i> Produk Kami</a>

@@ -1,14 +1,14 @@
 <header class=" bg-[#DD5353] text-white top-0 left-0 w-full flex items-center fixed z-[9999]">
   <div class="container">
     <div class="flex items-center justify-between relative">
-      <div class="flex items-center py-2 ml-10">
+      <div class="flex items-center py-2 md:ml-10">
         <a class="W-full self-center hover:shadow-xl mr-2" href="/">
-          <img src={{ asset('img/kbb.svg')}} alt="KBB" class="w-14 h-14 m-auto" />
+          <img src={{ asset('img/kbb.svg')}} alt="KBB" class="w-14 m-auto" />
         </a>
         <a class="W-full self-center hover:shadow-xl" href="/">
-          <img src={{ asset('img/LogoDekranasda.jpg')}} alt="Dekranasda" class="w-14 h-14 rounded-full m-auto" />
+          <img src={{ asset('img/LogoDekranasda.jpg')}} alt="Dekranasda" class="w-14 rounded-full m-auto" />
         </a>
-        <p class="md:text-3xl text-base font-semibold md:ml-5 ml-2">DEKRANASDA KBB</p>
+        <p class="md:text-3xl text-base font-semibold md:ml-5 ml-2 md:block hidden">DEKRANASDA KBB</p>
       </div>
       <div class="flex items-center gap-3 ">
         <div
@@ -19,13 +19,14 @@
             <a class="p-2 hover:bg-black rounded-md" href="/crafts">Tampilkan Semua Produk</a>
             @if (isset($categories))
             @foreach ($categories as $category)
-            <a class="p-2 hover:bg-black rounded-md" href="/categories/{{ $category->slug }}">{{ $category->name }}</a>
+            <a class="p-2 hover:bg-black rounded-md" href="/crafts?category={{ $category->slug }}">{{ $category->name
+              }}</a>
             @endforeach
             @endif
           </div>
         </div>
 
-        <a class="rounded-lg py-2 px-3 hover:bg-[#B73E3E] border-2 text-xl font-semibold {{ (Request::is('craft*') || Request::is('categories*') || Request::is('detail*') ) ? 'hidden' : 'block'}}"
+        <a class="rounded-lg py-2 px-3 hover:bg-[#B73E3E] border-2 text-xl font-semibold {{ (Request::is('craft*') || Request::is('categories*') || Request::is('detail*') ) ? 'hidden' : 'block'}} md:block hidden"
           href="/crafts">
           Produk Kami
         </a>
@@ -37,10 +38,12 @@
             </div>
           </label>
           <ul tabindex="0"
-            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-white text-black rounded-box w-52">
-            <li><a class="text-xl" href="/dashboard">Dasbor Saya</a></li>
+            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-white text-black rounded-box w-52 ">
+            <li><a class="text-xl hover:bg-[#DD5353] hover:text-white" href="/dashboard/user">Dasbor
+                Saya</a>
+            </li>
             <li>
-              <form action="/logout" method="post">
+              <form action="/logout" method="post" class="hover:bg-[#DD5353]  hover:text-white">
                 @csrf
                 <button class="text-xl" type="submit">Keluar</button>
               </form>

@@ -25,6 +25,9 @@ use App\Models\Article;
 |
 */
 
+Route::get('/test', function () {
+  return view('dashboard.layouts.maintest');
+});
 Route::get('/', function () {
   return view('index');
 });
@@ -45,7 +48,7 @@ Route::get('/organization', function () {
 });
 
 Route::get('/crafts', [CraftController::class, 'index']);
-Route::get('/craft/detail/{craft}', [CraftController::class, 'show']);
+Route::get('/crafts/detail/{craft:slug}', [CraftController::class, 'show']);
 
 Route::get('/articles', [ArticleController::class, 'index']);
 Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);
@@ -59,39 +62,58 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get('/member', function () {
+  $users = User::where('status_keanggotaan', 1);
+  $title = "Semua Anggota Perajin Dekranasda";
+
+  if (request('search')) {
+    $users->where('name', 'like', '%' . request('search') . '%');
+    $title = "Pencarian: " . request('search');
+  }
   return view('member', [
-    'users' => User::where('status_keanggotaan', 1)->get(),
+    'title' => $title,
+    'users' => $users->paginate(10)->withQueryString(),
   ]);
 });
 
-Route::get('/categories/{category:slug}', function (Category $category) {
-  return view('crafts', [
-    'title' => "Kategori kerajinan: $category->name",
-    'crafts' => $category->crafts->load(['craftsman', 'category'])->where('is_confirmed', 1),
-    'categories' => Category::all()
-  ]);
-});
 
-Route::get('/craftsman/{craftsman:username}', function (User $craftsman) {
-  return view('crafts', [
-    'title' => "Kerajinan oleh: $craftsman->name",
-    'crafts' => $craftsman->crafts->load(['craftsman', 'category'])->where('is_confirmed', 1),
-    'categories' => Category::all()
-  ]);
-});
 
 // Routes for dashboard
-
-Route::get('/dashboard', function () {
-  return view('dashboard.index');
-})->middleware('auth');
-
-
 Route::resource('/dashboard/user', ProfileController::class)->middleware('auth');
 
+Route::get('/dashboard/crafts/checkSlug', [DashboardCraftController::class, 'checkSlug'])->middleware('member');
 Route::resource('/dashboard/crafts', DashboardCraftController::class)->middleware('member');
 
+
 // Routes for dashboard admin
+Route::get('/dashboard/statistics', function () {
+  $max_count_crafts_in_category = Category::withCount('crafts')->get()->max('crafts_count');
+  $min_count_crafts_in_category = Category::withCount('crafts')->get()->min('crafts_count');
+  $max_count_crafts_in_user = User::withCount('crafts')->get()->max('crafts_count');
+  $min_count_crafts_in_user = User::withCount('crafts')->get()->min('crafts_count');
+  $highest_price = Craft::get()->max('price');
+  $lowest_price = Craft::get()->min('price');
+  $category_with_highest_product = Category::withCount('crafts')->get()->where('crafts_count', $max_count_crafts_in_category);
+  $category_with_lowest_product = Category::withCount('crafts')->get()->where('crafts_count', $min_count_crafts_in_category);
+  $craftsman_with_highest_product = User::withCount('crafts')->get()->where('crafts_count', $max_count_crafts_in_user);
+  $craftsman_with_lowest_product = User::withCount('crafts')->get()->where('crafts_count', $min_count_crafts_in_user);
+  $expensive_product = Craft::get()->where('price', $highest_price);
+  $cheap_product = Craft::get()->where('price', $lowest_price);
+
+
+  return view('dashboard.statistics', [
+    "craftsman_total" => User::all()->count(),
+    "craft_total" => Craft::all()->count(),
+    "category_total" => Category::all()->count(),
+    "article_total" => Article::all()->count(),
+    "category_with_highest_product" => $category_with_highest_product,
+    "category_with_lowest_product" => $category_with_lowest_product,
+    "craftsman_with_highest_product" => $craftsman_with_highest_product,
+    "craftsman_with_lowest_product" => $craftsman_with_lowest_product,
+    "expensive_product" => $expensive_product,
+    "cheap_product" => $cheap_product,
+
+  ]);
+})->middleware('admin');
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('admin');
 Route::get('/dashboard/craftsadmin', function () {
@@ -110,7 +132,7 @@ Route::get('/dashboard/confirmallcrafts', [DashboardCraftController::class, 'con
 
 Route::get('/dashboard/adminuser', function () {
   return view('dashboard.craftsmanadmin.index', [
-    "users" => User::latest()->get()
+    "users" => User::withCount('crafts')->latest()->get()
   ]);
 })->middleware('admin');
 Route::get('/dashboard/adminuser/{user:username}', function (User $user) {

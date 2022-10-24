@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Craft extends Model
 {
-  use HasFactory;
+  use Sluggable, HasFactory;
 
-  protected $fillable = ['title', 'category_id', 'user_id', 'price', 'image', 'size', 'color', 'motive'];
+  protected $guarded = ['id'];
 
   public function category()
   {
@@ -19,5 +20,14 @@ class Craft extends Model
   public function craftsman()
   {
     return $this->belongsTo(User::class, "user_id");
+  }
+
+  public function sluggable(): array
+  {
+    return [
+      'slug' => [
+        'source' => 'title'
+      ]
+    ];
   }
 }

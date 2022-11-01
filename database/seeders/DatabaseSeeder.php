@@ -8,6 +8,7 @@ use App\Models\Craft;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Article;
+use App\Models\WebViewerCount;
 
 class DatabaseSeeder extends Seeder
 {
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
       'is_admin' => true
     ]);
 
-    User::factory(5)->create();
+    User::factory(15)->create();
 
     Article::create([
       'user_id' => 1,
@@ -100,6 +101,7 @@ class DatabaseSeeder extends Seeder
       'category_id' => 1,
       'user_id' => 1,
       'price' => '245000',
+      'views' => 0,
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -112,6 +114,7 @@ class DatabaseSeeder extends Seeder
       'category_id' => 2,
       'user_id' => 1,
       'price' => '45000',
+      'views' => 0,
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -124,6 +127,7 @@ class DatabaseSeeder extends Seeder
       'category_id' => 1,
       'user_id' => 2,
       'price' => '145000',
+      'views' => 0,
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -136,6 +140,7 @@ class DatabaseSeeder extends Seeder
       'category_id' => 3,
       'user_id' => 2,
       'price' => '105000',
+      'views' => 0,
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -148,6 +153,7 @@ class DatabaseSeeder extends Seeder
       'category_id' => 2,
       'user_id' => 1,
       'price' => '125000',
+      'views' => 0,
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -160,6 +166,7 @@ class DatabaseSeeder extends Seeder
       'category_id' => 1,
       'user_id' => 3,
       'price' => '125000',
+      'views' => 0,
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
@@ -172,9 +179,118 @@ class DatabaseSeeder extends Seeder
       'category_id' => 3,
       'user_id' => 4,
       'price' => '125000',
+      'views' => 0,
       'size' => 'normal',
       'color' => 'kuning',
       'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Kimono Tenun',
+      'slug' => 'kimono-tenun',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 1,
+      'user_id' => 5,
+      'price' => '625000',
+      'views' => 0,
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Kalung Scarf',
+      'slug' => 'kalung-scarf',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 3,
+      'user_id' => 6,
+      'price' => '25000',
+      'views' => 0,
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Sarung Sunda',
+      'slug' => 'sarung-sunda',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 1,
+      'user_id' => 1,
+      'price' => '205000',
+      'views' => 0,
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Totebag Klasik',
+      'slug' => 'totebag-klasik',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 2,
+      'user_id' => 3,
+      'price' => '335000',
+      'views' => 0,
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Pouch Anyam',
+      'slug' => 'pouch-anyam',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 2,
+      'user_id' => 8,
+      'price' => '335000',
+      'views' => 0,
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Tas Pinggang Anyam',
+      'slug' => 'tas-pinggang-anyam',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 2,
+      'user_id' => 1,
+      'price' => '135000',
+      'views' => 0,
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Kemeja Batik Tulis',
+      'slug' => 'kemeja-batik-tulis',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 1,
+      'user_id' => 4,
+      'price' => '235000',
+      'views' => 0,
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    Craft::create([
+      'title' => 'Celana Tenun',
+      'slug' => 'celana-tenun',
+      'image' => 'craft-images/contoh-foto.jpg',
+      'category_id' => 1,
+      'user_id' => 6,
+      'price' => '105000',
+      'views' => 0,
+      'size' => 'normal',
+      'color' => 'kuning',
+      'motive' => 'batik'
+    ]);
+
+    WebViewerCount::create([
+      'count' => 0,
     ]);
   }
 }

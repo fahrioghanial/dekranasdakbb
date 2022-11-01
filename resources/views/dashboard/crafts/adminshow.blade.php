@@ -19,10 +19,10 @@
       <div class="card-actions justify-end">
         <a href="/dashboard/craftsadmin/" class="btn btn-info">Kembali</a>
         @if ($craft->is_confirmed)
-        <a href="/dashboard/crafts/admin/{{ $craft->id }}" class="btn btn-error">
+        <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}" class="btn btn-error">
           Batalkan Persetujuan</a>
         @else
-        <a href="/dashboard/crafts/admin/{{ $craft->id }}" class="btn btn-success">
+        <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}" class="btn btn-success">
           Setujui</a>
         @endif
       </div>

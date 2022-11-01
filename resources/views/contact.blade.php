@@ -10,7 +10,7 @@
 
 @section('body')
 <section id="home" class="mb-32">
-  <div class="container m-auto pt-28 text-black">
+  <div class="container m-auto pt-28 text-black px-3 md:px-0">
     <h1 class="font-bold md:text-4xl text-2xl mb-10">Kontak Dekranasda Kabupaten Bandung Barat</h1>
     <div class="flex flex-col md:flex-row gap-10">
       <div class="md:w-1/3">
@@ -21,13 +21,16 @@
         </div>
         <div class="my-4">
           <p class="text-xl md:text-2xl font-bold">Telepon/Fax</p>
-          <p>Gedung Sekratariat Daerah</p>
+          <p>022-567-8910</p>
         </div>
-        <div>
+        <div class="flex flex-col">
           <p class="text-xl md:text-2xl font-bold">Email</p>
           <p>dekranasdakbb@gmail.com</p>
+          <a class="mt-1 w-fit rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#B73E3E] text-md font-semibold text-white"
+            href="mailto: dekranasdakbb@gmail.com">
+            Kirim Email
+          </a>
         </div>
-
       </div>
       <div class="container">
         <iframe class="w-full h-[500px]" id="gmap_canvas"

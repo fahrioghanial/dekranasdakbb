@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\WebViewerCount;
 
 class RegisterController extends Controller
 {
   public function index()
   {
+    if (url()->previous() == url("/") . "/") {
+      WebViewerCount::first()->increment('count');
+    }
+
     return view('register.index');
   }
 

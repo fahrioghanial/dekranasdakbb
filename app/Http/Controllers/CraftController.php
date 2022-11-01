@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Craft;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\WebViewerCount;
 
 class CraftController extends Controller
 {
   public function index()
   {
+    if (url()->previous() == url("/") . "/") {
+      WebViewerCount::first()->increment('count');
+    }
+
     $crafts = Craft::with(['craftsman', 'category'])->where('is_confirmed', 1)->latest();
     $title = "Semua Kerajinan";
 
@@ -29,13 +34,19 @@ class CraftController extends Controller
 
     return view('crafts', [
       "title" => $title,
-      "crafts" => $crafts->paginate(10)->withQueryString(),
+      "crafts" => $crafts->paginate(12)->withQueryString(),
       'categories' => Category::all()
     ]);
   }
 
   public function show(Craft $craft)
   {
+    // if ($craft->views == null) {
+    //   Craft::where('id', $craft->id)->update(['views' => 1]);
+    // } else {
+    Craft::where('id', $craft->id)->increment('views');
+    // }
+
     return view('craft', [
       "craft" => $craft,
       'categories' => Category::all()

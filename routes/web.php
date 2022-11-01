@@ -13,6 +13,7 @@ use App\Models\Craft;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Article;
+use App\Models\WebViewerCount;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,25 +26,43 @@ use App\Models\Article;
 |
 */
 
-Route::get('/test', function () {
-  return view('dashboard.layouts.maintest');
-});
 Route::get('/', function () {
-  return view('index');
+  if (url()->previous() == url("/") . "/") {
+    WebViewerCount::first()->increment('count');
+  }
+
+  return view('index', [
+    'web_viewer_count' => WebViewerCount::first()->count,
+  ]);
 });
 Route::get('/benefit', function () {
+  if (url()->previous() == url("/") . "/") {
+    WebViewerCount::first()->increment('count');
+  }
   return view('benefit');
 });
 Route::get('/howto', function () {
+  if (url()->previous() == url("/") . "/") {
+    WebViewerCount::first()->increment('count');
+  }
   return view('howto');
 });
 Route::get('/contact', function () {
+  if (url()->previous() == url("/") . "/") {
+    WebViewerCount::first()->increment('count');
+  }
   return view('contact');
 });
 Route::get('/aboutus', function () {
+  if (url()->previous() == url("/") . "/") {
+    WebViewerCount::first()->increment('count');
+  }
   return view('about');
 });
 Route::get('/organization', function () {
+  if (url()->previous() == url("/") . "/") {
+    WebViewerCount::first()->increment('count');
+  }
   return view('organization');
 });
 
@@ -60,8 +79,11 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-
 Route::get('/member', function () {
+  if (url()->previous() == url("/") . "/") {
+    WebViewerCount::first()->increment('count');
+  }
+
   $users = User::where('status_keanggotaan', 1);
   $title = "Semua Anggota Perajin Dekranasda";
 
@@ -71,7 +93,7 @@ Route::get('/member', function () {
   }
   return view('member', [
     'title' => $title,
-    'users' => $users->paginate(10)->withQueryString(),
+    'users' => $users->paginate(12)->withQueryString(),
   ]);
 });
 
@@ -92,18 +114,22 @@ Route::get('/dashboard/statistics', function () {
   $min_count_crafts_in_user = User::withCount('crafts')->get()->min('crafts_count');
   $highest_price = Craft::get()->max('price');
   $lowest_price = Craft::get()->min('price');
+  $highest_views = Craft::get()->max('views');
+  $lowest_views = Craft::get()->min('views');
   $category_with_highest_product = Category::withCount('crafts')->get()->where('crafts_count', $max_count_crafts_in_category);
   $category_with_lowest_product = Category::withCount('crafts')->get()->where('crafts_count', $min_count_crafts_in_category);
   $craftsman_with_highest_product = User::withCount('crafts')->get()->where('crafts_count', $max_count_crafts_in_user);
   $craftsman_with_lowest_product = User::withCount('crafts')->get()->where('crafts_count', $min_count_crafts_in_user);
   $expensive_product = Craft::get()->where('price', $highest_price);
   $cheap_product = Craft::get()->where('price', $lowest_price);
-
+  $most_viewed_product = Craft::get()->where('views', $highest_views);
+  $less_viewed_product = Craft::get()->where('views', $lowest_views);
 
   return view('dashboard.statistics', [
     "craftsman_total" => User::all()->count(),
     "craft_total" => Craft::all()->count(),
     "category_total" => Category::all()->count(),
+    "view_total" => Craft::get()->sum('views'),
     "article_total" => Article::all()->count(),
     "category_with_highest_product" => $category_with_highest_product,
     "category_with_lowest_product" => $category_with_lowest_product,
@@ -111,11 +137,16 @@ Route::get('/dashboard/statistics', function () {
     "craftsman_with_lowest_product" => $craftsman_with_lowest_product,
     "expensive_product" => $expensive_product,
     "cheap_product" => $cheap_product,
-
+    "most_viewed_product" => $most_viewed_product,
+    "less_viewed_product" => $less_viewed_product,
+    'web_viewer_count' => WebViewerCount::first()->count,
   ]);
 })->middleware('admin');
+
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('admin');
+
+Route::get('/dashboard/craftsadmin/confirmallcrafts', [DashboardCraftController::class, 'confirmAll'])->middleware('admin');
 Route::get('/dashboard/craftsadmin', function () {
   return view('dashboard.crafts.admin', [
     "crafts" => Craft::with(['craftsman', 'category'])->latest()->get()
@@ -126,9 +157,8 @@ Route::get('/dashboard/craftsadmin/{craft}', function (Craft $craft) {
     "craft" => $craft
   ]);
 })->middleware('admin');
+Route::get('/dashboard/craftsadmin/isconfirmed/{craft}', [DashboardCraftController::class, 'admin'])->middleware('admin');
 
-Route::get('/dashboard/crafts/admin/{craft}', [DashboardCraftController::class, 'admin'])->middleware('admin');
-Route::get('/dashboard/confirmallcrafts', [DashboardCraftController::class, 'confirmAll'])->middleware('admin');
 
 Route::get('/dashboard/adminuser', function () {
   return view('dashboard.craftsmanadmin.index', [

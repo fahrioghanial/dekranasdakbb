@@ -4,7 +4,7 @@
 <div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900 z-50">
   <div class="text-gray-100 text-xl">
     <div class="p-2.5 mt-1 flex items-center">
-      <img src={{ asset('img/LogoDekranasda.jpg')}} class="w-10 rounded-full" alt="Dekranasda" />
+      <img src={{ asset('img/LogoDekranasda.png')}} class="w-10 rounded-full" alt="Dekranasda" />
       <h1 class="font-bold text-gray-200 text-[15px] ml-3">Dekranasda KBB</h1>
       <i class="bi bi-x cursor-pointer ml-28 lg:hidden" onclick="openSidebar()"></i>
     </div>
@@ -33,7 +33,7 @@
   {{-- Admin Section --}}
   @can('admin')
   <div class="my-4 bg-gray-600 h-[1px]"></div>
-  <p class="text-white text-sm">ADMINISTRATOR</p>
+  <p class="text-white text-sm px-4 text-left">ADMINISTRATOR</p>
   <a href="/dashboard/categories">
     <div
       class="{{ Request::is('dashboard/categories*') ? 'bg-blue-600' : ''}} p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">

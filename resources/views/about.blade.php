@@ -10,11 +10,11 @@
 
 @section('body')
 <section id="home" class="bg-[url('/img/bgaboutus.jpg')] bg-cover bg-no-repeat">
-  <div class="container m-auto pt-28 pb-10">
+  <div class="container m-auto pt-28 pb-10 px-3 md:px-0">
     <div class="flex flex-col text-white">
       <h1 class="font-bold md:text-4xl text-2xl">Tentang Dekranasda</h1>
       <div class="flex flex-col py-10">
-        <img src={{ asset('img/LogoDekranasda.jpg')}} alt="idcard" class="w-60 h-60 mx-auto rounded-full mb-4" />
+        <img src={{ asset('img/LogoDekranasda.png')}} alt="idcard" class="w-60 h-60 mx-auto rounded-full mb-4" />
         <p class=>Bangsa Indonesia di karuniai Tuhan Yang Maha Esa dengan beragam macam aneka kekayaan
           khasanah budaya dan
           limpahan kekayaan alam yang dapat diolah untuk mengungkapkan nilai budaya dalam bentuk barang kerajinan.</p>
@@ -45,13 +45,13 @@
     </div>
 </section>
 <section class="bg-[#B73E3E]">
-  <div class="container m-auto pt-10 pb-10">
+  <div class="container m-auto pt-10 pb-10 px-3 md:px-0">
     <div class="flex flex-col text-white">
       <h1 class="font-bold md:text-4xl text-2xl">Ketua Dekranasda</h1>
       <h1 class="font-bold md:text-4xl text-2xl">Kabupaten Bandung Barat</h1>
       <h1 class="font-bold md:text-xl text-lg mt-2">Periode Oktober 2018 - 2022</h1>
       <div class="flex flex-col md:flex-row py-10">
-        <img src={{ asset('img/LogoDekranasda.jpg')}} alt="parentalogi"
+        <img src={{ asset('img/LogoDekranasda.png')}} alt="parentalogi"
           class="w-60 h-60 rounded-full mx-auto md:w-1/5" />
         <div class="flex flex-col md:ml-10 md:w-4/5">
           <p class="text-xl">Nama</p>
@@ -61,7 +61,7 @@
     </div>
 </section>
 <section class="bg-[url('/img/bgorganisasi.jpg')] bg-cover bg-no-repeat">
-  <div class="container m-auto pt-10 pb-10">
+  <div class="container m-auto pt-10 pb-10 px-3 md:px-0">
     <div class="flex flex-col text-white">
       <h1 class="font-bold md:text-4xl text-2xl">Organisasi</h1>
       <h1 class="font-bold md:text-4xl text-2xl">Dekranasda KBB</h1>

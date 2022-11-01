@@ -21,6 +21,7 @@ return new class extends Migration
       $table->string('slug')->unique();
       $table->string('image')->nullable();
       $table->integer('price')->nullable();
+      $table->integer('views')->nullable();
       $table->string('size')->nullable();
       $table->string('color')->nullable();
       $table->string('motive')->nullable();

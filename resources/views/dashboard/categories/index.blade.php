@@ -2,7 +2,7 @@
 
 @section('container')
 
-<div class="mx-2 md:ml-80 pt-24 pb-5 md:mr-5 text-white">
+<div class="mx-2 md:ml-80 pt-24 h-screen pb-5 md:mr-5 text-white">
   @if(session()->has('success'))
   <div class="alert alert-success mb-3">
     {{ session('success') }}

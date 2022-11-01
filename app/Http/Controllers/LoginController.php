@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WebViewerCount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,6 +10,10 @@ class LoginController extends Controller
 {
   public function index()
   {
+    if (url()->previous() == url("/") . "/") {
+      WebViewerCount::first()->increment('count');
+    }
+
     return view('login.index');
   }
 

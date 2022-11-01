@@ -56,6 +56,7 @@ class DashboardCraftController extends Controller
 
     $validatedData['image'] = $request->file('image')->store('craft-images');
     $validatedData['user_id'] = auth()->user()->id;
+    $validatedData['views'] = 0;
 
     Craft::create($validatedData);
 

@@ -10,16 +10,19 @@
 
 @section('body')
 <section id="home" class="bg-[url('/img/bgaboutus.jpg')] bg-cover bg-no-repeat text-white">
-  <div class="container m-auto py-28">
+  <div class="container m-auto py-28 px-3 md:px-0">
     <div class="flex flex-col">
-      <img src={{ asset('img/LogoDekranasda.jpg')}} alt=" Dekranasda"
+      <img src={{ asset('img/LogoDekranasda.png')}} alt=" Dekranasda"
         class="max-w-xs rounded-full m-auto shadow-2xl " />
       <div class="md:w-2/3 m-auto mt-7 text-center">
-        <h1 class="text-3xl font-bold">DEKRANASDA KABUPATEN BANDUNG BARAT</h1>
+        <h1 class="md:text-3xl text-xl font-bold">DEWAN KERAJINAN NASIONAL DAERAH KABUPATEN BANDUNG BARAT (DEKRANASDA
+          KBB)</h1>
         <div class="md:text-xl mt-5">
           <p class="">
-            Adalah organisasi mitra pemerintah yang dibentuk dengan tujuan untuk memajukan industri kreatif yang
-            memiliki orisinalitas di setiap daerah.
+            Dekranasda KBB adalah organisasi mitra pemerintah yang dibentuk dengan tujuan
+            untuk
+            memajukan industri kreatif yang
+            memiliki orisinalitas di daerah Bandung Barat.
           </p>
           <p class="my-3">
             Produk yang kemudian akan menjadi ikon daerah
@@ -83,7 +86,7 @@
       </div>
 
       <div class="w-full self-center bg-white shadow-lg p-5 rounded-lg ">
-        <img src={{ asset('img/LogoDekranasda.jpg')}} alt="Dekranasda" class="w-60 h-60 rounded-full m-auto" />
+        <img src={{ asset('img/LogoDekranasda.png')}} alt="Dekranasda" class="w-60 h-60 rounded-full m-auto" />
         <p class="my-2">
           Doa dan Harapan menjadi tenaga kami dalam memajukan kreatifitas masyarakat Bandung Barat
         </p>
@@ -94,5 +97,9 @@
     </div>
   </div>
 </section>
+<div class="flex gap-3 bg-white p-2 justify-center items-center text-xl font-semibold text-black">
+  <i class="bi bi-eye text-2xl"></i>
+  <p>{{ $web_viewer_count }} Pengunjung</p>
+</div>
 
 @endsection

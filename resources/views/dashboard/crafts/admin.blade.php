@@ -9,7 +9,7 @@
   </div>
   @endif
   <p class="text-2xl font-semibold mb-5">Admin Produk Kerajinan</p>
-  <a href="/dashboard/confirmallcrafts" class="btn btn-success mb-4">Setujui Semua Produk</a>
+  <a href="/dashboard/craftsadmin/confirmallcrafts" class="btn btn-success mb-4">Setujui Semua Produk</a>
   <div class="p-2 bg-white rounded-lg lg:w-fit">
     <table class="" id="konfirmasi-kerajinan">
       <!-- head -->
@@ -20,6 +20,7 @@
           <th class="bg-slate-900">Judul</th>
           <th class="bg-slate-900">Pembuat</th>
           <th class="bg-slate-900">Kategori</th>
+          <th class="bg-slate-900">Pengunjung</th>
           <th class="bg-slate-900">Harga (Rp)</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
@@ -34,16 +35,17 @@
           <td class="bg-slate-900">{{ $craft->title }}</td>
           <td class="bg-slate-900">{{ $craft->craftsman->name }}</td>
           <td class="bg-slate-900">{{ $craft->category->name }}</td>
+          <td class="bg-slate-900">{{ $craft->views }}</td>
           <td class="bg-slate-900">{{ $craft->price }}</td>
           <td class="bg-slate-900">
             <div class="flex flex-col gap-1">
               <a href="/dashboard/craftsadmin/{{ $craft->id }}" class="btn btn-xs btn-info btn-outline">
                 Detail</a>
               @if ($craft->is_confirmed)
-              <a href="/dashboard/crafts/admin/{{ $craft->id }}" class="btn btn-xs btn-error btn-outline">
+              <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}" class="btn btn-xs btn-error btn-outline">
                 Batalkan Persetujuan</a>
               @else
-              <a href="/dashboard/crafts/admin/{{ $craft->id }}" class="btn btn-xs btn-success btn-outline">
+              <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}" class="btn btn-xs btn-success btn-outline">
                 Setujui</a>
               @endif
             </div>

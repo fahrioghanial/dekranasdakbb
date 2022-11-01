@@ -6,7 +6,7 @@
   <div class="container m-auto py-24 ">
     <div class="flex flex-col gap-10">
       <div class="w-full self-center">
-        <img src={{ asset('img/LogoDekranasda.jpg')}} alt="logodekranasda" class="w-60 h-60 rounded-full m-auto" />
+        <img src={{ asset('img/LogoDekranasda.png')}} alt="logodekranasda" class="w-60 h-60 rounded-full m-auto" />
       </div>
       <div class="w-full self-center ">
         <h1 class="text-2xl font-bold text-center text-white">

@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\WebViewerCount;
 
 class ArticleController extends Controller
 {
   public function index()
   {
+    if (url()->previous() == url("/") . "/") {
+      WebViewerCount::first()->increment('count');
+    }
+
     $articles = Article::with(['user'])->where('is_show', 1)->latest();
     $title = "Semua Artikel";
 
@@ -19,7 +24,7 @@ class ArticleController extends Controller
 
     return view('articles', [
       "title" => $title,
-      "articles" => $articles->paginate(10)->withQueryString()
+      "articles" => $articles->paginate(12)->withQueryString()
     ]);
   }
 

@@ -9,7 +9,7 @@
   </div>
   @endif
   <p class="text-2xl font-semibold mb-5">Artikel Saya</p>
-  <a href="/dashboard/articles/create" class="btn btn-info mb-4 font-semibold">Buat artikel baru</a>
+  <a href="/dashboard/articles/create" class="btn btn-info mb-4 font-semibold">Tambah artikel baru</a>
   <a href="/dashboard/publish-article/publishall" class="btn btn-success mb-4 font-semibold">Publikasikan semua
     artikel</a>
   <div class="p-2 bg-white rounded-lg lg:w-fit">
@@ -18,7 +18,7 @@
       <thead class="">
         <tr>
           <th class="bg-slate-900">#</th>
-          <th class="bg-slate-900">Cover</th>
+          <th class="bg-slate-900">Cover Artikel</th>
           <th class="bg-slate-900">Judul</th>
           <th class="bg-slate-900">Status Publikasi</th>
           <th class="bg-slate-900">Aksi</th>

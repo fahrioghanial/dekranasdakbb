@@ -32,13 +32,13 @@
             </div>
             @enderror
           </div>
-          <div class="form-control w-full">
+          <div class="form-control w-full hidden">
             <label class="label">
               <span class="label-text text-black">Username (Nama Pengguna)</span>
             </label>
             <input type="text" name="username"
-              class="input input-bordered w-full {{ $errors->has('username')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-              id="username" placeholder="namapengguna" value="{{ old('username') }}">
+              class="input input-bordered w-full {{ $errors->has('username')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
+              id="username" placeholder="username" value="{{ old('username') }}" readonly>
             @error('username')
             <div class="text-rose-500">
               {{ $message }}
@@ -167,10 +167,31 @@
             <label class="label">
               <span class="label-text text-black">Kata Sandi</span>
             </label>
-            <input type="password" name="password"
-              class="input input-bordered w-full {{ $errors->has('password')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-              id="password" placeholder="Kata Sandi" value="{{ old('password') }}">
+            <div class="relative">
+              <input type="password" name="password"
+                class="input input-bordered w-full {{ $errors->has('password')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+                id="password" placeholder="Kata Sandi">
+              <span class="cursor-pointer text-2xl flex items-center absolute right-3 top-0 bottom-0 text-black z-30"
+                onclick="togglePassword()"><i class="bi bi-eye-fill" id="eye"></i></span>
+            </div>
             @error('password')
+            <div class="text-rose-500">
+              {{ $message }}
+            </div>
+            @enderror
+          </div>
+          <div class="form-control w-full">
+            <label class="label">
+              <span class="label-text text-black">Konfirmasi Kata Sandi (tulis ulang kata sandi)</span>
+            </label>
+            <div class="relative">
+              <input type="password" name="password_confirmation"
+                class="input input-bordered w-full bg-white border-black border-1 text-black" id="password_confirmation"
+                placeholder="Konfirmasi Kata Sandi">
+              <span class="cursor-pointer text-2xl flex items-center absolute right-3 top-0 bottom-0 text-black z-30"
+                onclick="togglePasswordConfirm()"><i class="bi bi-eye-fill" id="eye_confirm"></i></span>
+            </div>
+            @error('password_confirmation')
             <div class="text-rose-500">
               {{ $message }}
             </div>
@@ -198,7 +219,7 @@
               Batal
             </a>
           </div>
-          <small class="mt-2 text-black text-md">Sudah punya akun? masuk <a class="hover:text-rose-500"
+          <small class="mt-2 text-black text-md">Sudah punya akun? masuk <a class="hover:text-rose-500 text-blue-500"
               href="/login">disini</a></small>
         </form>
       </div>
@@ -217,6 +238,36 @@
   
     oFReader.onload = function(oFREvent) {
       imgPreview.src = oFREvent.target.result;
+    }
+  }
+
+  document.querySelector('#name').addEventListener('change', (event) => {
+    fetch('/username/checkUsername?name='+ document.querySelector('#name').value)
+    .then(response => response.json())
+    .then(data => {document.querySelector('#username').value = data.username; console.log(data.username)})
+  })
+
+  function togglePassword() {
+    if (document.querySelector("#password").type == "password") {
+      document.querySelector("#password").type = "text";
+      document.querySelector("#eye").classList.remove("bi-eye-fill");
+      document.querySelector("#eye").classList.add("bi-eye-slash-fill");
+    } else {
+      document.querySelector("#password").type = "password";
+      document.querySelector("#eye").classList.remove("bi-eye-slash-fill");
+      document.querySelector("#eye").classList.add("bi-eye-fill");
+    }
+  }
+
+  function togglePasswordConfirm() {
+    if (document.querySelector("#password_confirmation").type == "password") {
+      document.querySelector("#password_confirmation").type = "text";
+      document.querySelector("#eye_confirm").classList.remove("bi-eye-fill");
+      document.querySelector("#eye_confirm").classList.add("bi-eye-slash-fill");
+    } else {
+      document.querySelector("#password_confirmation").type = "password";
+      document.querySelector("#eye_confirm").classList.remove("bi-eye-slash-fill");
+      document.querySelector("#eye_confirm").classList.add("bi-eye-fill");
     }
   }
 </script>

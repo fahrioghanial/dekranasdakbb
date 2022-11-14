@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\WebViewerCount;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class RegisterController extends Controller
 {
@@ -23,7 +24,7 @@ class RegisterController extends Controller
       'name' => 'required|max:255',
       'username' => 'required|min:5|max:255|unique:users',
       'email' => 'required|email|unique:users',
-      'password' => 'required|min:5|max:255',
+      'password' => 'required|min:5|max:255|confirmed',
       'contact' => 'required',
       'address' => 'required',
       'rt' => 'required|numeric',
@@ -41,5 +42,11 @@ class RegisterController extends Controller
     User::create($validatedData);
 
     return redirect('/login')->with('success', 'Registrasi Berhasil!, Silakan Masuk');
+  }
+
+  public function checkUsername(Request $request)
+  {
+    $username = SlugService::createSlug(User::class, 'username', $request->name);
+    return response()->json(['username' => $username]);
   }
 }

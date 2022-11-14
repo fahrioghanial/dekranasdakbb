@@ -74,10 +74,16 @@ Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/login/forgotpassword', [LoginController::class, 'showForgotForm'])->middleware('guest');
+Route::post('/login/forgotpassword', [LoginController::class, 'sendResetLink']);
+Route::get('/login/resetpassword/{token}', [LoginController::class, 'showResetForm'])->middleware('guest')->name('resetpassword');
+Route::post('/login/resetpassword', [LoginController::class, 'resetPassword']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/username/checkUsername', [RegisterController::class, 'checkUsername']);
+
 
 Route::get('/member', function () {
   if (url()->previous() == url("/") . "/") {

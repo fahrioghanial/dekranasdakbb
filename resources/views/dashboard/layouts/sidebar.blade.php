@@ -38,7 +38,7 @@
     <div
       class="{{ Request::is('dashboard/categories*') ? 'bg-blue-600' : ''}} p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
       <i class="bi bi-tags-fill"></i>
-      <span class="text-[15px] ml-4 text-gray-200 font-bold">Kategori Produk</span>
+      <span class="text-[15px] ml-4 text-gray-200 font-bold">Kategori Produk Kerajinan</span>
     </div>
   </a>
   <a href="/dashboard/craftsadmin">

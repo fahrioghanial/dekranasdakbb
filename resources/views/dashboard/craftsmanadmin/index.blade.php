@@ -8,7 +8,7 @@
     {{ session('success') }}
   </div>
   @endif
-  <p class="text-2xl font-semibold mb-5">Data Perajin</p>
+  <p class="text-2xl font-semibold mb-5">Data Anggota Perajin</p>
   <a href="/dashboard/adminuser/membership/confirmall" class="btn btn-success mb-4">Terima Semua Perajin</a>
   <div class="p-2 bg-white rounded-lg">
     <table class="" id="data-perajin">
@@ -18,10 +18,11 @@
           <th class="bg-slate-900">#</th>
           <th class="bg-slate-900">Foto</th>
           <th class="bg-slate-900">Nama</th>
-          <th class="bg-slate-900">Username</th>
+          {{-- <th class="bg-slate-900">Username</th> --}}
           <th class="bg-slate-900">Email</th>
           <th class="bg-slate-900">No HP</th>
           <th class="bg-slate-900">Jumlah Produk</th>
+          <th class="bg-slate-900">Tanggal Akun Dibuat</th>
           <th class="bg-slate-900">Status Keanggotaan</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
@@ -35,10 +36,11 @@
               alt="{{ $user->name }}">
           </td>
           <td class="bg-slate-900">{{ $user->name }}</td>
-          <td class="bg-slate-900">{{ $user->username }}</td>
+          {{-- <td class="bg-slate-900">{{ $user->username }}</td> --}}
           <td class="bg-slate-900">{{ $user->email }}</td>
-          <td class="bg-slate-900">{{ $user->contact }}</td>
+          <td class="bg-slate-900 whitespace-nowrap">{{ $user->contact }}</td>
           <td class="bg-slate-900">{{ $user->crafts_count }}</td>
+          <td class="bg-slate-900 whitespace-nowrap">{{ $user->created_at->format('d-m-Y') }}</td>
           <td class="bg-slate-900">
             @if ($user->is_admin)
             {{"Administrator"}}

@@ -8,17 +8,18 @@
   </div>
   @endif
   <p class="text-2xl font-semibold mb-5">Kerajinan Saya</p>
-  <a href="/dashboard/crafts/create" class="btn btn-info mb-4">Buat kerajinan baru</a>
+  <a href="/dashboard/crafts/create" class="btn btn-info mb-4">Tambah kerajinan baru</a>
   <div class="p-2 bg-white rounded-lg lg:w-fit">
-    <table class="bg-yellow-500" id="kerajinan-saya">
+    <table class="" id="kerajinan-saya">
       <!-- head -->
       <thead class="">
         <tr class="">
           <th class="bg-slate-900">#</th>
-          <th class="bg-slate-900">Foto</th>
+          <th class="bg-slate-900">Foto Kerajinan</th>
           <th class="bg-slate-900">Judul</th>
           <th class="bg-slate-900">Kategori</th>
           <th class="bg-slate-900">Harga (Rp)</th>
+          <th class="bg-slate-900">Tanggal Dibuat</th>
           <th class="bg-slate-900">Status Persetujuan</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
@@ -33,6 +34,7 @@
           <td class="bg-slate-900">{{ $craft->title }}</td>
           <td class="bg-slate-900">{{ $craft->category->name }}</td>
           <td class="bg-slate-900">{{ $craft->price }}</td>
+          <td class="bg-slate-900">{{ $craft->created_at->format('d-m-Y') }}</td>
           <td class="bg-slate-900">{{ $craft->is_confirmed ? "Disetujui" : "Menunggu Persetujuan" }}</td>
           <td class="bg-slate-900">
             <div class="flex flex-col gap-1">

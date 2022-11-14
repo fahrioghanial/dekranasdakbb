@@ -62,27 +62,27 @@
         </p>
       </div>
       <div class="flex flex-col md:flex-row m-auto gap-14 md:items-start">
-        <div class="flex flex-col md:w-1/3 text-center">
-          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto">
-            <i class="bi bi-camera-fill"></i>
+        <a class="flex flex-col md:w-1/3 text-center" href="/about">
+          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#DD5353]">
+            <i class="bi bi-info-circle-fill"></i>
           </div>
-          <p class="text-2xl mt-2">Dokumentasi</p>
-          <p class="">Kegiatan Dekranasda Bandung Barat</p>
-        </div>
-        <div class="flex flex-col md:w-1/3 text-center">
-          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto">
+          <p class="text-2xl mt-2">Tentang Kami</p>
+          <p class="">Profil Dekranasda Bandung Barat</p>
+        </a>
+        <a class="flex flex-col md:w-1/3 text-center" href="/member">
+          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#DD5353]">
+            <i class="bi bi-people-fill"></i>
+          </div>
+          <p class="text-2xl mt-2">Anggota Perajin</p>
+          <p class="">Anggota Perajin Dekranasda Bandung Barat</p>
+        </a>
+        <a class="flex flex-col md:w-1/3 text-center" href="/articles">
+          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#DD5353]">
             <i class="bi bi-journal-text"></i>
           </div>
           <p class="text-2xl mt-2">Artikel</p>
           <p class="">Karya tulis tentang kerajinan tangan</p>
-        </div>
-        <div class="flex flex-col md:w-1/3 text-center">
-          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto">
-            <i class="bi bi-lightbulb"></i>
-          </div>
-          <p class="text-2xl mt-2">Inovasi</p>
-          <p class="">Perencanaan dan Program Kreatif Dekranasda</p>
-        </div>
+        </a>
       </div>
 
       <div class="w-full self-center bg-white shadow-lg p-5 rounded-lg ">

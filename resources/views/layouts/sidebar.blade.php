@@ -4,12 +4,12 @@
 </a>
 <div class="border-2 my-2 border-white opacity-50 md:hidden block"></div>
 <a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/crafts">
-  Produk
+  Produk Kerajinan
 </a>
 <div class="collapse collapse-arrow hover:bg-[#B73E3E]">
   <input type="checkbox" />
   <div class="collapse-title text-xl font-medium">
-    Anggota
+    Anggota Perajin
   </div>
   <div class="collapse-content flex flex-col font-medium">
     <a class="hover:bg-red-800" href="/member"><i class="bi bi-dot"></i> Anggota Kami</a>

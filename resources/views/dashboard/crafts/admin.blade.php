@@ -22,6 +22,7 @@
           <th class="bg-slate-900">Kategori</th>
           <th class="bg-slate-900">Pengunjung</th>
           <th class="bg-slate-900">Harga (Rp)</th>
+          <th class="bg-slate-900">Tanggal Dibuat</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
       </thead>
@@ -37,6 +38,7 @@
           <td class="bg-slate-900">{{ $craft->category->name }}</td>
           <td class="bg-slate-900">{{ $craft->views }}</td>
           <td class="bg-slate-900">{{ $craft->price }}</td>
+          <td class="bg-slate-900">{{ $craft->created_at->format('d-m-Y') }}</td>
           <td class="bg-slate-900">
             <div class="flex flex-col gap-1">
               <a href="/dashboard/craftsadmin/{{ $craft->id }}" class="btn btn-xs btn-info btn-outline">

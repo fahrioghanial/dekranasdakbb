@@ -32,12 +32,12 @@
         </div>
         @enderror
       </div>
-      <div class="form-control w-full">
+      <div class="form-control w-full hidden">
         <label class="label">
           <span class="label-text text-black">Slug</span>
         </label>
         <input type="text" name="slug"
-          class="input input-bordered w-full {{ $errors->has('slug')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          class="input input-bordered w-full {{ $errors->has('slug')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
           id="slug" value="{{ old('slug') }}" readonly>
         @error('slug')
         <div class="text-rose-500">

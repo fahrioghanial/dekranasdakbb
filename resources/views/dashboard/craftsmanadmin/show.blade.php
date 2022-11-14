@@ -8,7 +8,7 @@
       alt="{{ $user->name }}">
     <div class="card-body md:text-xl">
       <h2>Nama Lengkap: {{ $user->name }}</h2>
-      <h2>Username (Nama Pengguna): {{ $user->username }} </h2>
+      {{-- <h2>Username (Nama Pengguna): {{ $user->username }} </h2> --}}
       <h2>Status Keanggotaan: {{ $user->status_keanggotaan? "Diterima" : "Menunggu Persetujuan" }} </h2>
       <h2>Email: {{ $user->email }}</h2>
       <h2>Nomor HP: {{ $user->contact }}</h2>

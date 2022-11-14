@@ -114,7 +114,7 @@ class ProfileController extends Controller
 
     if ($request->old_password) {
       if (Hash::check($request->old_password, $user->password)) {
-        $rules['password'] = 'required|min:5|max:255';
+        $rules['password'] = 'required|min:5|max:255|confirmed';
       } else {
         return redirect('/dashboard/user/' . $user->id . '/edit')->with('fail', 'Kata sandi lama salah!');
       }

@@ -10,7 +10,7 @@
 
 @section('body')
 <section id="home" class="mb-32">
-  <div class="container m-auto pt-28 text-black px-3 md:px-0">
+  <div class="container m-auto pt-24 text-black px-3 md:px-0">
     <h1 class="font-bold md:text-4xl text-2xl mb-2">Artikel</h1>
     <h1 class="font-bold md:text-3xl text-xl mb-5">{{ $title }}</h1>
     <form action="/articles" class="mb-3">

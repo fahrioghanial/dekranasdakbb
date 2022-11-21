@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
       'username' => 'fahrioghanial',
       'email' => 'fahrioghanial@gmail.com',
       'password' => bcrypt('12345'),
-      'contact' => '085324XXXXXX',
+      'contact' => '0895391719873',
       'address' => 'Jl. Angsana 4 no 10',
       'rt' => 5,
       'rw' => 20,
@@ -32,9 +32,9 @@ class DatabaseSeeder extends Seeder
       'noktp' => "3273112323123",
       'kecamatan' => "Margaasih",
       'kelurahan_desa' => "Lagadar",
-      'facebook' => '@fahrioghanial',
-      'instagram' => '@fahrioghanial',
-      'twitter' => '@fahrioghanial',
+      'facebook' => 'fahrioghanial',
+      'instagram' => 'fahrioghanial',
+      'whatsapp' => '0895391719873',
       'profile_picture' => 'profile-pictures/contoh-foto.png',
       'status_keanggotaan' => true,
       'is_admin' => true
@@ -102,9 +102,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 1,
       'price' => '245000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -115,9 +113,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 1,
       'price' => '45000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -128,9 +124,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 2,
       'price' => '145000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -141,9 +135,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 2,
       'price' => '105000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -154,9 +146,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 1,
       'price' => '125000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -167,9 +157,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 3,
       'price' => '125000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -180,9 +168,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 4,
       'price' => '125000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -193,9 +179,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 5,
       'price' => '625000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -206,9 +190,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 6,
       'price' => '25000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -219,9 +201,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 1,
       'price' => '205000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -232,9 +212,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 3,
       'price' => '335000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -245,9 +223,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 8,
       'price' => '335000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -258,9 +234,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 1,
       'price' => '135000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -271,9 +245,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 4,
       'price' => '235000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     Craft::create([
@@ -284,9 +256,7 @@ class DatabaseSeeder extends Seeder
       'user_id' => 6,
       'price' => '105000',
       'views' => 0,
-      'size' => 'normal',
-      'color' => 'kuning',
-      'motive' => 'batik'
+      'description' => 'ini adalah produk'
     ]);
 
     WebViewerCount::create([

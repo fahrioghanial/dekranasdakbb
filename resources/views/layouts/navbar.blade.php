@@ -1,16 +1,16 @@
 <header class=" bg-[#DD5353] text-white top-0 left-0 w-full flex items-center fixed z-[9999]">
   <div class="container">
-    <div class="flex items-center justify-between relative">
-      <div class="flex items-center py-2 md:ml-10">
+    <div class="flex items-center justify-between relative mx-2 lg:mx-0">
+      <div class="flex items-center py-2 lg:ml-7">
         <a class="W-full self-center hover:shadow-xl mr-2" href="/">
           <img src={{ asset('img/kbb.svg')}} alt="KBB" class="w-14 m-auto" />
         </a>
         <a class="W-full self-center hover:shadow-xl" href="/">
           <img src={{ asset('img/LogoDekranasda.png')}} alt="Dekranasda" class="w-14 rounded-full m-auto" />
         </a>
-        <p class="md:text-3xl text-base font-semibold md:ml-5 ml-2 md:block hidden">DEKRANASDA KBB</p>
+        <p class="md:text-3xl text-base font-semibold md:ml-5 ml-2 lg:block hidden">DEKRANASDA KBB</p>
       </div>
-      <div class="flex items-center md:gap-3 gap-1">
+      <div class="flex items-center lg:gap-3 gap-1">
         <a class="rounded-lg py-2 px-3 hover:bg-[#B73E3E] border-2 text-xl {{ Request::is('/') ? 'hidden' : 'block'}}"
           href="/">
           <i class="bi bi-house-door"></i>
@@ -18,7 +18,7 @@
         <div class="dropdown dropdown-end {{ Request::is('craft*') ? 'block' : 'hidden'}}">
           <label tabindex="0"
             class="rounded-lg py-2 px-3 hover:bg-[#B73E3E] hover:border-white border-2 md:text-md text-base font-semibold btn text-white bg-transparent border-white"><span><i
-                class="bi bi-funnel-fill md:hidden block"></i></span><span class="md:block hidden">Pilih Kategori
+                class="bi bi-funnel-fill lg:hidden block"></i></span><span class="lg:block hidden">Pilih Kategori
               Produk</span></label>
           <div tabindex="0"
             class="dropdown-content p-2 shadow bg-white text-black rounded-box h-60 w-56 overflow-auto flex flex-col">
@@ -33,8 +33,7 @@
             @endif
           </div>
         </div>
-
-        <a class="rounded-lg py-2 px-3 hover:bg-[#B73E3E] border-2 text-xl font-semibold {{ Request::is('craft*') ? 'hidden' : 'md:block'}} hidden"
+        <a class="rounded-lg py-2 px-3 hover:bg-[#B73E3E] border-2 text-xl font-semibold {{ Request::is('craft*') ? 'hidden' : 'lg:block'}} hidden"
           href="/crafts">
           Produk Kami
         </a>
@@ -59,7 +58,7 @@
           </ul>
         </div>
         @else
-        <a class="rounded-lg py-2 px-3 hover:bg-[#B73E3E] border-2 text-xl hidden md:block font-semibold" href="/login">
+        <a class="rounded-lg py-2 px-3 hover:bg-[#B73E3E] border-2 text-xl hidden lg:block font-semibold" href="/login">
           Masuk
         </a>
         @endauth

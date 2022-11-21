@@ -8,21 +8,21 @@
     <img src="{{ asset('storage/'. $craft->image)  }}" class="w-1/2 md:w-1/3 rounded-md" alt="{{ $craft->title }}">
     <div class="card-body md:text-xl">
       <h1>Judul: {{ $craft->title }}</h1>
+      <h2>Deskripsi: {{ $craft->description }}</h2>
       <h1>Kategori: {{ $craft->category->name }}</h1>
       <h2>Harga: Rp{{ $craft->price }}</h2>
       <h2>Pembuat: {{ $craft->craftsman->name }}</h2>
       <h2>Kontak: {{ $craft->craftsman->contact }}</h2>
       <h2>Alamat: {{ $craft->craftsman->address }}</h2>
-      <h2>Ukuran: {{ $craft->size }}</h2>
-      <h2>Warna: {{ $craft->color }}</h2>
-      <h2>Motif: {{ $craft->motive }}</h2>
       <div class="card-actions justify-end">
-        <a href="/dashboard/crafts/" class="btn btn-info">Kembali</a>
-        <a href="/dashboard/crafts/{{ $craft->id }}/edit" class="btn btn-warning">Edit</a>
-        <form action="/dashboard/crafts/{{ $craft->id }}" method="post">
+        <a href="/dashboard/crafts/" class="btn bg-blue-600 text-white border-0 w-full md:w-fit">Kembali</a>
+        <a href="/dashboard/crafts/{{ $craft->id }}/edit"
+          class="btn bg-yellow-600 text-white border-0 w-full md:w-fit">Edit</a>
+        <form action="/dashboard/crafts/{{ $craft->id }}" method="post" class="w-full md:w-fit">
           @method('delete')
           @csrf
-          <button class="btn btn-error" onclick="return confirm('Hapus Kerajinan?')">Hapus</button>
+          <button class="btn bg-red-600 text-white border-0 w-full md:w-fit"
+            onclick="return confirm('Hapus Kerajinan?')">Hapus</button>
         </form>
       </div>
     </div>

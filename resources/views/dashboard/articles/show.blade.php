@@ -9,20 +9,20 @@
     <h1 class="text-xl font-semibold my-3">{{ $article->title }}</h1>
     <p>{!! $article->content !!}</p>
     <div class="flex md:flex-row flex-col gap-1 mt-3">
-      <a href="/dashboard/articles/" class="btn btn-info">Kembali</a>
-      <a href="/dashboard/articles/{{ $article->id }}/edit" class="btn btn-warning">
+      <a href="/dashboard/articles/" class="btn bg-blue-600 text-white border-0">Kembali</a>
+      <a href="/dashboard/articles/{{ $article->id }}/edit" class="btn bg-yellow-600 text-white border-0">
         Ubah</a>
       <form action="/dashboard/articles/{{ $article->id }}" method="post">
         @method('delete')
         @csrf
-        <button class="btn btn-error" onclick="return confirm('Hapus Kerajinan?')">
+        <button class="btn bg-red-600 text-white border-0 w-full" onclick="return confirm('Hapus Kerajinan?')">
           Hapus</button>
       </form>
       @if ($article->is_show)
       <a href="/dashboard/publish-article/{{ $article->id }}" class="btn btn-secondary">
         Sembunyikan</a>
       @else
-      <a href="/dashboard/publish-article/{{ $article->id }}" class="btn btn-success">
+      <a href="/dashboard/publish-article/{{ $article->id }}" class="btn bg-green-600 text-white border-0">
         Publikasikan</a>
       @endif
     </div>

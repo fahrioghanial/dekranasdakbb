@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.main')
 @section('container')
-<div class="mx-2 md:ml-80 pt-24 pb-5 md:mr-5 text-white">
+<div class="mx-2 lg:ml-80 pt-24 pb-5 lg:mr-5 text-white">
   @if(session()->has('success'))
   <div class="alert alert-success mb-3">
     {{ session('success') }}
@@ -25,7 +25,7 @@
       <h2>Kode Pos: {{ $user->kodepos }}</h2>
       <h2>Facebook: {{ $user->facebook }}</h2>
       <h2>Instagram: {{ $user->instagram }}</h2>
-      <h2>Twitter: {{ $user->twitter }}</h2>
+      <h2>Whatsapp: {{ $user->whatsapp }}</h2>
       <div class="card-actions justify-end">
         <a href="/dashboard/user/{{ $user->id }}/edit" class="btn btn-warning">Edit</a>
       </div>

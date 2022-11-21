@@ -9,7 +9,13 @@
   </div>
   @endif
   <p class="text-2xl font-semibold mb-5">Data Anggota Perajin</p>
-  <a href="/dashboard/adminuser/membership/confirmall" class="btn btn-success mb-4">Terima Semua Perajin</a>
+  <div class="mb-4 flex flex-col md:flex-row gap-3">
+    <a href="/dashboard/adminuser/adduser" class="btn bg-blue-600 text-white border-0">Tambah Perajin</a>
+    <a href="/dashboard/adminuser/membership/confirmall" class="btn bg-green-600 text-white border-0">Terima Semua
+      Perajin</a>
+    <a href="/dashboard/adminuser/export" class="btn bg-white text-black hover:text-white border-0">Unduh Data
+      Perajin</a>
+  </div>
   <div class="p-2 bg-white rounded-lg">
     <table class="" id="data-perajin">
       <!-- head -->
@@ -18,7 +24,6 @@
           <th class="bg-slate-900">#</th>
           <th class="bg-slate-900">Foto</th>
           <th class="bg-slate-900">Nama</th>
-          {{-- <th class="bg-slate-900">Username</th> --}}
           <th class="bg-slate-900">Email</th>
           <th class="bg-slate-900">No HP</th>
           <th class="bg-slate-900">Jumlah Produk</th>
@@ -36,7 +41,6 @@
               alt="{{ $user->name }}">
           </td>
           <td class="bg-slate-900">{{ $user->name }}</td>
-          {{-- <td class="bg-slate-900">{{ $user->username }}</td> --}}
           <td class="bg-slate-900">{{ $user->email }}</td>
           <td class="bg-slate-900 whitespace-nowrap">{{ $user->contact }}</td>
           <td class="bg-slate-900">{{ $user->crafts_count }}</td>
@@ -48,17 +52,32 @@
             {{ $user->status_keanggotaan ? "Anggota Perajin" : "Menunggu Persetujuan" }}
             @endif
           </td>
-          <td class="bg-slate-900">
-            <div class="flex flex-col gap-1">
-              <a href="/dashboard/adminuser/{{ $user->username }}" class="btn btn-xs btn-info btn-outline">
-                Detail</a>
+          <td class="bg-slate-900 w-fit">
+            <div class="flex flex-col gap-1 w-full">
+              <div class="flex gap-1">
+                <a href="/dashboard/adminuser/{{ $user->username }}" class="btn btn-xs btn-info btn-outline ">
+                  Detail</a>
+                <a href="/dashboard/adminuser/edituser/{{ $user->username }}"
+                  class="btn btn-xs btn-warning btn-outline">
+                  Ubah</a>
+              </div>
+              <a href="/dashboard/craftsadmin/createcraft/{{ $user->username }}"
+                class="btn btn-xs hover:bg-blue-300 text-blue-300  btn-outline ">
+                Tambah Produk</a>
+              <form action="/dashboard/adminuser/delete/{{ $user->username }}" method="post">
+                @method('delete')
+                @csrf
+                <button class="btn btn-xs btn-error btn-outline w-full " onclick="return confirm('Hapus Anggota?')">
+                  Hapus</button>
+              </form>
               @if (!$user->is_admin )
               @if ($user->status_keanggotaan)
-              <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-xs btn-error btn-outline">
+              <a href="/dashboard/adminuser/membership/{{ $user->username }}"
+                class="btn btn-xs btn-secondary btn-outline ">
                 Cabut Keanggotaan</a>
               @else
               <a href="/dashboard/adminuser/membership/{{ $user->username }}"
-                class="btn btn-xs btn-success btn-outline">
+                class="btn btn-xs btn-success btn-outline ">
                 Terima</a>
               @endif
               @endif

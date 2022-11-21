@@ -28,13 +28,13 @@ return new class extends Migration
       $table->string('kelurahan_desa');
       $table->string('profile_picture');
       $table->boolean('status_keanggotaan')->default(false);
+      $table->boolean('is_admin')->default(false);
       $table->string('facebook')->nullable();
       $table->string('instagram')->nullable();
-      $table->string('twitter')->nullable();
+      $table->string('whatsapp')->nullable();
       $table->string('password');
       $table->rememberToken();
       $table->timestamps();
-      $table->boolean('is_admin')->default(false);
     });
   }
 

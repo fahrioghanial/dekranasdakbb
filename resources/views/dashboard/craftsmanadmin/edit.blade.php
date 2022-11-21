@@ -7,9 +7,9 @@
     {{ session('fail') }}
   </div>
   @endif
-  <p class="text-2xl font-semibold mb-5">Ubah Profil</p>
+  <p class="text-2xl font-semibold mb-5">Ubah Profil Anggota</p>
   <div class="md:w-1/2 bg-white p-3 rounded-md">
-    <form method="post" action="/dashboard/user/{{ $user->id }}" enctype="multipart/form-data">
+    <form method="post" action="/dashboard/adminuser/edituser/{{ $user->username }}" enctype="multipart/form-data">
       @method('put')
       @csrf
       <div class="form-control w-full">
@@ -36,8 +36,8 @@
           <span class="label-text text-black">Nama Lengkap</span>
         </label>
         <input type="text" name="name"
-          class="input input-bordered w-full {{ $errors->has('name')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="name" placeholder="Nama Lengkap" autofocus value="{{ old('name', $user->name) }}" readonly>
+          class="input input-bordered w-full {{ $errors->has('name')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="name" placeholder="Nama Lengkap" autofocus value="{{ old('name', $user->name) }}">
         @error('name')
         <div class="text-rose-500">
           {{ $message }}
@@ -49,8 +49,8 @@
           <span class="label-text text-black">Username (Nama Pengguna)</span>
         </label>
         <input type="text" name="username"
-          class="input input-bordered w-full {{ $errors->has('username')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="username" placeholder="namapengguna" value="{{ old('username', $user->username) }}" readonly>
+          class="input input-bordered w-full {{ $errors->has('username')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="username" placeholder="namapengguna" value="{{ old('username', $user->username) }}">
         @error('username')
         <div class="text-rose-500">
           {{ $message }}
@@ -75,8 +75,8 @@
           <span class="label-text text-black">Nomor KTP</span>
         </label>
         <input type="text" name="noktp"
-          class="input input-bordered w-full {{ $errors->has('noktp')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="noktp" placeholder="Nomor KTP" value="{{ old('noktp', $user->noktp) }}" readonly>
+          class="input input-bordered w-full {{ $errors->has('noktp')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="noktp" placeholder="Nomor KTP" value="{{ old('noktp', $user->noktp) }}">
         @error('noktp')
         <div class="text-rose-500">
           {{ $message }}
@@ -88,8 +88,8 @@
           <span class="label-text text-black">Alamat</span>
         </label>
         <input type="text" name="address"
-          class="input input-bordered w-full {{ $errors->has('address')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="address" placeholder="Alamat" value="{{ old('address', $user->address) }}" readonly>
+          class="input input-bordered w-full {{ $errors->has('address')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="address" placeholder="Alamat" value="{{ old('address', $user->address) }}">
         @error('address')
         <div class="text-rose-500">
           {{ $message }}
@@ -101,8 +101,8 @@
           <span class="label-text text-black">RT</span>
         </label>
         <input type="text" name="rt"
-          class="input input-bordered w-full {{ $errors->has('rt')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="rt" placeholder="RT" value="{{ old('rt', $user->rt) }}" readonly>
+          class="input input-bordered w-full {{ $errors->has('rt')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="rt" placeholder="RT" value="{{ old('rt', $user->rt) }}">
         @error('rt')
         <div class="text-rose-500">
           {{ $message }}
@@ -114,8 +114,8 @@
           <span class="label-text text-black">RW</span>
         </label>
         <input type="text" name="rw"
-          class="input input-bordered w-full {{ $errors->has('rw')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="rw" placeholder="RW" value="{{ old('rw', $user->rw) }}" readonly>
+          class="input input-bordered w-full {{ $errors->has('rw')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="rw" placeholder="RW" value="{{ old('rw', $user->rw) }}">
         @error('rw')
         <div class="text-rose-500">
           {{ $message }}
@@ -127,8 +127,8 @@
           <span class="label-text text-black">Kecamatan</span>
         </label>
         <input type="text" name="kecamatan"
-          class="input input-bordered w-full {{ $errors->has('kecamatan')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="kecamatan" placeholder="Kecamatan" value="{{ old('kecamatan', $user->kecamatan) }}" readonly>
+          class="input input-bordered w-full {{ $errors->has('kecamatan')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="kecamatan" placeholder="Kecamatan" value="{{ old('kecamatan', $user->kecamatan) }}">
 
         @error('kecamatan')
         <div class="text-rose-500">
@@ -141,9 +141,8 @@
           <span class="label-text text-black">Kelurahan/Desa</span>
         </label>
         <input type="text" name="kelurahan_desa"
-          class="input input-bordered w-full {{ $errors->has('kelurahan_desa')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="kelurahan_desa" placeholder="Kelurahan/Desa" value="{{ old('kelurahan_desa', $user->kelurahan_desa) }}"
-          readonly>
+          class="input input-bordered w-full {{ $errors->has('kelurahan_desa')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="kelurahan_desa" placeholder="Kelurahan/Desa" value="{{ old('kelurahan_desa', $user->kelurahan_desa) }}">
         @error('kelurahan_desa')
         <div class="text-rose-500">
           {{ $message }}
@@ -155,8 +154,8 @@
           <span class="label-text text-black">Kode Pos</span>
         </label>
         <input type="text" name="kodepos"
-          class="input input-bordered w-full {{ $errors->has('kodepos')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="kodepos" placeholder="Kode Pos" value="{{ old('kodepos', $user->kodepos) }}" readonly>
+          class="input input-bordered w-full {{ $errors->has('kodepos')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="kodepos" placeholder="Kode Pos" value="{{ old('kodepos', $user->kodepos) }}">
         @error('kodepos')
         <div class="text-rose-500">
           {{ $message }}

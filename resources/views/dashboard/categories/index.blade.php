@@ -9,7 +9,7 @@
   </div>
   @endif
   <p class="text-2xl font-semibold mb-5">Kategori Produk</p>
-  <a href="/dashboard/categories/create" class="btn btn-info mb-4">Tambah Kategori baru</a>
+  <a href="/dashboard/categories/create" class="btn bg-blue-600 text-white border-0 mb-4">Tambah Kategori baru</a>
   <div class="p-2 bg-white rounded-lg w-fit">
     <table class="" id="kategori">
       <!-- head -->

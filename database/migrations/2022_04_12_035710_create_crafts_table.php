@@ -22,9 +22,7 @@ return new class extends Migration
       $table->string('image')->nullable();
       $table->integer('price')->nullable();
       $table->integer('views')->nullable();
-      $table->string('size')->nullable();
-      $table->string('color')->nullable();
-      $table->string('motive')->nullable();
+      $table->text('description')->nullable();
       $table->boolean('is_confirmed')->default(false);
       $table->timestamps();
     });

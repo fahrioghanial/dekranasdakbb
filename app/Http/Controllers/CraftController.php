@@ -41,14 +41,26 @@ class CraftController extends Controller
 
   public function show(Craft $craft)
   {
-    // if ($craft->views == null) {
-    //   Craft::where('id', $craft->id)->update(['views' => 1]);
-    // } else {
     Craft::where('id', $craft->id)->increment('views');
-    // }
+
+    if ($craft->craftsman->whatsapp != null) {
+      $tempWhatsapp = substr($craft->craftsman->whatsapp, 1);
+      $whatsapp = substr_replace($tempWhatsapp, '62', 0, 0);
+    } else {
+      $whatsapp = '';
+    }
+
+    if ($craft->craftsman->contact != null) {
+      $tempContact = substr($craft->craftsman->contact, 1);
+      $contact = substr_replace($tempContact, '62', 0, 0);
+    } else {
+      $contact = '';
+    }
 
     return view('craft', [
       "craft" => $craft,
+      'whatsapp' => $whatsapp,
+      'contact' => $contact,
       'categories' => Category::all()
     ]);
   }

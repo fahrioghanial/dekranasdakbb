@@ -8,21 +8,21 @@
     <img src="{{ asset('storage/'. $craft->image)  }}" class="w-1/2 md:w-1/3 rounded-md" alt="{{ $craft->title }}">
     <div class="card-body md:text-xl">
       <h1>Judul: {{ $craft->title }}</h1>
+      <h2>Deskripsi: {{ $craft->description }}</h2>
       <h1>Kategori: {{ $craft->category->name }}</h1>
       <h2>Harga: Rp{{ $craft->price }}</h2>
       <h2>Pembuat: {{ $craft->craftsman->name }}</h2>
       <h2>Kontak: {{ $craft->craftsman->contact }}</h2>
       <h2>Alamat: {{ $craft->craftsman->address }}</h2>
-      <h2>Ukuran: {{ $craft->size }}</h2>
-      <h2>Warna: {{ $craft->color }}</h2>
-      <h2>Motif: {{ $craft->motive }}</h2>
       <div class="card-actions justify-end">
-        <a href="/dashboard/craftsadmin/" class="btn btn-info">Kembali</a>
+        <a href="/dashboard/craftsadmin/" class="btn bg-blue-600 text-white border-0 w-full md:w-fit">Kembali</a>
         @if ($craft->is_confirmed)
-        <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}" class="btn btn-error">
+        <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}"
+          class="btn btn-secondary text-white border-0 w-full md:w-fit">
           Batalkan Persetujuan</a>
         @else
-        <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}" class="btn btn-success">
+        <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}"
+          class="btn bg-green-600 text-white border-0 w-full md:w-fit">
           Setujui</a>
         @endif
       </div>

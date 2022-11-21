@@ -10,7 +10,7 @@
 
 @section('body')
 <section id="home" class="mb-32">
-  <div class="container m-auto pt-28 text-black px-3 md:px-0">
+  <div class="container m-auto pt-24 text-black px-3 md:px-0">
     <h1 class="font-bold md:text-4xl text-2xl mb-10">Tata Cara Menjadi Anggota Perajin</h1>
     <div class="flex flex-col lg:flex-row gap-10 ">
       <div class="flex flex-col px-4 py-10 bg-[#DC143C] shadow-md text-white rounded-lg lg:w-1/4">

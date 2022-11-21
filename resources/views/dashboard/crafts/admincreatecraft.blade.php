@@ -2,21 +2,17 @@
 
 @section('container')
 <div class="mx-2 md:ml-80 pt-24 pb-5 md:mr-5 text-white">
-  <p class="text-2xl font-semibold mb-5">Ubah Kerajinan</p>
+  <p class="text-2xl font-semibold mb-5">Tambah Kerajinan Baru Atas Nama {{ $user->name }}</p>
   <div class="md:w-1/2 bg-white p-3 rounded-md">
-    <form method="post" action="/dashboard/crafts/{{ $craft->id }}" enctype="multipart/form-data">
-      @method('put')
+    <form method="post" action="/dashboard/craftsadmin/createcraft" enctype="multipart/form-data">
       @csrf
+      <input type="hidden" name="user_id" id="user_id" value="{{ $user->id }}">
+      <input type="hidden" name="name" id="name" value="{{ $user->name }}">
       <div class="form-control w-full">
         <label class="label">
           <span class="label-text text-black">Foto Kerajinan</span>
         </label>
-        <input type="hidden" name="oldImage" value="{{ $craft->image }}">
-        @if ($craft->image)
-        <img src="{{ asset('storage/'. $craft->image) }}" class="img-preview w-1/2">
-        @else
         <img class="img-preview w-1/2">
-        @endif
         <input type="file" name="image" class="p-2 rounded-md w-full @error('image') border-red-600 @enderror bg-white"
           id="image" placeholder="Foto Kerajinan" onchange="previewImage()">
         @error('image')
@@ -31,20 +27,20 @@
         </label>
         <input type="text" name="title"
           class="input input-bordered w-full {{ $errors->has('title')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="title" placeholder="Judul Kerajinan" autofocus value="{{ old('title', $craft->title) }}">
+          id="title" placeholder="Judul Kerajinan" autofocus value="{{ old('title') }}">
         @error('title')
         <div class="text-rose-500">
           {{ $message }}
         </div>
         @enderror
       </div>
-      <div class="form-control w-full">
+      <div class="form-control w-full hidden">
         <label class="label">
           <span class="label-text text-black">Slug</span>
         </label>
         <input type="text" name="slug"
           class="input input-bordered w-full {{ $errors->has('slug')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
-          id="slug" value="{{ old('slug', $craft->slug) }}" readonly>
+          id="slug" value="{{ old('slug') }}" readonly>
         @error('slug')
         <div class="text-rose-500">
           {{ $message }}
@@ -57,7 +53,7 @@
         </label>
         <select class="select border-black border-1 bg-white text-base text-black" name="category_id">
           @foreach($categories as $category)
-          @if(old('category_id', $craft->category_id) == $category->id)
+          @if(old('category_id') == $category->id)
           <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
           @else
           <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -72,7 +68,7 @@
         </label>
         <input type="text" name="price"
           class="input input-bordered w-full {{ $errors->has('price')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="price" placeholder="Harga" value="{{ old('price', $craft->price) }}">
+          id="price" placeholder="Harga" value="{{ old('price') }}">
         @error('price')
         <div class="text-rose-500">
           {{ $message }}
@@ -84,14 +80,13 @@
           <span class="label-text text-black">Deskripsi</span>
         </label>
         <textarea name="description" class="input input-bordered w-full border-black border-1 bg-white text-black"
-          id="description" placeholder="Deskripsi"
-          value="{{ old('description', $craft->description) }}">{{ old('description', $craft->description) }}</textarea>
+          id="descriptiono" placeholder="Deskripsi" value="{{ old('description') }}"></textarea>
       </div>
       <div class="flex flex-col gap-3 mt-5">
         <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
-          type="submit">Simpan Perubahan</button>
+          type="submit">Simpan</button>
         <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
-          href="/dashboard/crafts">
+          href="/dashboard/adminuser">
           Batal
         </a>
       </div>
@@ -120,5 +115,4 @@
     .then(data => {document.querySelector('#slug').value = data.slug; console.log(data)})
   })
 </script>
-
 @endsection

@@ -9,20 +9,25 @@
   </div>
   @endif
   <p class="text-2xl font-semibold mb-5">Admin Produk Kerajinan</p>
-  <a href="/dashboard/craftsadmin/confirmallcrafts" class="btn btn-success mb-4">Setujui Semua Produk</a>
+  <div class="mb-4 flex flex-col md:flex-row gap-3">
+    <a href="/dashboard/craftsadmin/confirmallcrafts" class="btn bg-green-600 text-white border-0">Setujui Semua
+      Produk</a>
+    <a href="/dashboard/craftsadmin/export" class="btn bg-white text-black hover:text-white border-0">Unduh Data
+      Produk</a>
+  </div>
   <div class="p-2 bg-white rounded-lg lg:w-fit">
     <table class="" id="konfirmasi-kerajinan">
       <!-- head -->
       <thead class="">
         <tr class="">
           <th class="bg-slate-900">#</th>
-          <th class="bg-slate-900">Foto</th>
+          <th class="bg-slate-900">Foto Kerajinan</th>
           <th class="bg-slate-900">Judul</th>
           <th class="bg-slate-900">Pembuat</th>
+          <th class="bg-slate-900">Harga (Rp)</th>
           <th class="bg-slate-900">Kategori</th>
           <th class="bg-slate-900">Pengunjung</th>
-          <th class="bg-slate-900">Harga (Rp)</th>
-          <th class="bg-slate-900">Tanggal Dibuat</th>
+          <th class="bg-slate-900">Tanggal Ditambahkan</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
       </thead>
@@ -35,16 +40,25 @@
           </td>
           <td class="bg-slate-900">{{ $craft->title }}</td>
           <td class="bg-slate-900">{{ $craft->craftsman->name }}</td>
+          <td class="bg-slate-900">{{ $craft->price }}</td>
           <td class="bg-slate-900">{{ $craft->category->name }}</td>
           <td class="bg-slate-900">{{ $craft->views }}</td>
-          <td class="bg-slate-900">{{ $craft->price }}</td>
           <td class="bg-slate-900">{{ $craft->created_at->format('d-m-Y') }}</td>
           <td class="bg-slate-900">
             <div class="flex flex-col gap-1">
               <a href="/dashboard/craftsadmin/{{ $craft->id }}" class="btn btn-xs btn-info btn-outline">
                 Detail</a>
+              <a href="/dashboard/craftsadmin/editcraft/{{ $craft->id }}" class="btn btn-xs btn-warning btn-outline">
+                Ubah</a>
+              <form action="/dashboard/craftsadmin/deletecraft/{{ $craft->id }}" method="post">
+                @method('delete')
+                @csrf
+                <button class="btn btn-xs btn-error btn-outline w-full " onclick="return confirm('Hapus Kerajinan?')">
+                  Hapus</button>
+              </form>
               @if ($craft->is_confirmed)
-              <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}" class="btn btn-xs btn-error btn-outline">
+              <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}"
+                class="btn btn-xs btn-secondary btn-outline">
                 Batalkan Persetujuan</a>
               @else
               <a href="/dashboard/craftsadmin/isconfirmed/{{ $craft->id }}" class="btn btn-xs btn-success btn-outline">

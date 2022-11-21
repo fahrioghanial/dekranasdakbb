@@ -8,10 +8,7 @@
       alt="{{ $user->name }}">
     <div class="card-body md:text-xl">
       <h2>Nama Lengkap: {{ $user->name }}</h2>
-      {{-- <h2>Username (Nama Pengguna): {{ $user->username }} </h2> --}}
-      <h2>Status Keanggotaan: {{ $user->status_keanggotaan? "Diterima" : "Menunggu Persetujuan" }} </h2>
       <h2>Email: {{ $user->email }}</h2>
-      <h2>Nomor HP: {{ $user->contact }}</h2>
       <h2>Nomor KTP: {{ $user->noktp }}</h2>
       <h2>Alamat: {{ $user->address }}</h2>
       <h2>RT: {{ $user->rt }}</h2>
@@ -19,50 +16,24 @@
       <h2>Kecamatan: {{ $user->kecamatan }}</h2>
       <h2>Kelurahan/Desa: {{ $user->kelurahan_desa }}</h2>
       <h2>Kode Pos: {{ $user->kodepos }}</h2>
+      <h2>Nomor HP: {{ $user->contact }}</h2>
       <h2>Facebook: {{ $user->facebook }}</h2>
       <h2>Instagram: {{ $user->instagram }}</h2>
-      <h2>Twitter: {{ $user->twitter }}</h2>
-      <div class="card-actions justify-end">
-        <a href="/dashboard/adminuser" class="btn btn-info">
+      <h2>Whatsapp: {{ $user->whatsapp }}</h2>
+      <h2>Status Keanggotaan: {{ $user->status_keanggotaan? "Diterima" : "Menunggu Persetujuan" }} </h2>
+      <div class="card-actions md:justify-end">
+        <a href="/dashboard/adminuser" class="btn bg-blue-600 text-white border-0 w-full md:w-fit">
           Kembali</a>
         @if ($user->status_keanggotaan)
-        <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-error">
+        <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-secondary w-full md:w-fit">
           Cabut Keanggotaan</a>
         @else
-        <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-success">
+        <a href="/dashboard/adminuser/membership/{{ $user->username }}"
+          class="btn bg-green-600 border-0 text-white w-full md:w-fit">
           Terima</a>
         @endif
       </div>
     </div>
   </div>
-
-  {{-- <div class="p-5 bg-light">
-    <img src="{{ asset('storage/'. $user->profile_picture)  }}" class="img-fluid mt-3" alt="{{ $user->name }}">
-    <h2>Nama Lengkap: {{ $user->name }}</h2>
-    <h2>Username (Nama Pengguna): {{ $user->username }} </h2>
-    <h2>Email: {{ $user->email }}</h2>
-    <h2>Nomor HP: {{ $user->contact }}</h2>
-    <h2>Nomor KTP: {{ $user->noktp }}</h2>
-    <h2>Alamat: {{ $user->address }}</h2>
-    <h2>RT: {{ $user->rt }}</h2>
-    <h2>RW: {{ $user->rw }}</h2>
-    <h2>Kecamatan: {{ $user->kecamatan }}</h2>
-    <h2>Kelurahan/Desa: {{ $user->kelurahan_desa }}</h2>
-    <h2>Kode Pos: {{ $user->kodepos }}</h2>
-    <h2>Facebook: {{ $user->facebook }}</h2>
-    <h2>Instagram: {{ $user->instagram }}</h2>
-    <h2>Twitter: {{ $user->twitter }}</h2>
-    <a href="/dashboard/adminuser" class="btn btn-info"><span data-feather="arrow-left"></span>
-      Kembali</a>
-    @if ($user->status_keanggotaan)
-    <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-danger"><span
-        data-feather="x-circle"></span>
-      Cabut Keanggotaan</a>
-    @else
-    <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-success"><span
-        data-feather="check-circle"></span>
-      Terima</a>
-    @endif
-  </div> --}}
 </div>
 @endsection

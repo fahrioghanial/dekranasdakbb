@@ -48,7 +48,7 @@
   </script>
 </head>
 
-<body class="bg-slate-700">
+<body class="bg-slate-700 h-screen">
 
   {{-- @include('dashboard.layouts.header')
 
@@ -61,7 +61,9 @@
     </div>
   </div> --}}
   @include('dashboard.layouts.header')
-  @yield('container')
+  <div class="px-4 lg:px-0">
+    @yield('container')
+  </div>
   @include('dashboard.layouts.sidebar')
 
 

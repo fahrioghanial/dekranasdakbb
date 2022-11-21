@@ -10,7 +10,7 @@
 
 @section('body')
 <section id="home" class="mb-32">
-  <div class="container m-auto pt-28 text-black px-3 md:px-0">
+  <div class="container m-auto pt-24 text-black px-3 md:px-0">
     <h1 class="font-bold md:text-4xl text-2xl mb-10">Anggota Kami</h1>
     <h1 class="font-bold md:text-3xl text-xl mb-5">{{ $title }}</h1>
     <form action="/member" class="mb-3">
@@ -30,9 +30,9 @@
         <div class="card-body">
           <h2 class="card-title">{{ $user->name }}</h2>
           <p class="text-md font-semibold">{{ $user->kelurahan_desa }}</p>
+          <p class="text-md font-semibold"><i class="bi bi-whatsapp"></i> {{ $user->whatsapp }}</p>
           <p class="text-md font-semibold"><i class="bi bi-facebook"></i> {{ $user->facebook }}</p>
           <p class="text-md font-semibold"><i class="bi bi-instagram"></i> {{ $user->instagram }}</p>
-          <p class="text-md font-semibold"><i class="bi bi-twitter"></i> {{ $user->twitter }}</p>
           <div class="card-actions mt-3">
             <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
               href="/crafts?craftsman={{ $user->username }}">

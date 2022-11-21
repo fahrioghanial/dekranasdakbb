@@ -19,7 +19,7 @@ class UserFactory extends Factory
   {
     return [
       'name' => $this->faker->name(),
-      'username' => $this->faker->unique()->userName(),
+      'username' => $this->faker->unique()->slug(),
       'email' => $this->faker->unique()->safeEmail(),
       'contact' => $this->faker->phoneNumber(),
       'address' => $this->faker->streetAddress(),
@@ -29,9 +29,9 @@ class UserFactory extends Factory
       'noktp' => $this->faker->randomNumber(9, true),
       'kecamatan' => "Contoh Kecamatan",
       'kelurahan_desa' => "Contoh Kelurahan/Desa",
-      'facebook' => '@facebook',
-      'instagram' => '@instagram',
-      'twitter' => '@twitter',
+      'facebook' => 'facebook',
+      'instagram' => 'instagram',
+      'whatsapp' => '0895391719873',
       'profile_picture' => 'profile-pictures/contoh-foto.png',
       'password' => bcrypt('12345'),
       'remember_token' => Str::random(10),

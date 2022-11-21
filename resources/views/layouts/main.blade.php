@@ -17,8 +17,11 @@
 
   {{-- Turbo --}}
   <script src="{{ asset('js/app.js') }}"></script>
-
-  <title>Dekranasda Kabupaten Bandung Barat</title>
+  @if(@isset($title))
+  <title>{{ $title }}</title>
+  @else
+  <title>Dekranasda KBB</title>
+  @endif
 </head>
 
 <body class="bg-[#EDDBC0]">
@@ -27,7 +30,10 @@
     <div class="drawer-content">
       <!-- Page content here -->
       @yield('navbar')
-      @yield('body')
+      <div
+        class="{{ (Request::is('/') || Request::is('login*') || Request::is('register*') || Request::is('aboutus*')) ? '' : 'px-4'}}">
+        @yield('body')
+      </div>
       @yield('footer')
     </div>
     <div class="drawer-side">
@@ -38,20 +44,6 @@
       </ul>
     </div>
   </div>
-
-  <!--Start of Tawk.to Script-->
-  {{-- <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/635fc668daff0e1306d4e770/1ggn1u38o';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script> --}}
-  <!--End of Tawk.to Script-->
 </body>
 
 </html>

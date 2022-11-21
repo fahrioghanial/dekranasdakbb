@@ -6,7 +6,13 @@
 <a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/crafts">
   Produk Kerajinan
 </a>
-<div class="collapse collapse-arrow hover:bg-[#B73E3E]">
+<a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/member">
+  Anggota Perajin
+</a>
+<a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/aboutus">
+  Tentang Kami
+</a>
+{{-- <div class="collapse collapse-arrow hover:bg-[#B73E3E]">
   <input type="checkbox" />
   <div class="collapse-title text-xl font-medium">
     Anggota Perajin
@@ -17,8 +23,8 @@
       Anggota</a>
     <a class="hover:bg-red-800" href="/howto"><i class="bi bi-dot"></i> Tata Cara Menjadi Anggota</a>
   </div>
-</div>
-<div class="collapse collapse-arrow hover:bg-[#B73E3E]">
+</div> --}}
+{{-- <div class="collapse collapse-arrow hover:bg-[#B73E3E]">
   <input type="checkbox" />
   <div class="collapse-title text-xl font-medium ">
     Tentang Kami
@@ -28,7 +34,7 @@
     <a class="hover:bg-red-800" href="/organization"><i class="bi bi-dot"></i> Struktur
       Organisasi</a>
   </div>
-</div>
+</div> --}}
 <a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/articles">
   Artikel
 </a>

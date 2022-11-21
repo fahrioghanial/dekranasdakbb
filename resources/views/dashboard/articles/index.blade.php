@@ -9,9 +9,14 @@
   </div>
   @endif
   <p class="text-2xl font-semibold mb-5">Artikel Saya</p>
-  <a href="/dashboard/articles/create" class="btn btn-info mb-4 font-semibold">Tambah artikel baru</a>
-  <a href="/dashboard/publish-article/publishall" class="btn btn-success mb-4 font-semibold">Publikasikan semua
-    artikel</a>
+  <div class="flex flex-col md:flex-row gap-3">
+    <a href="/dashboard/articles/create" class="btn bg-blue-600 text-white border-0 mb-4 font-semibold">Tambah artikel
+      baru</a>
+    <a href="/dashboard/publish-article/publishall"
+      class="btn bg-green-600 text-white border-0 mb-4 font-semibold">Publikasikan
+      semua
+      artikel</a>
+  </div>
   <div class="p-2 bg-white rounded-lg lg:w-fit">
     <table class="" id="artikel">
       <!-- head -->

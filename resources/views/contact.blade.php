@@ -10,7 +10,7 @@
 
 @section('body')
 <section id="home" class="mb-32">
-  <div class="container m-auto pt-28 text-black px-3 md:px-0">
+  <div class="container m-auto pt-24 text-black px-3 md:px-0">
     <h1 class="font-bold md:text-4xl text-2xl mb-10">Kontak Dekranasda Kabupaten Bandung Barat</h1>
     <div class="flex flex-col md:flex-row gap-10">
       <div class="md:w-1/3">

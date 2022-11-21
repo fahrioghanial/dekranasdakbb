@@ -49,9 +49,7 @@ class DashboardCraftController extends Controller
       'slug' => 'required',
       'category_id' => 'required',
       'price' => 'required|numeric',
-      'size' => '',
-      'color' => '',
-      'motive' => '',
+      'description' => ''
     ]);
 
     $validatedData['image'] = $request->file('image')->store('craft-images');
@@ -115,9 +113,7 @@ class DashboardCraftController extends Controller
       'slug' => 'required',
       'category_id' => 'required',
       'price' => 'required|numeric',
-      'size' => '',
-      'color' => '',
-      'motive' => '',
+      'description' => '',
     ];
 
     if ($request->image) {
@@ -134,7 +130,7 @@ class DashboardCraftController extends Controller
 
     Craft::where('id', $craft->id)->update($validatedData);
 
-    return redirect('/dashboard/crafts')->with('success', 'Kerajinan berhasil diedit!');
+    return redirect('/dashboard/crafts')->with('success', 'Kerajinan berhasil diubah!');
   }
 
   /**
@@ -157,7 +153,7 @@ class DashboardCraftController extends Controller
     return redirect('/dashboard/crafts')->with('success', 'Kerajinan berhasil dihapus!');
   }
 
-  public function admin(Craft $craft)
+  public function craftConfirm(Craft $craft)
   {
     $validatedData = [
       'is_confirmed' => ''
@@ -187,5 +183,65 @@ class DashboardCraftController extends Controller
   {
     $slug = SlugService::createSlug(Craft::class, 'slug', $request->title);
     return response()->json(['slug' => $slug]);
+  }
+
+  public function adminCreateCraft(Request $request)
+  {
+    $validatedData = $request->validate([
+      'image' => 'image|file|required',
+      'title' => 'required|max:255',
+      'user_id' => '',
+      'slug' => 'required',
+      'category_id' => 'required',
+      'price' => 'required|numeric',
+      'description' => ''
+    ]);
+
+    $validatedData['image'] = $request->file('image')->store('craft-images');
+    $validatedData['views'] = 0;
+    $validatedData['is_confirmed'] = true;
+
+    Craft::create($validatedData);
+
+    return redirect('/dashboard/craftsadmin')->with('success', 'Kerajinan atas nama ' . $request->name . ' berhasil ditambahkan!');
+  }
+
+  public function adminEditCraft(Request $request, Craft $craft)
+  {
+    $rules = [
+      // 'image' => 'image|file|required',
+      'title' => 'required|max:255',
+      'slug' => 'required',
+      'category_id' => 'required',
+      'price' => 'required|numeric',
+      'description' => '',
+    ];
+
+    if ($request->image) {
+      $rules['image'] = 'image|file|required';
+    }
+
+    if ($request->oldImage != "craft-images/contoh-foto.jpg" && $request->image) {
+      Storage::delete($request->oldImage);
+    }
+    $validatedData = $request->validate($rules);
+    if ($request->image) {
+      $validatedData['image'] = $request->file('image')->store('craft-images');
+    } else $validatedData['image'] = $request->oldImage;
+
+    Craft::where('id', $craft->id)->update($validatedData);
+
+    return redirect('/dashboard/craftsadmin')->with('success', 'Kerajinan berhasil diubah!');
+  }
+
+  public function adminDeleteCraft(Craft $craft)
+  {
+    if ($craft->image != "craft-images/contoh-foto.jpg") {
+      Storage::delete($craft->image);
+    }
+
+    Craft::destroy($craft->id);
+
+    return redirect('/dashboard/craftsadmin')->with('success', 'Kerajinan berhasil dihapus!');
   }
 }

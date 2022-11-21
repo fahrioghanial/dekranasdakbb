@@ -8,7 +8,7 @@
   </div>
   @endif
   <p class="text-2xl font-semibold mb-5">Kerajinan Saya</p>
-  <a href="/dashboard/crafts/create" class="btn btn-info mb-4">Tambah kerajinan baru</a>
+  <a href="/dashboard/crafts/create" class="btn bg-blue-600 text-white border-0 mb-4">Tambah kerajinan baru</a>
   <div class="p-2 bg-white rounded-lg lg:w-fit">
     <table class="" id="kerajinan-saya">
       <!-- head -->

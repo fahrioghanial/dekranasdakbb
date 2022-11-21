@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\CraftsExport;
 use App\Http\Controllers\CraftController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -14,6 +15,8 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\WebViewerCount;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -149,34 +152,71 @@ Route::get('/dashboard/statistics', function () {
   ]);
 })->middleware('admin');
 
+// Admin data kategori
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('admin');
 
+
+
+// Admin data produk kerajinan
 Route::get('/dashboard/craftsadmin/confirmallcrafts', [DashboardCraftController::class, 'confirmAll'])->middleware('admin');
 Route::get('/dashboard/craftsadmin', function () {
-  return view('dashboard.crafts.admin', [
+  return view('dashboard.crafts.adminindex', [
     "crafts" => Craft::with(['craftsman', 'category'])->latest()->get()
   ]);
 })->middleware('admin');
+Route::get('/dashboard/craftsadmin/export', function () {
+  return Excel::download(new CraftsExport, 'data-produk.xlsx');
+})->middleware('admin');
+Route::get('/dashboard/craftsadmin/createcraft/{user:username}', function (User $user) {
+  return view('dashboard.crafts.admincreatecraft', [
+    "user" => $user,
+    'categories' => Category::all()
+  ]);
+})->middleware('admin');
+Route::get('/dashboard/craftsadmin/editcraft/{craft}', function (Craft $craft) {
+  return view('dashboard.crafts.admineditcraft', [
+    "craft" => $craft,
+    'categories' => Category::all()
+  ]);
+})->middleware('admin');
+Route::post('/dashboard/craftsadmin/createcraft', [DashboardCraftController::class, 'adminCreateCraft'])->middleware('admin');
+Route::put('/dashboard/craftsadmin/editcraft/{craft}', [DashboardCraftController::class, 'adminEditCraft'])->middleware('admin');
+Route::delete('/dashboard/craftsadmin/deletecraft/{craft}', [DashboardCraftController::class, 'adminDeleteCraft'])->middleware('admin');
 Route::get('/dashboard/craftsadmin/{craft}', function (Craft $craft) {
   return view('dashboard.crafts.adminshow', [
     "craft" => $craft
   ]);
 })->middleware('admin');
-Route::get('/dashboard/craftsadmin/isconfirmed/{craft}', [DashboardCraftController::class, 'admin'])->middleware('admin');
+Route::get('/dashboard/craftsadmin/isconfirmed/{craft}', [DashboardCraftController::class, 'craftConfirm'])->middleware('admin');
 
 
+
+// Admin data anggota perajin
 Route::get('/dashboard/adminuser', function () {
   return view('dashboard.craftsmanadmin.index', [
     "users" => User::withCount('crafts')->latest()->get()
   ]);
 })->middleware('admin');
+Route::get('/dashboard/adminuser/export', function () {
+  return Excel::download(new UsersExport, 'data-perajin.xlsx');
+})->middleware('admin');
+Route::get('/dashboard/adminuser/adduser', function () {
+  return view('dashboard.craftsmanadmin.create');
+})->middleware('admin');
+Route::post('/dashboard/adminuser/adduser', [RegisterController::class, 'addUser'])->middleware('admin');
+Route::get('/dashboard/adminuser/edituser/{user:username}', function (User $user) {
+  return view('dashboard.craftsmanadmin.edit', [
+    "user" => $user
+  ]);
+})->middleware('admin');
+Route::put('/dashboard/adminuser/edituser/{user:username}', [ProfileController::class, 'editUser'])->middleware('admin');
+Route::delete('/dashboard/adminuser/delete/{user:username}', [ProfileController::class, 'deleteUser'])->middleware('admin');
 Route::get('/dashboard/adminuser/{user:username}', function (User $user) {
   return view('dashboard.craftsmanadmin.show', [
     "user" => $user
   ]);
 })->middleware('admin');
-
 Route::get('/dashboard/adminuser/membership/confirmall', function () {
   $validatedData = [
     'status_keanggotaan' => ''
@@ -185,7 +225,6 @@ Route::get('/dashboard/adminuser/membership/confirmall', function () {
   User::where('status_keanggotaan', 0)->update($validatedData);
   return redirect('/dashboard/adminuser')->with('success', 'Semua perajin berhasil diterima!');
 })->middleware('admin');
-
 Route::get('/dashboard/adminuser/membership/{user:username}', function (User $user) {
   $validatedData = [
     'status_keanggotaan' => ''
@@ -201,7 +240,9 @@ Route::get('/dashboard/adminuser/membership/{user:username}', function (User $us
   }
 })->middleware('admin');
 
-// Dasbor Artikel
+
+
+// Admin Artikel
 Route::get('/dashboard/articles/checkSlug', [AdminArticleController::class, 'checkSlug'])->middleware('admin');
 Route::resource('/dashboard/articles', AdminArticleController::class)->middleware('admin');
 Route::get('/dashboard/publish-article/publishall', function () {

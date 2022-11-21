@@ -67,8 +67,6 @@
             </div>
             @enderror
           </div>
-          {{-- <a class="mt-2 text-sm hover:text-red-600 text-blue-700 block" href="/login/forgotpassword">Lupa Kata
-            Sandi?</a> --}}
           <div class="flex flex-col gap-3 mt-5">
             <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
               type="submit">Simpan Kata Sandi Baru</button>

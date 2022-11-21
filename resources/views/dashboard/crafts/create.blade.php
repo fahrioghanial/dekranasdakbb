@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="mx-2 md:ml-80 pt-24 pb-5 md:mr-5 text-white">
-  <p class="text-2xl font-semibold mb-5">Buat Kerajinan Baru</p>
+  <p class="text-2xl font-semibold mb-5">Tambah Kerajinan Baru</p>
   <div class="md:w-1/2 bg-white p-3 rounded-md">
     <form method="post" action="/dashboard/crafts" enctype="multipart/form-data">
       @csrf
@@ -75,27 +75,10 @@
       </div>
       <div class="form-control w-full">
         <label class="label">
-          <span class="label-text text-black">Ukuran</span>
+          <span class="label-text text-black">Deskripsi</span>
         </label>
-        <input type="text" name="size"
-          class="input input-bordered w-full {{ $errors->has('size')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="size" placeholder="Ukuran" value="{{ old('size') }}">
-      </div>
-      <div class="form-control w-full">
-        <label class="label">
-          <span class="label-text text-black">Warna</span>
-        </label>
-        <input type="text" name="color"
-          class="input input-bordered w-full {{ $errors->has('color')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="color" placeholder="Warna" value="{{ old('color') }}">
-      </div>
-      <div class="form-control w-full">
-        <label class="label">
-          <span class="label-text text-black">Motif</span>
-        </label>
-        <input type="text" name="motive"
-          class="input input-bordered w-full {{ $errors->has('motive')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="motive" placeholder="Motif" value="{{ old('motive') }}">
+        <textarea name="description" class="input input-bordered w-full border-black border-1 bg-white text-black"
+          id="descriptiono" placeholder="Deskripsi" value="{{ old('description') }}"></textarea>
       </div>
       <div class="flex flex-col gap-3 mt-5">
         <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"

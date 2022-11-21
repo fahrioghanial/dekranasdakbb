@@ -4,7 +4,7 @@
 <div class="mx-2 md:ml-80 pt-24 pb-5 md:mr-5 text-white">
   <p class="text-2xl font-semibold mb-5">Ubah Kerajinan</p>
   <div class="md:w-1/2 bg-white p-3 rounded-md">
-    <form method="post" action="/dashboard/crafts/{{ $craft->id }}" enctype="multipart/form-data">
+    <form method="post" action="/dashboard/craftsadmin/editcraft/{{ $craft->id }}" enctype="multipart/form-data">
       @method('put')
       @csrf
       <div class="form-control w-full">
@@ -91,7 +91,7 @@
         <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
           type="submit">Simpan Perubahan</button>
         <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
-          href="/dashboard/crafts">
+          href="/dashboard/craftsadmin">
           Batal
         </a>
       </div>

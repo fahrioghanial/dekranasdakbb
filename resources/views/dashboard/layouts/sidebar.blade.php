@@ -1,7 +1,8 @@
-<span class="text-white text-4xl top-5 left-4 cursor-pointer z-50 fixed" onclick="openSidebar()">
-  <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
+<span class="text-white text-4xl top-3 left-4 cursor-pointer z-50 fixed" onclick="openSidebar()">
+  <i class="bi bi-filter-left px-2 bg-gray-500 rounded-md shadow-xl"></i>
 </span>
-<div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900 z-50">
+<div
+  class="sidebar hidden lg:block fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900 z-50">
   <div class="text-gray-100 text-xl">
     <div class="p-2.5 mt-1 flex items-center">
       <img src={{ asset('img/LogoDekranasda.png')}} class="w-10 rounded-full" alt="Dekranasda" />
@@ -53,7 +54,7 @@
     <div
       class="{{ Request::is('dashboard/adminuser*') ? 'bg-blue-600' : ''}} p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
       <i class="bi bi-people-fill"></i>
-      <span class="text-[15px] ml-4 text-gray-200 font-bold">Data Perajin</span>
+      <span class="text-[15px] ml-4 text-gray-200 font-bold">Data Anggota Perajin</span>
     </div>
   </a>
   <a href="/dashboard/articles">
@@ -106,5 +107,6 @@
 
     function openSidebar() {
       document.querySelector(".sidebar").classList.toggle("hidden");
+      // document.querySelector(".sidebar").classList.toggle("md:block");
     }
 </script>

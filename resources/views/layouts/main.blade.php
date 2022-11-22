@@ -17,6 +17,7 @@
 
   {{-- Turbo --}}
   <script src="{{ asset('js/app.js') }}"></script>
+
   @if(@isset($title))
   <title>{{ $title }}</title>
   @else

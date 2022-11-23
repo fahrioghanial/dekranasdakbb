@@ -64,13 +64,13 @@
               <a href="/dashboard/craftsadmin/createcraft/{{ $user->username }}"
                 class="btn btn-xs hover:bg-blue-300 text-blue-300  btn-outline ">
                 Tambah Produk</a>
+              @if (!$user->is_admin )
               <form action="/dashboard/adminuser/delete/{{ $user->username }}" method="post">
                 @method('delete')
                 @csrf
                 <button class="btn btn-xs btn-error btn-outline w-full " onclick="return confirm('Hapus Anggota?')">
                   Hapus</button>
               </form>
-              @if (!$user->is_admin )
               @if ($user->status_keanggotaan)
               <a href="/dashboard/adminuser/membership/{{ $user->username }}"
                 class="btn btn-xs btn-secondary btn-outline ">

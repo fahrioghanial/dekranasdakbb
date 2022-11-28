@@ -24,6 +24,7 @@ return new class extends Migration
       $table->integer('views')->nullable();
       $table->text('description')->nullable();
       $table->boolean('is_confirmed')->default(false);
+      $table->foreignId('updated_by')->nullable()->constrained('users');
       $table->timestamps();
     });
   }

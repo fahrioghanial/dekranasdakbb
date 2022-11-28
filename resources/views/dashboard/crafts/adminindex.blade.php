@@ -15,7 +15,7 @@
     <a href="/dashboard/craftsadmin/export" class="btn bg-white text-black hover:text-white border-0">Unduh Data
       Produk</a>
   </div>
-  <div class="p-2 bg-white rounded-lg lg:w-fit">
+  <div class="p-2 bg-white rounded-lg">
     <table class="" id="konfirmasi-kerajinan">
       <!-- head -->
       <thead class="">
@@ -28,6 +28,7 @@
           <th class="bg-slate-900">Kategori</th>
           <th class="bg-slate-900">Pengunjung</th>
           <th class="bg-slate-900">Tanggal Ditambahkan</th>
+          <th class="bg-slate-900">Diubah Oleh</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
       </thead>
@@ -44,6 +45,13 @@
           <td class="bg-slate-900">{{ $craft->category->name }}</td>
           <td class="bg-slate-900">{{ $craft->views }}</td>
           <td class="bg-slate-900">{{ $craft->created_at->format('d-m-Y') }}</td>
+          <td class="bg-slate-900 whitespace-nowrap">
+            @if (isset($craft->updatedBy->name))
+            {{ $craft->updatedBy->name }}, pada {{ $craft->updated_at->format('d-m-Y')}}
+            @else
+            -
+            @endif
+          </td>
           <td class="bg-slate-900">
             <div class="flex flex-col gap-1">
               <a href="/dashboard/craftsadmin/{{ $craft->id }}" class="btn btn-xs btn-info btn-outline">

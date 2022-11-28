@@ -116,6 +116,7 @@ Route::resource('/dashboard/crafts', DashboardCraftController::class)->middlewar
 
 
 // Routes for dashboard admin
+// Admin statistik
 Route::get('/dashboard/statistics', function () {
   $max_count_crafts_in_category = Category::withCount('crafts')->get()->max('crafts_count');
   $min_count_crafts_in_category = Category::withCount('crafts')->get()->min('crafts_count');
@@ -204,14 +205,14 @@ Route::get('/dashboard/adminuser/export', function () {
 Route::get('/dashboard/adminuser/adduser', function () {
   return view('dashboard.craftsmanadmin.create');
 })->middleware('admin');
-Route::post('/dashboard/adminuser/adduser', [RegisterController::class, 'addUser'])->middleware('admin');
+Route::post('/dashboard/adminuser/adduser', [RegisterController::class, 'adminAddUser'])->middleware('admin');
 Route::get('/dashboard/adminuser/edituser/{user:username}', function (User $user) {
   return view('dashboard.craftsmanadmin.edit', [
     "user" => $user
   ]);
 })->middleware('admin');
-Route::put('/dashboard/adminuser/edituser/{user:username}', [ProfileController::class, 'editUser'])->middleware('admin');
-Route::delete('/dashboard/adminuser/delete/{user:username}', [ProfileController::class, 'deleteUser'])->middleware('admin');
+Route::put('/dashboard/adminuser/edituser/{user:username}', [ProfileController::class, 'adminEditUser'])->middleware('admin');
+Route::delete('/dashboard/adminuser/delete/{user:username}', [ProfileController::class, 'adminDeleteUser'])->middleware('admin');
 Route::get('/dashboard/adminuser/{user:username}', function (User $user) {
   return view('dashboard.craftsmanadmin.show', [
     "user" => $user

@@ -27,10 +27,10 @@
       @foreach ($crafts as $craft)
       @if ($craft->craftsman->status_keanggotaan)
       <div class="card w-full bg-white shadow-xl">
-        {{-- <img class="object-cover object-center h-[330px] w-full" src="{{ asset('storage/'. $craft->image) }}"
-          alt="{{ $craft->title }}" /> --}}
-        <img class="object-cover object-center h-[330px] w-full"
-          src="https://picsum.photos/id/{{ $loop->iteration + 50 }}/200" alt="{{ $craft->title }}" />
+        <img class="object-cover object-center h-[330px] w-full" src="{{ asset('storage/'. $craft->image) }}"
+          alt="{{ $craft->title }}" />
+        {{-- <img class="object-cover object-center h-[330px] w-full"
+          src="https://picsum.photos/id/{{ $loop->iteration + 50 }}/200" alt="{{ $craft->title }}" /> --}}
         <div class="card-body p-4">
           <h2 class="card-title">
             {{ $craft->title }}

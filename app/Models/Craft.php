@@ -22,6 +22,11 @@ class Craft extends Model
     return $this->belongsTo(User::class, "user_id");
   }
 
+  public function updatedBy()
+  {
+    return $this->belongsTo(User::class, "updated_by");
+  }
+
   public function sluggable(): array
   {
     return [

@@ -149,6 +149,8 @@ class ProfileController extends Controller
       $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
     } else $validatedData['profile_picture'] = $request->oldImage;
 
+    $validatedData['updated_by'] = auth()->user()->id;
+
     User::where('id', $user->id)->update($validatedData);
 
     return redirect('/dashboard/user')->with('success', 'Profil berhasil diubah!');
@@ -165,7 +167,7 @@ class ProfileController extends Controller
     //
   }
 
-  public function editUser(Request $request, User $user)
+  public function adminEditUser(Request $request, User $user)
   {
     $rules = [
       'name' => 'required|max:255',
@@ -234,12 +236,14 @@ class ProfileController extends Controller
       $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
     } else $validatedData['profile_picture'] = $request->oldImage;
 
+    $validatedData['updated_by'] = auth()->user()->id;
+
     User::where('id', $user->id)->update($validatedData);
 
     return redirect('/dashboard/adminuser')->with('success', 'Profil anggota berhasil diubah!');
   }
 
-  public function deleteUser(User $user)
+  public function adminDeleteUser(User $user)
   {
     if ($user->profile_picture != "article-covers/contoh-cover.jpg") {
       Storage::delete($user->profile_picture);

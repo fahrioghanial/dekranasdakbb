@@ -44,7 +44,7 @@ class RegisterController extends Controller
     return redirect('/login')->with('success', 'Registrasi Berhasil!, Silakan Masuk');
   }
 
-  public function addUser(Request $request)
+  public function adminAddUser(Request $request)
   {
     $validatedData = $request->validate([
       'name' => 'required|max:255',
@@ -85,6 +85,7 @@ class RegisterController extends Controller
     // $validatedData['password'] = bcrypt($validatedData['password']);
     $validatedData['password'] = bcrypt($validatedData['noktp']);
     $validatedData['status_keanggotaan'] = true;
+    $validatedData['updated_by'] = auth()->user()->id;
 
     User::create($validatedData);
 

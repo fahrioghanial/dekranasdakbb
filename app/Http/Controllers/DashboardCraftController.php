@@ -128,6 +128,8 @@ class DashboardCraftController extends Controller
       $validatedData['image'] = $request->file('image')->store('craft-images');
     } else $validatedData['image'] = $request->oldImage;
 
+    $validatedData['updated_by'] = auth()->user()->id;
+
     Craft::where('id', $craft->id)->update($validatedData);
 
     return redirect('/dashboard/crafts')->with('success', 'Kerajinan berhasil diubah!');
@@ -200,6 +202,7 @@ class DashboardCraftController extends Controller
     $validatedData['image'] = $request->file('image')->store('craft-images');
     $validatedData['views'] = 0;
     $validatedData['is_confirmed'] = true;
+    $validatedData['updated_by'] = auth()->user()->id;
 
     Craft::create($validatedData);
 
@@ -228,6 +231,8 @@ class DashboardCraftController extends Controller
     if ($request->image) {
       $validatedData['image'] = $request->file('image')->store('craft-images');
     } else $validatedData['image'] = $request->oldImage;
+
+    $validatedData['updated_by'] = auth()->user()->id;
 
     Craft::where('id', $craft->id)->update($validatedData);
 

@@ -20,7 +20,14 @@
       <h2>Facebook: {{ $user->facebook }}</h2>
       <h2>Instagram: {{ $user->instagram }}</h2>
       <h2>Whatsapp: {{ $user->whatsapp }}</h2>
-      <h2>Status Keanggotaan: {{ $user->status_keanggotaan? "Diterima" : "Menunggu Persetujuan" }} </h2>
+      <h2>
+        Status Keanggotaan:
+        @if ($user->is_admin)
+        {{" Administrator"}}
+        @else
+        {{ $user->status_keanggotaan ? " Anggota Perajin" : " Menunggu Persetujuan" }}
+        @endif
+      </h2>
       <div class="card-actions md:justify-end">
         <a href="/dashboard/adminuser" class="btn bg-blue-600 text-white border-0 w-full md:w-fit">
           Kembali</a>

@@ -29,6 +29,7 @@
           <th class="bg-slate-900">Jumlah Produk</th>
           <th class="bg-slate-900">Tanggal Akun Dibuat</th>
           <th class="bg-slate-900">Status Keanggotaan</th>
+          <th class="bg-slate-900">Diubah Oleh</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
       </thead>
@@ -50,6 +51,13 @@
             {{"Administrator"}}
             @else
             {{ $user->status_keanggotaan ? "Anggota Perajin" : "Menunggu Persetujuan" }}
+            @endif
+          </td>
+          <td class="bg-slate-900 whitespace-nowrap">
+            @if (isset($user->updatedBy->name))
+            {{ $user->updatedBy->name }}, pada {{ $user->updated_at->format('d-m-Y')}}
+            @else
+            -
             @endif
           </td>
           <td class="bg-slate-900 w-fit">

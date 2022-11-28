@@ -14,7 +14,7 @@
         <li>
           <form action="/logout" method="post" class="hover:bg-blue-600 ">
             @csrf
-            <button class="text-md" type="submit">Keluar</button>
+            <button class="text-md w-full text-left" type="submit">Keluar</button>
           </form>
         </li>
       </ul>

@@ -9,6 +9,7 @@
 @endsection
 
 @section('body')
+
 <section id="home" class="bg-[url('/img/bgaboutus.jpg')] bg-cover bg-no-repeat text-white">
   <div class="container m-auto py-28 px-3 md:px-0">
     <div class="flex flex-col">
@@ -46,9 +47,6 @@
     </div>
   </div>
 </section>
-
-
-{{-- <div class="border-b-4 border-black my-10"></div> --}}
 <section id="home2" class="pb-32 text-black">
   <div class="container m-auto mt-10">
     <div class="flex flex-col gap-10">

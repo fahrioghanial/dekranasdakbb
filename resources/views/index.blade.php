@@ -34,6 +34,12 @@
           </p>
         </div>
         <div class="flex gap-5 mt-5 justify-center">
+          @auth
+          <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#B73E3E] text-xl font-semibold text-white"
+            href="/crafts">
+            Produk Kami
+          </a>
+          @else
           <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#B73E3E] text-xl font-semibold text-white"
             href="/register">
             Daftar Sekarang
@@ -42,6 +48,7 @@
             href="/crafts">
             Produk Kami
           </a>
+          @endauth
         </div>
       </div>
     </div>
@@ -97,9 +104,11 @@
     </div>
   </div>
 </section>
-<div class="flex gap-3 bg-white p-2 justify-center items-center text-xl font-semibold text-black">
-  <i class="bi bi-eye text-2xl"></i>
-  <p>{{ $web_viewer_count }} Pengunjung</p>
+@if ($web_viewer_count)
+<div class="flex gap-3 bg-white p-1 justify-center items-center text-lg font-semibold text-black">
+  <i class="bi bi-eye text-lg"></i>
+  <p>{{ $web_viewer_count->count }} Pengunjung</p>
 </div>
+@endif
 
 @endsection

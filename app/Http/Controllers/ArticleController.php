@@ -11,7 +11,12 @@ class ArticleController extends Controller
   public function index()
   {
     if (url()->previous() == url("/") . "/") {
-      WebViewerCount::first()->increment('count');
+      if (WebViewerCount::first() == null) {
+        $data['count'] = 1;
+        WebViewerCount::create($data);
+      } else {
+        WebViewerCount::first()->increment('count');
+      }
     }
 
     $articles = Article::with(['user'])->where('is_show', 1)->latest();

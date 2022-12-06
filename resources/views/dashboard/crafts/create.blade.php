@@ -78,7 +78,7 @@
           <span class="label-text text-black">Deskripsi</span>
         </label>
         <textarea name="description" class="input input-bordered w-full border-black border-1 bg-white text-black"
-          id="descriptiono" placeholder="Deskripsi" value="{{ old('description') }}"></textarea>
+          id="description" placeholder="Deskripsi">{{ old('description') }}</textarea>
       </div>
       <div class="flex flex-col gap-3 mt-5">
         <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
@@ -98,7 +98,7 @@
     const imgPreview = document.querySelector('.img-preview');
   
     imgPreview.style.display = 'block';
-  
+
     const oFReader = new FileReader();
     oFReader.readAsDataURL(image.files[0]);
   

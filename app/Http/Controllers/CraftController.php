@@ -13,15 +13,30 @@ class CraftController extends Controller
   public function index()
   {
     if (url()->previous() == url("/") . "/") {
-      WebViewerCount::first()->increment('count');
+      if (WebViewerCount::first() == null) {
+        $data['count'] = 1;
+        WebViewerCount::create($data);
+      } else {
+        WebViewerCount::first()->increment('count');
+      }
     }
 
     $crafts = Craft::with(['craftsman', 'category'])->where('is_confirmed', 1)->latest();
     $title = "Semua Kerajinan";
 
     if (request('search')) {
+      if (request('category')) {
+        $categories = Category::where('slug', 'like', '%' . request('category') . '%');
+        $crafts->where('category_id', 'like', '%' . $categories->first()->id . '%');
+        $title = "Pencarian: " . request('search') . " pada kategori " . $categories->first()->name;
+      } else if (request('craftsman')) {
+        $craftsmans = User::where('username', 'like', '%' . request('craftsman') . '%');
+        $crafts->where('user_id', 'like', '%' . $craftsmans->first()->id . '%');
+        $title = "Pencarian: " . request('search') . " pada kerajinan oleh " . $craftsmans->first()->name;
+      } else {
+        $title = "Pencarian: " . request('search');
+      }
       $crafts->where('title', 'like', '%' . request('search') . '%');
-      $title = "Pencarian: " . request('search');
     } elseif (request('category')) {
       $categories = Category::where('slug', 'like', '%' . request('category') . '%');
       $crafts->where('category_id', 'like', '%' . $categories->first()->id . '%');

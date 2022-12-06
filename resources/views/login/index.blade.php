@@ -75,7 +75,7 @@
               type="submit">Masuk</button>
             <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
               href="/">
-              Batal
+              Kembali ke Halaman Utama
             </a>
           </div>
           <small class="mt-2 text-black text-md">Belum punya akun? daftar <a class="hover:text-red-600 text-blue-700"

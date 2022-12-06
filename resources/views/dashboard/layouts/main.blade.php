@@ -48,7 +48,7 @@
   </script>
 </head>
 
-<body class="bg-slate-700 h-screen">
+<body class="bg-slate-700 min-h-screen">
 
   {{-- @include('dashboard.layouts.header')
 

@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="mx-2 md:ml-80 h-screen pt-24 md:mr-5 text-white">
+<div class="mx-2 md:ml-80 pt-24 md:mr-5 text-white">
   <p class="text-2xl font-semibold mb-5">Buat Kategori Baru</p>
   <div class="md:w-1/2 bg-white p-3 rounded-md">
     <form method="post" action="/dashboard/categories" enctype="multipart/form-data">

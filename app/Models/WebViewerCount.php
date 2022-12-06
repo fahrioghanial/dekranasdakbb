@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class WebViewerCount extends Model
 {
-    use HasFactory;
+  protected $guarded = ['id'];
+  use HasFactory;
 }

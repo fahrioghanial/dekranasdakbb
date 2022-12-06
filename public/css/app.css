@@ -3971,11 +3971,26 @@ body[dir="rtl"] .checkbox:checked,
 .h-\[1px\] {
   height: 1px;
 }
-.h-72 {
-  height: 18rem;
-}
 .h-5 {
   height: 1.25rem;
+}
+.h-full {
+  height: 100%;
+}
+.h-min {
+  height: -moz-min-content;
+  height: min-content;
+}
+.min-h-min {
+  min-height: -moz-min-content;
+  min-height: min-content;
+}
+.min-h-fit {
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+.min-h-screen {
+  min-height: 100vh;
 }
 .w-60 {
   width: 15rem;
@@ -3992,6 +4007,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .w-1\/2 {
   width: 50%;
+}
+.w-2\/3 {
+  width: 66.666667%;
 }
 .w-40 {
   width: 10rem;
@@ -4109,6 +4127,9 @@ body[dir="rtl"] .checkbox:checked,
 .gap-3 {
   gap: 0.75rem;
 }
+.gap-1 {
+  gap: 0.25rem;
+}
 .gap-5 {
   gap: 1.25rem;
 }
@@ -4117,9 +4138,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .gap-2 {
   gap: 0.5rem;
-}
-.gap-1 {
-  gap: 0.25rem;
 }
 .gap-4 {
   gap: 1rem;
@@ -4268,6 +4286,18 @@ body[dir="rtl"] .checkbox:checked,
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
+.bg-blue-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+.bg-yellow-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+.bg-blue-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
+}
 .bg-\[url\(\'\/img\/bgaboutus\.jpg\'\)\] {
   background-image: url('/img/bgaboutus.jpg');
 }
@@ -4303,6 +4333,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .p-2 {
   padding: 0.5rem;
+}
+.p-1 {
+  padding: 0.25rem;
 }
 .p-3 {
   padding: 0.75rem;
@@ -4393,14 +4426,14 @@ body[dir="rtl"] .checkbox:checked,
 .pt-5 {
   padding-top: 1.25rem;
 }
+.pb-40 {
+  padding-bottom: 10rem;
+}
 .text-left {
   text-align: left;
 }
 .text-center {
   text-align: center;
-}
-.text-right {
-  text-align: right;
 }
 .text-2xl {
   font-size: 1.5rem;

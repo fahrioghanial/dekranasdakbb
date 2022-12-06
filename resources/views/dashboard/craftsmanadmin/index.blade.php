@@ -29,7 +29,7 @@
           <th class="bg-slate-900">Jumlah Produk</th>
           <th class="bg-slate-900">Tanggal Akun Dibuat</th>
           <th class="bg-slate-900">Status Keanggotaan</th>
-          <th class="bg-slate-900">Diubah Oleh</th>
+          <th class="bg-slate-900">Terakhir Diubah Oleh</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
       </thead>
@@ -76,16 +76,18 @@
               <form action="/dashboard/adminuser/delete/{{ $user->username }}" method="post">
                 @method('delete')
                 @csrf
-                <button class="btn btn-xs btn-error btn-outline w-full " onclick="return confirm('Hapus Anggota?')">
+                <button class="btn btn-xs btn-error btn-outline w-full "
+                  onclick="return confirm('Menghapus anggota perajin juga akan menghapus produk atas nama anggota tersebut! Hapus anggota perajin?')">
                   Hapus</button>
               </form>
               @if ($user->status_keanggotaan)
               <a href="/dashboard/adminuser/membership/{{ $user->username }}"
-                class="btn btn-xs btn-secondary btn-outline ">
+                class="btn btn-xs btn-secondary btn-outline"
+                onclick="return confirm('Mencabut keanggotaan juga akan mencabut izin produk atas nama anggota tersebut! Cabut Keanggotaan?')">
                 Cabut Keanggotaan</a>
               @else
               <a href="/dashboard/adminuser/membership/{{ $user->username }}"
-                class="btn btn-xs btn-success btn-outline ">
+                class="btn btn-xs btn-success btn-outline">
                 Terima</a>
               @endif
               @endif

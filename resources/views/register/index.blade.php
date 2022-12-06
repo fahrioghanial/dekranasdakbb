@@ -47,7 +47,7 @@
           </div>
           <div class="form-control w-full">
             <label class="label">
-              <span class="label-text text-black">Nomor HP</span>
+              <span class="label-text text-black">Nomor HP <br>(masukkan dengan awalan 0, contoh: 085123456789)</span>
             </label>
             <input type="text" name="contact"
               class="input input-bordered w-full {{ $errors->has('contact')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
@@ -216,7 +216,7 @@
               type="submit">Daftar</button>
             <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
               href="/">
-              Batal
+              Kembali ke Halaman Utama
             </a>
           </div>
           <small class="mt-2 text-black text-md">Sudah punya akun? masuk <a class="hover:text-rose-500 text-blue-500"

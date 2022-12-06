@@ -100,8 +100,11 @@ class AdminCategoryController extends Controller
    */
   public function destroy(Category $category)
   {
-    Category::destroy($category->id);
-
+    try {
+      Category::destroy($category->id);
+    } catch (\Throwable $th) {
+      return redirect('/dashboard/categories')->with('error', 'Kategori yang memiliki produk tidak dapat dihapus!');
+    }
     return redirect('/dashboard/categories')->with('success', 'Kategori berhasil dihapus!');
   }
 

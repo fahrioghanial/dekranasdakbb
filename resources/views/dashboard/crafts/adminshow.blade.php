@@ -25,6 +25,14 @@
           class="btn bg-green-600 text-white border-0 w-full md:w-fit">
           Setujui</a>
         @endif
+        <a href="/dashboard/craftsadmin/editcraft/{{ $craft->id }}"
+          class="btn bg-yellow-600 text-white border-0 w-full md:w-fit">Ubah</a>
+        <form action="/dashboard/craftsadmin/deletecraft/{{ $craft->id }}" method="post" class="w-full md:w-fit">
+          @method('delete')
+          @csrf
+          <button class="btn bg-red-600 text-white border-0 w-full md:w-fit"
+            onclick="return confirm('Hapus Kerajinan?')">Hapus</button>
+        </form>
       </div>
     </div>
   </div>

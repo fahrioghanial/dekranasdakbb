@@ -59,7 +59,7 @@
       </div>
       <div class="form-control w-full">
         <label class="label">
-          <span class="label-text text-black">Nomor HP</span>
+          <span class="label-text text-black">Nomor HP <br>(masukkan dengan awalan 0, contoh: 085123456789)</span>
         </label>
         <input type="text" name="contact"
           class="input input-bordered w-full {{ $errors->has('contact')?'border-rose-500':'border-black' }} border-1 bg-white text-black"

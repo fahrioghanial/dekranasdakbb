@@ -29,8 +29,19 @@
         @endif
       </h2>
       <div class="card-actions md:justify-end">
-        <a href="/dashboard/adminuser" class="btn bg-blue-600 text-white border-0 w-full md:w-fit">
-          Kembali</a>
+        <a href="/dashboard/adminuser/edituser/{{ $user->username }}" class="btn btn-warning w-full md:w-fit">
+          Ubah</a>
+        <a href="/dashboard/craftsadmin/createcraft/{{ $user->username }}"
+          class="btn bg-blue-300 text-black border-0 w-full md:w-fit">
+          Tambah Produk</a>
+        @if (!$user->is_admin )
+        <form action="/dashboard/adminuser/delete/{{ $user->username }}" method="post">
+          @method('delete')
+          @csrf
+          <button class="btn btn-error w-full md:w-fit"
+            onclick="return confirm('Menghapus anggota perajin juga akan menghapus produk atas nama anggota tersebut! Hapus anggota perajin?')">
+            Hapus</button>
+        </form>
         @if ($user->status_keanggotaan)
         <a href="/dashboard/adminuser/membership/{{ $user->username }}" class="btn btn-secondary w-full md:w-fit">
           Cabut Keanggotaan</a>
@@ -39,6 +50,9 @@
           class="btn bg-green-600 border-0 text-white w-full md:w-fit">
           Terima</a>
         @endif
+        @endif
+        <a href="/dashboard/adminuser" class="btn bg-blue-600 text-white border-0 w-full md:w-fit">
+          Kembali</a>
       </div>
     </div>
   </div>

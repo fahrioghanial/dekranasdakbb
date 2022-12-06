@@ -44,13 +44,13 @@
         </div>
         @enderror
       </div>
-      <div class="form-control w-full hidden">
+      <div class="form-control w-full">
         <label class="label">
-          <span class="label-text text-black">Username (Nama Pengguna)</span>
+          <span class="label-text text-black">Slug</span>
         </label>
         <input type="text" name="username"
-          class="input input-bordered w-full {{ $errors->has('username')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="username" placeholder="namapengguna" value="{{ old('username', $user->username) }}">
+          class="input input-bordered w-full {{ $errors->has('username')?'border-rose-500':'border-black' }} border-1 bg-slate-200 text-black"
+          id="username" placeholder="namapengguna" value="{{ old('username', $user->username) }}" readonly>
         @error('username')
         <div class="text-rose-500">
           {{ $message }}
@@ -59,7 +59,7 @@
       </div>
       <div class="form-control w-full">
         <label class="label">
-          <span class="label-text text-black">Nomor HP</span>
+          <span class="label-text text-black">Nomor HP <br>(masukkan dengan awalan 0, contoh: 085123456789)</span>
         </label>
         <input type="text" name="contact"
           class="input input-bordered w-full {{ $errors->has('contact')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
@@ -216,7 +216,7 @@
         </div>
         @enderror
       </div>
-      <div class="form-control w-full hidden" id="password_field">
+      {{-- <div class="form-control w-full hidden" id="password_field">
         <label class="label">
           <span class="label-text text-black">Kata Sandi Lama</span>
         </label>
@@ -232,7 +232,7 @@
           {{ $message }}
         </div>
         @enderror
-      </div>
+      </div> --}}
       <div class="form-control w-full hidden" id="password_field2">
         <label class="label">
           <span class="label-text text-black">Kata Sandi Baru</span>
@@ -274,7 +274,7 @@
         <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
           type="submit">Simpan Perubahan</button>
         <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
-          href="/dashboard/user">
+          href="/dashboard/adminuser">
           Batal
         </a>
       </div>
@@ -314,17 +314,17 @@
       document.querySelector("#eye").classList.add("bi-eye-fill");
     }
   }
-  function toggleOldPassword() {
-    if (document.querySelector("#old_password").type == "password") {
-      document.querySelector("#old_password").type = "text";
-      document.querySelector("#old_eye").classList.remove("bi-eye-fill");
-      document.querySelector("#old_eye").classList.add("bi-eye-slash-fill");
-    } else {
-      document.querySelector("#old_password").type = "password";
-      document.querySelector("#old_eye").classList.remove("bi-eye-slash-fill");
-      document.querySelector("#old_eye").classList.add("bi-eye-fill");
-    }
-  }
+  // function toggleOldPassword() {
+  //   if (document.querySelector("#old_password").type == "password") {
+  //     document.querySelector("#old_password").type = "text";
+  //     document.querySelector("#old_eye").classList.remove("bi-eye-fill");
+  //     document.querySelector("#old_eye").classList.add("bi-eye-slash-fill");
+  //   } else {
+  //     document.querySelector("#old_password").type = "password";
+  //     document.querySelector("#old_eye").classList.remove("bi-eye-slash-fill");
+  //     document.querySelector("#old_eye").classList.add("bi-eye-fill");
+  //   }
+  // }
 
   function togglePasswordConfirm() {
     if (document.querySelector("#password_confirmation").type == "password") {
@@ -338,7 +338,7 @@
     }
   }
   function changePassword() {
-      document.querySelector("#password_field").classList.remove("hidden");
+      // document.querySelector("#password_field").classList.remove("hidden");
       document.querySelector("#password_field2").classList.remove("hidden");
       document.querySelector("#password_field3").classList.remove("hidden");
       document.querySelector("#change_password_button").classList.add("hidden");

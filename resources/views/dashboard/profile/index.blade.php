@@ -8,7 +8,7 @@
   @endif
   <p class="text-2xl font-semibold mb-5">Profil Saya</p>
   <div class="flex flex-col md:flex-row mb-7 bg-slate-900 rounded-md items-center pt-5 md:pt-0 md:pl-5">
-    <img class="object-cover object-center h-72 w-72 mx-auto" src="{{ asset('storage/'. $user->profile_picture)  }}"
+    <img class="object-cover object-center w-72 mx-auto" src="{{ asset('storage/'. $user->profile_picture)  }}"
       alt="{{ $user->name }}" />
     <div class="card-body md:text-xl">
       <h2>Nama Lengkap: {{ $user->name }}</h2>

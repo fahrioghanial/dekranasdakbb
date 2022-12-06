@@ -15,8 +15,8 @@ return new class extends Migration
   {
     Schema::create('crafts', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('category_id');
-      $table->foreignId('user_id');
+      $table->foreignId('category_id')->constrained()->restrictOnDelete();
+      $table->foreignId('user_id')->constrained()->cascadeOnDelete();
       $table->string('title');
       $table->string('slug')->unique();
       $table->string('image')->nullable();

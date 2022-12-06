@@ -12,7 +12,12 @@ class RegisterController extends Controller
   public function index()
   {
     if (url()->previous() == url("/") . "/") {
-      WebViewerCount::first()->increment('count');
+      if (WebViewerCount::first() == null) {
+        $data['count'] = 1;
+        WebViewerCount::create($data);
+      } else {
+        WebViewerCount::first()->increment('count');
+      }
     }
 
     return view('register.index');
@@ -25,7 +30,18 @@ class RegisterController extends Controller
       'username' => 'required|min:5|max:255|unique:users',
       'email' => 'required|email|unique:users',
       'password' => 'required|min:5|max:255|confirmed',
-      'contact' => 'required',
+      'contact' => [
+        'required', 'numeric',
+        function ($attribute, $value, $fail) {
+          if ($value != null) {
+            if (!is_numeric($value)) {
+              $fail('Atribut ini harus berupa angka!');
+            } else if (!str_starts_with($value, '0')) {
+              $fail('Pastikan format sesuai dengan contoh!');
+            }
+          }
+        }
+      ],
       'address' => 'required',
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
@@ -51,7 +67,18 @@ class RegisterController extends Controller
       'username' => 'required|min:5|max:255|unique:users',
       'email' => 'required|email|unique:users',
       // 'password' => 'required|min:5|max:255|confirmed',
-      'contact' => 'required',
+      'contact' => [
+        'required', 'numeric',
+        function ($attribute, $value, $fail) {
+          if ($value != null) {
+            if (!is_numeric($value)) {
+              $fail('Atribut ini harus berupa angka!');
+            } else if (!str_starts_with($value, '0')) {
+              $fail('Pastikan format sesuai dengan contoh!');
+            }
+          }
+        }
+      ],
       'address' => 'required',
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',

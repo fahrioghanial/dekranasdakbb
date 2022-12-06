@@ -71,8 +71,6 @@
             <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
               type="submit">Simpan Kata Sandi Baru</button>
           </div>
-          <small class="mt-2 text-black text-md">Belum punya akun? daftar <a class="hover:text-red-600 text-blue-700"
-              href="/register">disini</a></small>
         </form>
       </div>
     </div>

@@ -48,9 +48,17 @@ class DashboardCraftController extends Controller
       'title' => 'required|max:255',
       'slug' => 'required',
       'category_id' => 'required',
-      'price' => 'required|numeric',
+      'price' => [
+        'required', 'numeric',
+        function ($attribute, $value, $fail) {
+          if (str_contains($value, '.')) {
+            $fail('Pastikan format sesuai dengan contoh!');
+          }
+        },
+      ],
       'description' => ''
     ]);
+
 
     $validatedData['image'] = $request->file('image')->store('craft-images');
     $validatedData['user_id'] = auth()->user()->id;
@@ -112,7 +120,14 @@ class DashboardCraftController extends Controller
       'title' => 'required|max:255',
       'slug' => 'required',
       'category_id' => 'required',
-      'price' => 'required|numeric',
+      'price' => [
+        'required', 'numeric',
+        function ($attribute, $value, $fail) {
+          if (str_contains($value, '.')) {
+            $fail('Pastikan format sesuai dengan contoh!');
+          }
+        },
+      ],
       'description' => '',
     ];
 
@@ -195,7 +210,14 @@ class DashboardCraftController extends Controller
       'user_id' => '',
       'slug' => 'required',
       'category_id' => 'required',
-      'price' => 'required|numeric',
+      'price' => [
+        'required', 'numeric',
+        function ($attribute, $value, $fail) {
+          if (str_contains($value, '.')) {
+            $fail('Pastikan format sesuai dengan contoh!');
+          }
+        },
+      ],
       'description' => ''
     ]);
 
@@ -216,7 +238,14 @@ class DashboardCraftController extends Controller
       'title' => 'required|max:255',
       'slug' => 'required',
       'category_id' => 'required',
-      'price' => 'required|numeric',
+      'price' => [
+        'required', 'numeric',
+        function ($attribute, $value, $fail) {
+          if (str_contains($value, '.')) {
+            $fail('Pastikan format sesuai dengan contoh!');
+          }
+        },
+      ],
       'description' => '',
     ];
 

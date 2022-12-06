@@ -17,7 +17,12 @@ class LoginController extends Controller
   public function index()
   {
     if (url()->previous() == url("/") . "/") {
-      WebViewerCount::first()->increment('count');
+      if (WebViewerCount::first() == null) {
+        $data['count'] = 1;
+        WebViewerCount::create($data);
+      } else {
+        WebViewerCount::first()->increment('count');
+      }
     }
 
     return view('login.index');
@@ -69,7 +74,7 @@ class LoginController extends Controller
       'token' => $token,
       'email' => $request->email
     ]);
-    $body = "Permintaan reset kata sandi untuk akun " . $request->email . " telah diterima. Anda dapat mereset kata sandi dengan menekan link di bawah ini";
+    $body = "Permintaan reset kata sandi untuk akun " . $request->email . " telah diterima. Anda dapat mereset kata sandi dengan menekan link di bawah";
     Mail::send(
       'login.email-forgot',
       [

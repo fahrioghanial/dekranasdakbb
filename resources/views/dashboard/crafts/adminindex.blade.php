@@ -28,7 +28,8 @@
           <th class="bg-slate-900">Kategori</th>
           <th class="bg-slate-900">Pengunjung</th>
           <th class="bg-slate-900">Tanggal Ditambahkan</th>
-          <th class="bg-slate-900">Diubah Oleh</th>
+          <th class="bg-slate-900">Terakhir Diubah Oleh</th>
+          <th class="bg-slate-900">Status Persetujuan</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>
       </thead>
@@ -52,6 +53,7 @@
             -
             @endif
           </td>
+          <td class="bg-slate-900">{{ $craft->is_confirmed ? "Disetujui" : "Menunggu Persetujuan" }}</td>
           <td class="bg-slate-900">
             <div class="flex flex-col gap-1">
               <a href="/dashboard/craftsadmin/{{ $craft->id }}" class="btn btn-xs btn-info btn-outline">

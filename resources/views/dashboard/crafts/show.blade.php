@@ -17,7 +17,7 @@
       <div class="card-actions justify-end">
         <a href="/dashboard/crafts/" class="btn bg-blue-600 text-white border-0 w-full md:w-fit">Kembali</a>
         <a href="/dashboard/crafts/{{ $craft->id }}/edit"
-          class="btn bg-yellow-600 text-white border-0 w-full md:w-fit">Edit</a>
+          class="btn bg-yellow-600 text-white border-0 w-full md:w-fit">Ubah</a>
         <form action="/dashboard/crafts/{{ $craft->id }}" method="post" class="w-full md:w-fit">
           @method('delete')
           @csrf

@@ -85,7 +85,18 @@ class ProfileController extends Controller
     $rules = [
       'name' => 'required|max:255',
       // 'password' => 'required|min:5|max:255',
-      'contact' => 'required',
+      'contact' => [
+        'required', 'numeric',
+        function ($attribute, $value, $fail) {
+          if ($value != null) {
+            if (!is_numeric($value)) {
+              $fail('Atribut ini harus berupa angka!');
+            } else if (!str_starts_with($value, '0')) {
+              $fail('Pastikan format sesuai dengan contoh!');
+            }
+          }
+        }
+      ],
       'address' => 'required',
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
@@ -172,7 +183,18 @@ class ProfileController extends Controller
     $rules = [
       'name' => 'required|max:255',
       // 'password' => 'required|min:5|max:255',
-      'contact' => 'required',
+      'contact' => [
+        'required', 'numeric',
+        function ($attribute, $value, $fail) {
+          if ($value != null) {
+            if (!is_numeric($value)) {
+              $fail('Atribut ini harus berupa angka!');
+            } else if (!str_starts_with($value, '0')) {
+              $fail('Pastikan format sesuai dengan contoh!');
+            }
+          }
+        }
+      ],
       'address' => 'required',
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
@@ -215,17 +237,13 @@ class ProfileController extends Controller
       $rules['profile_picture'] = 'image|file|required';
     }
 
-    if ($request->old_password) {
-      if (Hash::check($request->old_password, $user->password)) {
-        $rules['password'] = 'required|min:5|max:255|confirmed';
-      } else {
-        return redirect('/dashboard/user/' . $user->id . '/edit')->with('fail', 'Kata sandi lama salah!');
-      }
+    if ($request->password) {
+      $rules['password'] = 'required|min:5|max:255|confirmed';
     }
 
     $validatedData = $request->validate($rules);
 
-    if ($request->old_password) {
+    if ($request->password) {
       $validatedData['password'] = bcrypt($validatedData['password']);
     }
 
@@ -245,7 +263,7 @@ class ProfileController extends Controller
 
   public function adminDeleteUser(User $user)
   {
-    if ($user->profile_picture != "article-covers/contoh-cover.jpg") {
+    if ($user->profile_picture != "profile-pictures/contoh-foto.png") {
       Storage::delete($user->profile_picture);
     }
 

@@ -30,43 +30,33 @@ use Maatwebsite\Excel\Facades\Excel;
 */
 
 Route::get('/', function () {
-  if (url()->previous() == url("/") . "/") {
-    WebViewerCount::first()->increment('count');
-  }
-
+  $count = WebViewerCount::first();
   return view('index', [
-    'web_viewer_count' => WebViewerCount::first()->count,
+    'web_viewer_count' => $count,
   ]);
 });
-Route::get('/benefit', function () {
-  if (url()->previous() == url("/") . "/") {
-    WebViewerCount::first()->increment('count');
-  }
-  return view('benefit');
-});
-Route::get('/howto', function () {
-  if (url()->previous() == url("/") . "/") {
-    WebViewerCount::first()->increment('count');
-  }
-  return view('howto');
-});
+
 Route::get('/contact', function () {
   if (url()->previous() == url("/") . "/") {
-    WebViewerCount::first()->increment('count');
+    if (WebViewerCount::first() == null) {
+      $data['count'] = 1;
+      WebViewerCount::create($data);
+    } else {
+      WebViewerCount::first()->increment('count');
+    }
   }
   return view('contact');
 });
 Route::get('/aboutus', function () {
   if (url()->previous() == url("/") . "/") {
-    WebViewerCount::first()->increment('count');
+    if (WebViewerCount::first() == null) {
+      $data['count'] = 1;
+      WebViewerCount::create($data);
+    } else {
+      WebViewerCount::first()->increment('count');
+    }
   }
   return view('about');
-});
-Route::get('/organization', function () {
-  if (url()->previous() == url("/") . "/") {
-    WebViewerCount::first()->increment('count');
-  }
-  return view('organization');
 });
 
 Route::get('/crafts', [CraftController::class, 'index']);
@@ -87,10 +77,14 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/username/checkUsername', [RegisterController::class, 'checkUsername']);
 
-
 Route::get('/member', function () {
   if (url()->previous() == url("/") . "/") {
-    WebViewerCount::first()->increment('count');
+    if (WebViewerCount::first() == null) {
+      $data['count'] = 1;
+      WebViewerCount::create($data);
+    } else {
+      WebViewerCount::first()->increment('count');
+    }
   }
 
   $users = User::where('status_keanggotaan', 1);
@@ -224,19 +218,17 @@ Route::get('/dashboard/adminuser/membership/confirmall', function () {
   ];
   $validatedData['status_keanggotaan'] = true;
   User::where('status_keanggotaan', 0)->update($validatedData);
+  Craft::where('is_confirmed', 0)->update(['is_confirmed' => true]);
   return redirect('/dashboard/adminuser')->with('success', 'Semua perajin berhasil diterima!');
 })->middleware('admin');
 Route::get('/dashboard/adminuser/membership/{user:username}', function (User $user) {
-  $validatedData = [
-    'status_keanggotaan' => ''
-  ];
   if ($user->status_keanggotaan) {
-    $validatedData['status_keanggotaan'] = false;
-    User::where('id', $user->id)->update($validatedData);
+    User::where('id', $user->id)->update(['status_keanggotaan' => false]);
+    Craft::where('user_id', $user->id)->update(['is_confirmed' => false]);
     return redirect('/dashboard/adminuser')->with('success', 'Keanggotaan perajin berhasil dicabut!');
   } else {
-    $validatedData['status_keanggotaan'] = true;
-    User::where('id', $user->id)->update($validatedData);
+    User::where('id', $user->id)->update(['status_keanggotaan' => true]);
+    Craft::where('user_id', $user->id)->update(['is_confirmed' => true]);
     return redirect('/dashboard/adminuser')->with('success', 'Keanggotaan perajin berhasil diterima!');
   }
 })->middleware('admin');

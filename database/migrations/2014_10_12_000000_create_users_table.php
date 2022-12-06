@@ -33,7 +33,7 @@ return new class extends Migration
       $table->string('instagram')->nullable();
       $table->string('whatsapp')->nullable();
       $table->string('password');
-      $table->foreignId('updated_by')->nullable()->constrained('users');
+      $table->foreignId('updated_by')->nullable();
       $table->rememberToken();
       $table->timestamps();
     });

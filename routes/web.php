@@ -128,6 +128,7 @@ Route::get('/dashboard/statistics', function () {
   $cheap_product = Craft::get()->where('price', $lowest_price);
   $most_viewed_product = Craft::get()->where('views', $highest_views);
   $less_viewed_product = Craft::get()->where('views', $lowest_views);
+  $count = WebViewerCount::first();
 
   return view('dashboard.statistics', [
     "craftsman_total" => User::all()->count(),
@@ -143,7 +144,7 @@ Route::get('/dashboard/statistics', function () {
     "cheap_product" => $cheap_product,
     "most_viewed_product" => $most_viewed_product,
     "less_viewed_product" => $less_viewed_product,
-    'web_viewer_count' => WebViewerCount::first()->count,
+    'web_viewer_count' => $count,
   ]);
 })->middleware('admin');
 

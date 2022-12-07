@@ -33,7 +33,7 @@ class UserFactory extends Factory
       'facebook' => 'facebook',
       'instagram' => 'instagram',
       'whatsapp' => '0895391719873',
-      'profile_picture' => 'profile-pictures/contoh-foto.png',
+      'profile_picture' => 'profile-pictures/contoh-fotoprofil.jpg',
       'password' => bcrypt('12345'),
       'remember_token' => Str::random(10),
     ];

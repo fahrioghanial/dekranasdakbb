@@ -154,7 +154,7 @@ class ProfileController extends Controller
       $validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-    if ($request->oldImage != "profile-pictures/contoh-foto.png" && $request->profile_picture) {
+    if ($request->oldImage != "profile-pictures/contoh-fotoprofil.jpg" && $request->profile_picture) {
       Storage::delete($request->oldImage);
     }
     if ($request->profile_picture) {
@@ -249,7 +249,7 @@ class ProfileController extends Controller
       $validatedData['password'] = bcrypt($validatedData['password']);
     }
 
-    if ($request->oldImage != "profile-pictures/contoh-foto.png" && $request->profile_picture) {
+    if ($request->oldImage != "profile-pictures/contoh-fotoprofil.jpg" && $request->profile_picture) {
       Storage::delete($request->oldImage);
     }
     if ($request->profile_picture) {
@@ -265,7 +265,11 @@ class ProfileController extends Controller
 
   public function adminDeleteUser(User $user)
   {
-    if ($user->profile_picture != "profile-pictures/contoh-foto.png") {
+    if ($user->is_admin) {
+      abort(403);
+    }
+
+    if ($user->profile_picture != "profile-pictures/contoh-fotoprofil.jpg") {
       Storage::delete($user->profile_picture);
     }
 

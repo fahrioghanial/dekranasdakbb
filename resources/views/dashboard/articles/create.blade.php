@@ -32,7 +32,7 @@
         </div>
         @enderror
       </div>
-      <div class="form-control w-full">
+      <div class="form-control w-full hidden">
         <label class="label">
           <span class="label-text text-black">Slug</span>
         </label>

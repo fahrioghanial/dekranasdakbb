@@ -36,6 +36,18 @@
     trix-toolbar [data-trix-button-group="file-tools"] {
       display: none;
     }
+
+    trix-toolbar [data-trix-button-group="block-tools"] {
+      display: none;
+    }
+
+    trix-toolbar [data-trix-button-group="history-tools"] {
+      display: none;
+    }
+
+    trix-toolbar [data-trix-action="link"] {
+      display: none;
+    }
   </style>
 
   {{-- Turbo --}}

@@ -38,7 +38,7 @@
   <div class="text-white text-md flex flex-col gap-1 text-lg mb-2">
     <div class="flex gap-3 mb-2">
       <p class="text-xl">•</p>
-      <p class="">Total Pengunjung Web: {{ $web_viewer_count }}</p>
+      <p class="">Total Pengunjung Web: {{ $web_viewer_count->count }}</p>
     </div>
   </div>
   {{-- Kategori Produk --}}

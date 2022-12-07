@@ -8,6 +8,7 @@
       alt="{{ $user->name }}">
     <div class="card-body md:text-xl">
       <h2>Nama Lengkap: {{ $user->name }}</h2>
+      <h2>Nama Usaha: {{ $user->business_name }}</h2>
       <h2>Email: {{ $user->email }}</h2>
       <h2>Nomor KTP: {{ $user->noktp }}</h2>
       <h2>Alamat: {{ $user->address }}</h2>

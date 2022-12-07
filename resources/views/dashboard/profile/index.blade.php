@@ -12,6 +12,7 @@
       alt="{{ $user->name }}" />
     <div class="card-body md:text-xl">
       <h2>Nama Lengkap: {{ $user->name }}</h2>
+      <h2>Nama Usaha: {{ $user->business_name }}</h2>
       {{-- <h2>Username (Nama Pengguna): {{ $user->username }} </h2> --}}
       <h2>Status Keanggotaan: {{ $user->status_keanggotaan? "Diterima" : "Menunggu Persetujuan" }} </h2>
       <h2>Email: {{ $user->email }}</h2>
@@ -27,7 +28,7 @@
       <h2>Instagram: {{ $user->instagram }}</h2>
       <h2>Whatsapp: {{ $user->whatsapp }}</h2>
       <div class="card-actions justify-end">
-        <a href="/dashboard/user/{{ $user->id }}/edit" class="btn btn-warning">Edit</a>
+        <a href="/dashboard/user/{{ $user->id }}/edit" class="btn btn-warning">Ubah</a>
       </div>
     </div>
   </div>

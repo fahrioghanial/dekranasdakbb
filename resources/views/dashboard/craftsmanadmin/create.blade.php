@@ -31,8 +31,21 @@
         </label>
         <input type="text" name="name"
           class="input input-bordered w-full {{ $errors->has('name')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="name" placeholder="Nama Lengkap" autofocus value="{{ old('name') }}">
+          id="name" placeholder="Nama Lengkap" value="{{ old('name') }}">
         @error('name')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Nama Usaha</span>
+        </label>
+        <input type="text" name="business_name"
+          class="input input-bordered w-full {{ $errors->has('business_name')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="business_name" placeholder="Nama Usaha" value="{{ old('business_name') }}">
+        @error('business_name')
         <div class="text-rose-500">
           {{ $message }}
         </div>

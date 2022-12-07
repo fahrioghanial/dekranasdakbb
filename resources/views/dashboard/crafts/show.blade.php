@@ -12,6 +12,7 @@
       <h1>Kategori: {{ $craft->category->name }}</h1>
       <h2>Harga: Rp{{ $craft->price }}</h2>
       <h2>Pembuat: {{ $craft->craftsman->name }}</h2>
+      <h2>Nama Usaha: {{ $craft->craftsman->business_name }}</h2>
       <h2>Kontak: {{ $craft->craftsman->contact }}</h2>
       <h2>Alamat: {{ $craft->craftsman->address }}</h2>
       <div class="card-actions justify-end">

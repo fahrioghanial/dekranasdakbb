@@ -23,7 +23,9 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
   {
     return [
       'Id',
+      "Link Foto Profil",
       "Nama Lengkap",
+      "Nama Usaha",
       "Nomor KTP",
       "Alamat",
       "RT",
@@ -39,11 +41,16 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
       "Whatsapp",
       "Status Keanggotaan",
       'Tanggal Akun Dibuat',
+      'Terakhir Diubah Oleh',
     ];
   }
 
   public function map($user): array
   {
+    $user_picture_link = asset('storage/' . $user->profile_picture);
+    if (isset($user->updatedBy->name)) {
+      $last_updated_by = $user->updatedBy->name . ", pada " . $user->updated_at->format('d-m-Y');
+    } else $last_updated_by = "-";
     if ($user->is_admin) {
       $status_keanggotaan = "Administrator";
     } else {
@@ -51,7 +58,9 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
     }
     return [
       $user->id,
+      $user_picture_link,
       $user->name,
+      $user->business_name,
       $user->noktp,
       $user->address,
       $user->rt,
@@ -67,6 +76,7 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
       $user->whatsapp,
       $status_keanggotaan,
       $user->created_at->format("d-m-Y"),
+      $last_updated_by,
     ];
   }
 }

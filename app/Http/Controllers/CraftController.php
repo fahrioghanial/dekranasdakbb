@@ -32,7 +32,7 @@ class CraftController extends Controller
       } else if (request('craftsman')) {
         $craftsmans = User::where('username', 'like', '%' . request('craftsman') . '%');
         $crafts->where('user_id', 'like', '%' . $craftsmans->first()->id . '%');
-        $title = "Pencarian: " . request('search') . " pada kerajinan oleh " . $craftsmans->first()->name;
+        $title = "Pencarian: " . request('search') . " pada kerajinan oleh " . $craftsmans->first()->business_name;
       } else {
         $title = "Pencarian: " . request('search');
       }
@@ -44,7 +44,7 @@ class CraftController extends Controller
     } elseif (request('craftsman')) {
       $craftsmans = User::where('username', 'like', '%' . request('craftsman') . '%');
       $crafts->where('user_id', 'like', '%' . $craftsmans->first()->id . '%');
-      $title = "Kerajinan Oleh: " . $craftsmans->first()->name;
+      $title = "Kerajinan Oleh: " . $craftsmans->first()->business_name;
     }
 
     return view('crafts', [

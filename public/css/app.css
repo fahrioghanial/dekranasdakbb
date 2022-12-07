@@ -3881,14 +3881,14 @@ body[dir="rtl"] .checkbox:checked,
 .mt-1 {
   margin-top: 0.25rem;
 }
+.mt-4 {
+  margin-top: 1rem;
+}
 .mt-6 {
   margin-top: 1.5rem;
 }
 .ml-5 {
   margin-left: 1.25rem;
-}
-.mt-4 {
-  margin-top: 1rem;
 }
 .mt-7 {
   margin-top: 1.75rem;
@@ -3965,29 +3965,11 @@ body[dir="rtl"] .checkbox:checked,
 .h-6 {
   height: 1.5rem;
 }
-.h-screen {
-  height: 100vh;
-}
 .h-\[1px\] {
   height: 1px;
 }
 .h-5 {
   height: 1.25rem;
-}
-.h-full {
-  height: 100%;
-}
-.h-min {
-  height: -moz-min-content;
-  height: min-content;
-}
-.min-h-min {
-  min-height: -moz-min-content;
-  min-height: min-content;
-}
-.min-h-fit {
-  min-height: -moz-fit-content;
-  min-height: fit-content;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -4231,6 +4213,10 @@ body[dir="rtl"] .checkbox:checked,
   --tw-bg-opacity: 1;
   background-color: rgb(220 53 69 / var(--tw-bg-opacity));
 }
+.bg-purple-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 51 234 / var(--tw-bg-opacity));
+}
 .bg-green-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
@@ -4238,10 +4224,6 @@ body[dir="rtl"] .checkbox:checked,
 .bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
-}
-.bg-purple-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(147 51 234 / var(--tw-bg-opacity));
 }
 .bg-gray-500 {
   --tw-bg-opacity: 1;
@@ -4274,6 +4256,10 @@ body[dir="rtl"] .checkbox:checked,
   --tw-bg-opacity: 1;
   background-color: rgb(202 138 4 / var(--tw-bg-opacity));
 }
+.bg-blue-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
+}
 .bg-gray-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
@@ -4285,18 +4271,6 @@ body[dir="rtl"] .checkbox:checked,
 .bg-gray-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
-}
-.bg-blue-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
-}
-.bg-yellow-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
-}
-.bg-blue-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
 }
 .bg-\[url\(\'\/img\/bgaboutus\.jpg\'\)\] {
   background-image: url('/img/bgaboutus.jpg');
@@ -4425,9 +4399,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .pt-5 {
   padding-top: 1.25rem;
-}
-.pb-40 {
-  padding-bottom: 10rem;
 }
 .text-left {
   text-align: left;

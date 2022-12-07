@@ -44,6 +44,20 @@
         </div>
         @enderror
       </div>
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-black">Nama Usaha</span>
+        </label>
+        <input type="text" name="business_name"
+          class="input input-bordered w-full {{ $errors->has('business_name')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="business_name" placeholder="Nama Usaha" autofocus
+          value="{{ old('business_name', $user->business_name) }}">
+        @error('business_name')
+        <div class="text-rose-500">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
       <div class="form-control w-full hidden">
         <label class="label">
           <span class="label-text text-black">Username (Nama Pengguna)</span>

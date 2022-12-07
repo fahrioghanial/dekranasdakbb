@@ -24,6 +24,7 @@
           <th class="bg-slate-900">#</th>
           <th class="bg-slate-900">Foto</th>
           <th class="bg-slate-900">Nama</th>
+          <th class="bg-slate-900">Nama Usaha</th>
           <th class="bg-slate-900">Email</th>
           <th class="bg-slate-900">No HP</th>
           <th class="bg-slate-900">Jumlah Produk</th>
@@ -42,6 +43,7 @@
               alt="{{ $user->name }}">
           </td>
           <td class="bg-slate-900">{{ $user->name }}</td>
+          <td class="bg-slate-900">{{ $user->business_name }}</td>
           <td class="bg-slate-900">{{ $user->email }}</td>
           <td class="bg-slate-900 whitespace-nowrap">{{ $user->contact }}</td>
           <td class="bg-slate-900">{{ $user->crafts_count }}</td>

@@ -24,6 +24,7 @@
           <th class="bg-slate-900">Foto Kerajinan</th>
           <th class="bg-slate-900">Judul</th>
           <th class="bg-slate-900">Pembuat</th>
+          <th class="bg-slate-900">Nama Usaha</th>
           <th class="bg-slate-900">Harga (Rp)</th>
           <th class="bg-slate-900">Kategori</th>
           <th class="bg-slate-900">Pengunjung</th>
@@ -42,6 +43,7 @@
           </td>
           <td class="bg-slate-900">{{ $craft->title }}</td>
           <td class="bg-slate-900">{{ $craft->craftsman->name }}</td>
+          <td class="bg-slate-900">{{ $craft->craftsman->business_name }}</td>
           <td class="bg-slate-900">{{ $craft->price }}</td>
           <td class="bg-slate-900">{{ $craft->category->name }}</td>
           <td class="bg-slate-900">{{ $craft->views }}</td>

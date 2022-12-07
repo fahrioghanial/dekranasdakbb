@@ -73,15 +73,17 @@
           src="https://picsum.photos/id/{{ $loop->iteration + 50 }}/200" alt="{{ $craft->title }}" /> --}}
         <div class="card-body p-4">
           <h2 class="card-title">
-            {{ $craft->title }}
-            <div class="badge badge-secondary hover:bg-slate-700"><a
-                href="/crafts?category={{ $craft->category->slug }}">{{
-                $craft->category->name }}</a></div>
+            <div>
+              <div class="badge badge-secondary hover:bg-slate-700"><a
+                  href="/crafts?category={{ $craft->category->slug }}">{{
+                  $craft->category->name }}</a></div>
+              <p>{{ $craft->title }}</p>
+            </div>
           </h2>
           <p>Rp{{ $craft->price }}</p>
           <a class="hover:text-[#DBC8AC] text-blue-700" href="/crafts?craftsman={{ $craft->craftsman->username }}">Oleh:
             {{
-            $craft->craftsman->name
+            $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
             <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
@@ -104,15 +106,17 @@
           src="https://picsum.photos/id/{{ $loop->iteration + 50 }}/200" alt="{{ $craft->title }}" /> --}}
         <div class="card-body p-4">
           <h2 class="card-title">
-            {{ $craft->title }}
-            <div class="badge badge-secondary hover:bg-slate-700"><a
-                href="/crafts?category={{ $craft->category->slug }}">{{
-                $craft->category->name }}</a></div>
+            <div>
+              <div class="badge badge-secondary hover:bg-slate-700"><a
+                  href="/crafts?category={{ $craft->category->slug }}">{{
+                  $craft->category->name }}</a></div>
+              <p>{{ $craft->title }}</p>
+            </div>
           </h2>
           <p>Rp{{ $craft->price }}</p>
           <a class="hover:text-[#DBC8AC] text-blue-700" href="/crafts?craftsman={{ $craft->craftsman->username }}">Oleh:
             {{
-            $craft->craftsman->name
+            $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
             <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
@@ -135,15 +139,17 @@
           src="https://picsum.photos/id/{{ $loop->iteration + 50 }}/200" alt="{{ $craft->title }}" /> --}}
         <div class="card-body p-4">
           <h2 class="card-title">
-            {{ $craft->title }}
-            <div class="badge badge-secondary hover:bg-slate-700"><a
-                href="/crafts?category={{ $craft->category->slug }}">{{
-                $craft->category->name }}</a></div>
+            <div>
+              <div class="badge badge-secondary hover:bg-slate-700"><a
+                  href="/crafts?category={{ $craft->category->slug }}">{{
+                  $craft->category->name }}</a></div>
+              <p>{{ $craft->title }}</p>
+            </div>
           </h2>
           <p>Rp{{ $craft->price }}</p>
           <a class="hover:text-[#DBC8AC] text-blue-700" href="/crafts?craftsman={{ $craft->craftsman->username }}">Oleh:
             {{
-            $craft->craftsman->name
+            $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
             <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
@@ -166,15 +172,17 @@
           src="https://picsum.photos/id/{{ $loop->iteration + 50 }}/200" alt="{{ $craft->title }}" /> --}}
         <div class="card-body p-4">
           <h2 class="card-title">
-            {{ $craft->title }}
-            <div class="badge badge-secondary hover:bg-slate-700"><a
-                href="/crafts?category={{ $craft->category->slug }}">{{
-                $craft->category->name }}</a></div>
+            <div>
+              <div class="badge badge-secondary hover:bg-slate-700"><a
+                  href="/crafts?category={{ $craft->category->slug }}">{{
+                  $craft->category->name }}</a></div>
+              <p>{{ $craft->title }}</p>
+            </div>
           </h2>
           <p>Rp{{ $craft->price }}</p>
           <a class="hover:text-[#DBC8AC] text-blue-700" href="/crafts?craftsman={{ $craft->craftsman->username }}">Oleh:
             {{
-            $craft->craftsman->name
+            $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
             <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
@@ -197,15 +205,17 @@
           src="https://picsum.photos/id/{{ $loop->iteration + 50 }}/200" alt="{{ $craft->title }}" /> --}}
         <div class="card-body p-4">
           <h2 class="card-title">
-            {{ $craft->title }}
-            <div class="badge badge-secondary hover:bg-slate-700"><a
-                href="/crafts?category={{ $craft->category->slug }}">{{
-                $craft->category->name }}</a></div>
+            <div>
+              <div class="badge badge-secondary hover:bg-slate-700"><a
+                  href="/crafts?category={{ $craft->category->slug }}">{{
+                  $craft->category->name }}</a></div>
+              <p>{{ $craft->title }}</p>
+            </div>
           </h2>
           <p>Rp{{ $craft->price }}</p>
           <a class="hover:text-[#DBC8AC] text-blue-700" href="/crafts?craftsman={{ $craft->craftsman->username }}">Oleh:
             {{
-            $craft->craftsman->name
+            $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
             <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"

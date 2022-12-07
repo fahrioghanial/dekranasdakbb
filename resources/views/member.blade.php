@@ -29,6 +29,7 @@
           alt="{{ $user->username }}" />
         <div class="card-body">
           <h2 class="card-title">{{ $user->name }}</h2>
+          <p class="text-md font-semibold">Nama Usaha: {{ $user->business_name }}</p>
           <p class="text-md font-semibold">{{ $user->kelurahan_desa }}</p>
           <p class="text-md font-semibold"><i class="bi bi-whatsapp"></i> {{ $user->whatsapp }}</p>
           <p class="text-md font-semibold"><i class="bi bi-facebook"></i> {{ $user->facebook }}</p>

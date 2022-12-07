@@ -84,6 +84,7 @@ class ProfileController extends Controller
     // dd(Hash::check($request->old_password, $user->password));
     $rules = [
       'name' => 'required|max:255',
+      'business_name' => 'required',
       // 'password' => 'required|min:5|max:255',
       'contact' => [
         'required', 'numeric',
@@ -182,6 +183,7 @@ class ProfileController extends Controller
   {
     $rules = [
       'name' => 'required|max:255',
+      'business_name' => 'required',
       // 'password' => 'required|min:5|max:255',
       'contact' => [
         'required', 'numeric',

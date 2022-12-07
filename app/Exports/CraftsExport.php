@@ -23,28 +23,36 @@ class CraftsExport implements FromCollection, WithMapping, WithHeadings
     return [
       'Id',
       "Judul",
-      "Foto Kerajinan",
+      "Link Foto Kerajinan",
       "Deskripsi",
       "Pembuat/Perajin",
+      "Nama Usaha",
       "Harga",
       "Kategori",
       "Pengunjung",
       'Tanggal Ditambahkan',
+      'Terakhir Diubah Oleh',
     ];
   }
 
   public function map($craft): array
   {
+    $craft_image_link = asset('storage/' . $craft->image);
+    if (isset($craft->updatedBy->name)) {
+      $last_updated_by = $craft->updatedBy->name . ", pada " . $craft->updated_at->format('d-m-Y');
+    } else $last_updated_by = "-";
     return [
       $craft->id,
       $craft->title,
-      $craft->image,
+      $craft_image_link,
       $craft->description,
       $craft->craftsman->name,
+      $craft->craftsman->business_name,
       $craft->price,
       $craft->category->name,
       $craft->views,
       $craft->created_at->format("d-m-Y"),
+      $last_updated_by
     ];
   }
 }

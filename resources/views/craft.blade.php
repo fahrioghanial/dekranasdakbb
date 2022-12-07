@@ -20,7 +20,7 @@
     <h2 class="font-bold md:text-4xl text-2xl mb-2">Rp{{ $craft->price }}</h2>
     <h1 class="font-semibold md:text-2xl text-xl mb-5">Oleh <a class="hover:text-[#DBC8AC] text-blue-700"
         href="/crafts?craftsman={{ $craft->craftsman->username }}">{{
-        $craft->craftsman->name }}</a>
+        $craft->craftsman->business_name}}</a>
     </h1>
     <div class="flex flex-col md:flex-row md:gap-10 mb-7 bg-white rounded-md items-start">
       <img class="object-cover object-center md:rounded-l-md h-[500px] md:w-1/2 w-full"
@@ -29,6 +29,7 @@
         <p class="md:text-2xl font-semibold">Deskripsi</p>
         <p>{{ $craft->description }}</p>
         <p class="md:text-2xl font-semibold mt-4">Kontak Penjual</p>
+        <h2>Nama: {{ $craft->craftsman->name }}</h2>
         <h2>Telepon: {{ $craft->craftsman->contact }}</h2>
         <h2>Whatsapp: {{ $craft->craftsman->whatsapp }}</h2>
         <h2>Email: {{ $craft->craftsman->email }}</h2>

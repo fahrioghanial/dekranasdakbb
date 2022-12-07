@@ -19,9 +19,10 @@ class UserFactory extends Factory
   {
     return [
       'name' => $this->faker->name(),
+      'business_name' => $this->faker->name() . ' Crafting',
       'username' => $this->faker->unique()->slug(),
       'email' => $this->faker->unique()->safeEmail(),
-      'contact' => $this->faker->phoneNumber(),
+      'contact' => "085123456789",
       'address' => $this->faker->streetAddress(),
       'rt' => 5,
       'rw' => 20,

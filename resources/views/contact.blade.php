@@ -31,6 +31,14 @@
             Kirim Email
           </a>
         </div>
+        <div class="flex flex-col mt-4">
+          <p class="text-xl md:text-2xl font-bold">Instagram</p>
+          <p>@dekranasda.kbb</p>
+          <a class="mt-1 w-fit rounded-lg py-2 px-3 bg-purple-600 hover:bg-opacity-50 text-md font-semibold text-white"
+            href="https://www.instagram.com/dekranasda.kbb" target="_blank">
+            <i class="bi bi-instagram"></i> Buka Instagram
+          </a>
+        </div>
       </div>
       <div class="container">
         <iframe class="w-full h-[500px]" id="gmap_canvas"

@@ -26,24 +26,24 @@ class CraftController extends Controller
 
     if (request('search')) {
       if (request('category')) {
-        $categories = Category::where('slug', 'like', '%' . request('category') . '%');
-        $crafts->where('category_id', 'like', '%' . $categories->first()->id . '%');
+        $categories = Category::where('slug', '=', request('category'));
+        $crafts->where('category_id', '=', $categories->first()->id);
         $title = "Pencarian: " . request('search') . " pada kategori " . $categories->first()->name;
       } else if (request('craftsman')) {
-        $craftsmans = User::where('username', 'like', '%' . request('craftsman') . '%');
-        $crafts->where('user_id', 'like', '%' . $craftsmans->first()->id . '%');
+        $craftsmans = User::where('username', '=', request('craftsman'));
+        $crafts->where('user_id', '=', $craftsmans->first()->id);
         $title = "Pencarian: " . request('search') . " pada kerajinan oleh " . $craftsmans->first()->business_name;
       } else {
         $title = "Pencarian: " . request('search');
       }
       $crafts->where('title', 'like', '%' . request('search') . '%');
     } elseif (request('category')) {
-      $categories = Category::where('slug', 'like', '%' . request('category') . '%');
-      $crafts->where('category_id', 'like', '%' . $categories->first()->id . '%');
+      $categories = Category::where('slug', '=', request('category'));
+      $crafts->where('category_id', '=', $categories->first()->id);
       $title = "Kategori Kerajinan: " . $categories->first()->name;
     } elseif (request('craftsman')) {
-      $craftsmans = User::where('username', 'like', '%' . request('craftsman') . '%');
-      $crafts->where('user_id', 'like', '%' . $craftsmans->first()->id . '%');
+      $craftsmans = User::where('username', '=', request('craftsman'));
+      $crafts->where('user_id', '=', $craftsmans->first()->id);
       $title = "Kerajinan Oleh: " . $craftsmans->first()->business_name;
     }
 

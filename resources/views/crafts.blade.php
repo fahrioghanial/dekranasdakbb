@@ -29,10 +29,10 @@
               class="input input-bordered rounded-r-none border-r-none bg-white md:w-4/5 text-black" id="search"
               placeholder="Cari Produk Kerajinan..." value="{{ request('search') }}">
             <button
-              class="bg-[#e00024] py-2 px-3 hover:bg-blue-900 rounded-l-none border-l-none rounded-lg text-white text-xl font-semibold"
+              class="bg-[#e00024] py-2 px-3 hover:bg-[#FF9684] rounded-l-none border-l-none rounded-lg text-white text-xl font-semibold"
               type="submit">Cari</button>
           </div>
-          <a class="bg-[#e00024] py-3 px-3 hover:bg-blue-900 rounded-lg text-white text-md font-semibold {{ (request('search')||request('craftsman')||request('category'))?"":"
+          <a class="bg-[#e00024] py-3 px-3 hover:bg-[#FF9684] rounded-lg text-white text-md font-semibold {{ (request('search')||request('craftsman')||request('category'))?"":"
             hidden" }}" href="/crafts">Tampilkan Semua Produk</a>
         </div>
       </form>
@@ -58,7 +58,7 @@
             <option @if(request('sortby')=="terlama" )selected @endif value="terlama">Terlama</option>
           </select>
           <button
-            class="bg-[#e00024] py-2 px-3 hover:bg-blue-900 rounded-l-none border-l-none rounded-lg text-white text-md font-semibold"
+            class="bg-[#e00024] py-2 px-3 hover:bg-[#FF9684] rounded-l-none border-l-none rounded-lg text-white text-md font-semibold"
             type="submit">Terapkan</button>
         </div>
       </form>
@@ -79,7 +79,8 @@
             <div>
               <div class="badge border-[#e00024] bg-white text-[#e00024]  border-1 hover:bg-[#e00024] hover:text-white">
                 <a href="/crafts?category={{ $craft->category->slug }}">{{
-                  $craft->category->name }}</a></div>
+                  $craft->category->name }}</a>
+              </div>
               <p>{{ $craft->title }}</p>
             </div>
           </h2>
@@ -89,7 +90,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>
@@ -112,7 +113,8 @@
             <div>
               <div class="badge border-[#e00024] bg-white text-[#e00024] border-1 hover:bg-[#e00024] hover:text-white">
                 <a href="/crafts?category={{ $craft->category->slug }}">{{
-                  $craft->category->name }}</a></div>
+                  $craft->category->name }}</a>
+              </div>
               <p>{{ $craft->title }}</p>
             </div>
           </h2>
@@ -122,7 +124,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>
@@ -145,7 +147,8 @@
             <div>
               <div class="badge border-[#e00024] bg-white text-[#e00024] border-1 hover:bg-[#e00024] hover:text-white">
                 <a href="/crafts?category={{ $craft->category->slug }}">{{
-                  $craft->category->name }}</a></div>
+                  $craft->category->name }}</a>
+              </div>
               <p>{{ $craft->title }}</p>
             </div>
           </h2>
@@ -155,7 +158,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>
@@ -178,7 +181,8 @@
             <div>
               <div class="badge border-[#e00024] bg-white text-[#e00024] border-1 hover:bg-[#e00024] hover:text-white">
                 <a href="/crafts?category={{ $craft->category->slug }}">{{
-                  $craft->category->name }}</a></div>
+                  $craft->category->name }}</a>
+              </div>
               <p>{{ $craft->title }}</p>
             </div>
           </h2>
@@ -188,7 +192,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>
@@ -211,7 +215,8 @@
             <div>
               <div class="badge border-[#e00024] bg-white text-[#e00024] border-1 hover:bg-[#e00024] hover:text-white">
                 <a href="/crafts?category={{ $craft->category->slug }}">{{
-                  $craft->category->name }}</a></div>
+                  $craft->category->name }}</a>
+              </div>
               <p>{{ $craft->title }}</p>
             </div>
           </h2>
@@ -221,7 +226,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>

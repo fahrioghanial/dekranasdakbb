@@ -19,7 +19,7 @@
           class="input input-bordered rounded-r-none border-r-none bg-white md:w-4/5 text-black" id="search"
           placeholder="Cari Anggota Perajin..." value="{{ request('search') }}">
         <button
-          class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-l-none border-l-none rounded-lg text-white text-xl font-semibold"
+          class="bg-[#e00024] py-2 px-3 hover:bg-blue-900 rounded-l-none border-l-none rounded-lg text-white text-xl font-semibold"
           type="submit">Cari</button>
       </div>
     </form>
@@ -37,7 +37,7 @@
           <p class="text-md font-semibold"><i class="bi bi-facebook"></i> {{ $user->facebook }}</p>
           <p class="text-md font-semibold"><i class="bi bi-instagram"></i> {{ $user->instagram }}</p>
           <div class="card-actions mt-3">
-            <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
               href="/crafts?craftsman={{ $user->username }}">
               Lihat Produk
             </a>

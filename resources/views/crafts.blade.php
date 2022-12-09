@@ -32,7 +32,7 @@
               class="bg-[#e00024] py-2 px-3 hover:bg-[#FF9684] rounded-l-none border-l-none rounded-lg text-white text-xl font-semibold"
               type="submit">Cari</button>
           </div>
-          <a class="bg-[#e00024] py-3 px-3 hover:bg-[#FF9684] rounded-lg text-white text-md font-semibold {{ (request('search')||request('craftsman')||request('category'))?"":"
+          <a class="bg-[#e00024] py-3 px-2 hover:bg-[#FF9684] rounded-lg text-white text-md font-semibold {{ (request('search')||request('craftsman')||request('category'))?"":"
             hidden" }}" href="/crafts">Tampilkan Semua Produk</a>
         </div>
       </form>

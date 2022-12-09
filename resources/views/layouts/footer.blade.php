@@ -1,4 +1,4 @@
-<footer class="border-t-4 pt-7 px-2 md:px-16 bg-[#DD5353] text-white ">
+<footer class="border-t-4 pt-7 px-2 md:px-16 bg-[#e00024] text-white ">
   <div class="container">
     <div class="flex flex-col md:flex-row pb-4 justify-between">
       <div class="flex flex-col md:flex-row gap-5">

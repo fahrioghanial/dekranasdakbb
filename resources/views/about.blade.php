@@ -57,7 +57,7 @@
     </ul>
   </div>
 </section>
-<section class="bg-[#DD5353]">
+<section class="bg-[#e00024]">
   <div class="container m-auto pt-7 pb-7 px-3 md:px-0">
     <div class="flex flex-col text-white">
       <h1 class="font-bold md:text-4xl text-2xl text-center">Ketua Dekranasda</h1>

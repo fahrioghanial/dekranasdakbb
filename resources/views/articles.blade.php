@@ -15,9 +15,11 @@
     <h1 class="font-bold md:text-3xl text-xl mb-5">{{ $title }}</h1>
     <form action="/articles" class="mb-3">
       <div class="flex w-1/2">
-        <input type="text" name="search" class="input input-bordered bg-white md:w-4/5 text-black" id="search"
+        <input type="text" name="search"
+          class="input input-bordered rounded-r-none border-r-none bg-white md:w-4/5 text-black" id="search"
           placeholder="Cari Artikel..." value="{{ request('search') }}">
-        <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg text-white text-xl font-semibold"
+        <button
+          class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-l-none border-l-none rounded-lg text-white text-xl font-semibold"
           type="submit">Cari</button>
       </div>
     </form>

@@ -25,21 +25,21 @@
   @endif
 </head>
 
-<body class="bg-[#EDDBC0]">
+<body class="bg-[#F3EED9]">
   <div class="drawer drawer-end">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
       <!-- Page content here -->
       @yield('navbar')
       <div
-        class="{{ (Request::is('/') || Request::is('login*') || Request::is('register*') || Request::is('aboutus*')) ? '' : 'px-4'}}">
+        class="{{ (Request::is('/') || Request::is('login*') || Request::is('register*') || Request::is('aboutus*')) ? '' : 'px-5 md:px-12'}}">
         @yield('body')
       </div>
       @yield('footer')
     </div>
     <div class="drawer-side">
       <label for="my-drawer" class="drawer-overlay"></label>
-      <ul class="menu p-4 overflow-y-auto w-80 bg-[#DD5353] text-white">
+      <ul class="menu p-4 overflow-y-auto w-80 bg-[#e00024] text-white">
         <!-- Sidebar content here -->
         @include('layouts.sidebar')
       </ul>

@@ -13,9 +13,10 @@
   <div class="container m-auto pt-24 text-black px-3 md:px-0">
     @if ($craft->is_confirmed && $craft->craftsman->status_keanggotaan)
     <h1 class="font-bold md:text-5xl text-2xl mb-2">{{ $craft->title }}
-      <div class="btn btn-secondary rounded-full hover:bg-slate-700 md:text-2xl text-sm"><a
-          href="/crafts?category={{ $craft->category->slug }}">{{
-          $craft->category->name }}</a></div>
+      <div class="btn bg-[#e00024] text-white hover:bg-[#FF9684] border-0 rounded-full md:text-2xl text-sm">
+        <a href="/crafts?category={{ $craft->category->slug }}">{{
+          $craft->category->name }}</a>
+      </div>
     </h1>
     <h2 class="font-bold md:text-4xl text-2xl mb-2">Rp{{ $craft->price }}</h2>
     <h1 class="font-semibold md:text-2xl text-xl mb-5">Oleh <a class="hover:text-[#DBC8AC] text-blue-700"
@@ -90,7 +91,8 @@
         </div>
       </div>
     </div>
-    <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit" href="/crafts">Kembali
+    <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit" href="/articles">
+      <i class="bi bi-arrow-bar-left"></i> Kembali
     </a>
     @else
     <h1 class="font-bold md:text-4xl text-2xl mb-2">Produk Tidak Ditemukan</h1>

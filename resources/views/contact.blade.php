@@ -26,7 +26,7 @@
         <div class="flex flex-col">
           <p class="text-xl md:text-2xl font-bold">Email</p>
           <p>dekranasdakbb@gmail.com</p>
-          <a class="mt-1 w-fit rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#B73E3E] text-md font-semibold text-white"
+          <a class="mt-1 w-fit rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#FF9684] text-md font-semibold text-white"
             href="mailto: dekranasdakbb@gmail.com">
             Kirim Email
           </a>

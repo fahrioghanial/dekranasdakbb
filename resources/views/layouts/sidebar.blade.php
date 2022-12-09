@@ -1,21 +1,21 @@
 <div class="font-medium text-xl mb-5">DEKRANASDA KBB</div>
 @auth
 @else
-<a class="hover:bg-[#B73E3E] font-medium text-xl p-4 lg:hidden block" href="/login">
+<a class="hover:bg-[#FF9684] font-medium text-xl p-4 lg:hidden block" href="/login">
   Masuk
 </a>
 <div class="border-2 my-2 border-white opacity-50 lg:hidden block"></div>
 @endauth
-<a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/crafts">
+<a class="hover:bg-[#FF9684] font-medium text-xl p-4" href="/crafts">
   Produk Kerajinan
 </a>
-<a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/member">
+<a class="hover:bg-[#FF9684] font-medium text-xl p-4" href="/member">
   Anggota Perajin
 </a>
-<a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/aboutus">
+<a class="hover:bg-[#FF9684] font-medium text-xl p-4" href="/aboutus">
   Tentang Kami
 </a>
-{{-- <div class="collapse collapse-arrow hover:bg-[#B73E3E]">
+{{-- <div class="collapse collapse-arrow hover:bg-[#FF9684]">
   <input type="checkbox" />
   <div class="collapse-title text-xl font-medium">
     Anggota Perajin
@@ -27,7 +27,7 @@
     <a class="hover:bg-red-800" href="/howto"><i class="bi bi-dot"></i> Tata Cara Menjadi Anggota</a>
   </div>
 </div> --}}
-{{-- <div class="collapse collapse-arrow hover:bg-[#B73E3E]">
+{{-- <div class="collapse collapse-arrow hover:bg-[#FF9684]">
   <input type="checkbox" />
   <div class="collapse-title text-xl font-medium ">
     Tentang Kami
@@ -38,9 +38,9 @@
       Organisasi</a>
   </div>
 </div> --}}
-<a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/articles">
+<a class="hover:bg-[#FF9684] font-medium text-xl p-4" href="/articles">
   Artikel
 </a>
-<a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/contact">
+<a class="hover:bg-[#FF9684] font-medium text-xl p-4" href="/contact">
   Kontak
 </a>

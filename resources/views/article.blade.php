@@ -11,7 +11,10 @@
 @section('body')
 <section id="home" class="mb-32">
   <div class="container m-auto mt-28 text-black px-3 md:px-0">
-    <div class="bg-white rounded-lg p-10 mb-7">
+    <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit" href="/articles">
+      <i class="bi bi-arrow-bar-left"></i> Kembali
+    </a>
+    <div class="bg-white rounded-lg p-10 my-7">
       @if ($article->is_show)
       <img class="object-contain object-center h-[700px] w-full mx-auto" src="{{ asset('storage/'. $article->cover)  }}"
         alt="{{ $article->title }}" />
@@ -23,8 +26,6 @@
       <h1 class="font-bold md:text-4xl text-2xl mb-2">Artikel Tidak Ditemukan</h1>
       @endif
     </div>
-    <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit" href="/articles">Kembali
-    </a>
   </div>
 </section>
 @endsection

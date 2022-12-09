@@ -35,16 +35,16 @@
         </div>
         <div class="flex gap-5 mt-5 justify-center">
           @auth
-          <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#B73E3E] text-xl font-semibold text-white"
+          <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#FF9684] text-xl font-semibold text-white"
             href="/crafts">
             Produk Kami
           </a>
           @else
-          <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#B73E3E] text-xl font-semibold text-white"
+          <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#FF9684] text-xl font-semibold text-white"
             href="/register">
             Daftar Sekarang
           </a>
-          <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#B73E3E] text-xl font-semibold text-white"
+          <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#FF9684] text-xl font-semibold text-white"
             href="/aboutus">
             Tentang Kami
           </a>
@@ -68,21 +68,21 @@
       </div>
       <div class="flex flex-col md:flex-row m-auto gap-14 md:items-start">
         <a class="flex flex-col md:w-1/3 text-center" href="/crafts">
-          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#DD5353]">
+          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#e00024]">
             <i class="bi bi-cart-fill"></i>
           </div>
           <p class="text-2xl mt-2">Produk Kami</p>
           <p class="">Produk Kerajinan Dekranasda Bandung Barat</p>
         </a>
         <a class="flex flex-col md:w-1/3 text-center" href="/member">
-          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#DD5353]">
+          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#e00024]">
             <i class="bi bi-people-fill"></i>
           </div>
           <p class="text-2xl mt-2">Anggota Perajin</p>
           <p class="">Anggota Perajin Dekranasda Bandung Barat</p>
         </a>
         <a class="flex flex-col md:w-1/3 text-center" href="/articles">
-          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#DD5353]">
+          <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#e00024]">
             <i class="bi bi-journal-text"></i>
           </div>
           <p class="text-2xl mt-2">Artikel</p>

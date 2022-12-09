@@ -25,12 +25,14 @@
             value="{{ request('craftsman') }}">
           @endif
           <div class="flex w-2/3">
-            <input type="text" name="search" class="input input-bordered bg-white md:w-4/5 text-black" id="search"
+            <input type="text" name="search"
+              class="input input-bordered rounded-r-none border-r-none bg-white md:w-4/5 text-black" id="search"
               placeholder="Cari Produk Kerajinan..." value="{{ request('search') }}">
-            <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg text-white text-xl font-semibold"
+            <button
+              class="bg-[#e00024] py-2 px-3 hover:bg-blue-900 rounded-l-none border-l-none rounded-lg text-white text-xl font-semibold"
               type="submit">Cari</button>
           </div>
-          <a class="bg-blue-600 py-3 px-3 hover:bg-blue-900 rounded-lg text-white text-md font-semibold {{ (request('search')||request('craftsman')||request('category'))?"":"
+          <a class="bg-[#e00024] py-3 px-3 hover:bg-blue-900 rounded-lg text-white text-md font-semibold {{ (request('search')||request('craftsman')||request('category'))?"":"
             hidden" }}" href="/crafts">Tampilkan Semua Produk</a>
         </div>
       </form>
@@ -48,14 +50,15 @@
           <input type="hidden" name="search" class="input input-bordered bg-white text-black" id="search"
             value="{{ request('search') }}">
           @endif
-          <select name="sortby" class="select text-black bg-white w-2/3">
+          <select name="sortby" class="select text-black rounded-r-none border-r-none bg-white w-2/3">
             <option disabled selected>Urutkan Berdasarkan</option>
             <option @if(request('sortby')=="termurah" )selected @endif value="termurah">Harga Termurah</option>
             <option @if(request('sortby')=="termahal" )selected @endif value="termahal">Harga Termahal</option>
             <option @if(request('sortby')=="terbaru" )selected @endif value="terbaru">Terbaru</option>
             <option @if(request('sortby')=="terlama" )selected @endif value="terlama">Terlama</option>
           </select>
-          <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg text-white text-md font-semibold"
+          <button
+            class="bg-[#e00024] py-2 px-3 hover:bg-blue-900 rounded-l-none border-l-none rounded-lg text-white text-md font-semibold"
             type="submit">Terapkan</button>
         </div>
       </form>
@@ -74,8 +77,8 @@
         <div class="card-body p-4">
           <h2 class="card-title">
             <div>
-              <div class="badge badge-secondary hover:bg-slate-700"><a
-                  href="/crafts?category={{ $craft->category->slug }}">{{
+              <div class="badge border-[#e00024] bg-white text-[#e00024]  border-1 hover:bg-[#e00024] hover:text-white">
+                <a href="/crafts?category={{ $craft->category->slug }}">{{
                   $craft->category->name }}</a></div>
               <p>{{ $craft->title }}</p>
             </div>
@@ -86,7 +89,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>
@@ -107,8 +110,8 @@
         <div class="card-body p-4">
           <h2 class="card-title">
             <div>
-              <div class="badge badge-secondary hover:bg-slate-700"><a
-                  href="/crafts?category={{ $craft->category->slug }}">{{
+              <div class="badge border-[#e00024] bg-white text-[#e00024] border-1 hover:bg-[#e00024] hover:text-white">
+                <a href="/crafts?category={{ $craft->category->slug }}">{{
                   $craft->category->name }}</a></div>
               <p>{{ $craft->title }}</p>
             </div>
@@ -119,7 +122,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>
@@ -140,8 +143,8 @@
         <div class="card-body p-4">
           <h2 class="card-title">
             <div>
-              <div class="badge badge-secondary hover:bg-slate-700"><a
-                  href="/crafts?category={{ $craft->category->slug }}">{{
+              <div class="badge border-[#e00024] bg-white text-[#e00024] border-1 hover:bg-[#e00024] hover:text-white">
+                <a href="/crafts?category={{ $craft->category->slug }}">{{
                   $craft->category->name }}</a></div>
               <p>{{ $craft->title }}</p>
             </div>
@@ -152,7 +155,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>
@@ -173,8 +176,8 @@
         <div class="card-body p-4">
           <h2 class="card-title">
             <div>
-              <div class="badge badge-secondary hover:bg-slate-700"><a
-                  href="/crafts?category={{ $craft->category->slug }}">{{
+              <div class="badge border-[#e00024] bg-white text-[#e00024] border-1 hover:bg-[#e00024] hover:text-white">
+                <a href="/crafts?category={{ $craft->category->slug }}">{{
                   $craft->category->name }}</a></div>
               <p>{{ $craft->title }}</p>
             </div>
@@ -185,7 +188,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>
@@ -206,8 +209,8 @@
         <div class="card-body p-4">
           <h2 class="card-title">
             <div>
-              <div class="badge badge-secondary hover:bg-slate-700"><a
-                  href="/crafts?category={{ $craft->category->slug }}">{{
+              <div class="badge border-[#e00024] bg-white text-[#e00024] border-1 hover:bg-[#e00024] hover:text-white">
+                <a href="/crafts?category={{ $craft->category->slug }}">{{
                   $craft->category->name }}</a></div>
               <p>{{ $craft->title }}</p>
             </div>
@@ -218,7 +221,7 @@
             $craft->craftsman->business_name
             }}</a>
           <div class="card-actions justify-between items-center mt-3">
-            <a class="rounded-lg text-white bg-blue-600 md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
+            <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-blue-800 w-fit"
               href="/crafts/detail/{{ $craft->slug }}">
               Detail
             </a>

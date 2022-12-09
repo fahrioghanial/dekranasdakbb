@@ -91,7 +91,7 @@
         </div>
       </div>
     </div>
-    <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit" href="/articles">
+    <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit" href="/crafts">
       <i class="bi bi-arrow-bar-left"></i> Kembali
     </a>
     @else

@@ -45,8 +45,8 @@
             Daftar Sekarang
           </a>
           <a class="rounded-lg py-2 px-3 bg-blue-600 hover:bg-[#B73E3E] text-xl font-semibold text-white"
-            href="/crafts">
-            Produk Kami
+            href="/aboutus">
+            Tentang Kami
           </a>
           @endauth
         </div>
@@ -67,12 +67,12 @@
         </p>
       </div>
       <div class="flex flex-col md:flex-row m-auto gap-14 md:items-start">
-        <a class="flex flex-col md:w-1/3 text-center" href="/about">
+        <a class="flex flex-col md:w-1/3 text-center" href="/crafts">
           <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#DD5353]">
-            <i class="bi bi-info-circle-fill"></i>
+            <i class="bi bi-cart-fill"></i>
           </div>
-          <p class="text-2xl mt-2">Tentang Kami</p>
-          <p class="">Profil Dekranasda Bandung Barat</p>
+          <p class="text-2xl mt-2">Produk Kami</p>
+          <p class="">Produk Kerajinan Dekranasda Bandung Barat</p>
         </a>
         <a class="flex flex-col md:w-1/3 text-center" href="/member">
           <div class="bg-white w-fit px-4 py-2 rounded-lg shadow-md text-7xl m-auto hover:bg-[#DD5353]">
@@ -90,10 +90,10 @@
         </a>
       </div>
 
-      <div class="w-3/4 self-center bg-white shadow-lg p-2 rounded-lg flex md:flex-row flex-col gap-2">
-        <img src={{ asset('img/KetuaDekranasdaKBB.jpg')}} alt="Ketua Dekranasda KBB" class="w-96 rounded-full m-auto" />
-        <div class="md:text-xl font-semibold m-auto">
-          <p class="my-2">
+      <div class="w-3/4 self-center bg-white shadow-lg p-5 rounded-lg flex md:flex-row flex-col gap-2">
+        <img src={{ asset('img/KetuaDekranasdaKBB.jpg')}} alt="Ketua Dekranasda KBB" class="w-80 rounded-full m-auto" />
+        <div class="md:text-xl font-semibold m-auto md:p-5 p-2">
+          <p class="md:my-2">
             "Doa dan Harapan menjadi tenaga kami dalam memajukan kreatifitas masyarakat Bandung Barat"
           </p>
           <p class="">

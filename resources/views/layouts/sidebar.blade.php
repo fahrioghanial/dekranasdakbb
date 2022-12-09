@@ -1,8 +1,11 @@
 <div class="font-medium text-xl mb-5">DEKRANASDA KBB</div>
-<a class="hover:bg-[#B73E3E] font-medium text-xl p-4 md:hidden block" href="/login">
+@auth
+@else
+<a class="hover:bg-[#B73E3E] font-medium text-xl p-4 lg:hidden block" href="/login">
   Masuk
 </a>
-<div class="border-2 my-2 border-white opacity-50 md:hidden block"></div>
+<div class="border-2 my-2 border-white opacity-50 lg:hidden block"></div>
+@endauth
 <a class="hover:bg-[#B73E3E] font-medium text-xl p-4" href="/crafts">
   Produk Kerajinan
 </a>

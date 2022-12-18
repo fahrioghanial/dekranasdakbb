@@ -235,7 +235,7 @@
         <button class="bg-blue-600 py-2 px-3 hover:bg-blue-900 rounded-lg w-full text-white text-xl font-semibold"
           type="submit">Tambahkan Anggota</button>
         <a class="rounded-lg py-2 px-3 bg-red-600 hover:bg-red-900 text-white text-xl font-semibold text-center"
-          href="/dashboard/user">
+          href="/dashboard/adminuser">
           Batal
         </a>
       </div>

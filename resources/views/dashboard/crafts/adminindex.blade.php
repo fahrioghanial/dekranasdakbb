@@ -8,7 +8,7 @@
     {{ session('success') }}
   </div>
   @endif
-  <p class="text-2xl font-semibold mb-5">Admin Produk Kerajinan</p>
+  <p class="text-2xl font-semibold mb-5">Data Produk Kerajinan</p>
   <div class="mb-4 flex flex-col md:flex-row gap-3">
     <a href="/dashboard/craftsadmin/confirmallcrafts" class="btn bg-green-600 text-white border-0">Setujui Semua
       Produk</a>

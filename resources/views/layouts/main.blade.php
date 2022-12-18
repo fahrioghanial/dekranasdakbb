@@ -5,6 +5,11 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  @if(@isset($title))
+  <meta name="description" content="{{ $title }}">
+  @else
+  <meta name="description" content="Dekranasda KBB">
+  @endif
 
   <!-- Tailwind CSS -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">

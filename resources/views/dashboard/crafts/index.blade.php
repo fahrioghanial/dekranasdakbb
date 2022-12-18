@@ -19,7 +19,7 @@
           <th class="bg-slate-900">Judul</th>
           <th class="bg-slate-900">Kategori</th>
           <th class="bg-slate-900">Harga (Rp)</th>
-          <th class="bg-slate-900">Tanggal Dibuat</th>
+          <th class="bg-slate-900">Tanggal Ditambahkan</th>
           <th class="bg-slate-900">Status Persetujuan</th>
           <th class="bg-slate-900">Aksi</th>
         </tr>

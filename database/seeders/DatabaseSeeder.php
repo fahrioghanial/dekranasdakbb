@@ -85,6 +85,7 @@ class DatabaseSeeder extends Seeder
       'is_admin' => false
     ]);
 
+
     User::create([
       'name' => 'Cici Riyanti',
       'business_name' => "Riyanti Crafts",

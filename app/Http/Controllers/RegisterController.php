@@ -55,6 +55,7 @@ class RegisterController extends Controller
 
     $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
     $validatedData['password'] = bcrypt($validatedData['password']);
+    $validatedData['status_keanggotaan'] = true;
 
     User::create($validatedData);
 

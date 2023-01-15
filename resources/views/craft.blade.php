@@ -24,7 +24,7 @@
         $craft->craftsman->business_name}}</a>
     </h1>
     <div class="flex flex-col md:flex-row md:gap-10 mb-7 bg-white rounded-md items-start">
-      <img class="object-cover object-center md:rounded-l-md h-[500px] md:w-1/2 w-full"
+      <img class="object-cover object-center md:rounded-l-md md:w-1/2 w-full"
         src="{{ asset('storage/'. $craft->image) }}" alt="{{ $craft->title }}" />
       <div class="flex flex-col md:text-xl mt-6 ml-5 md:ml-0 md:w-1/4">
         <p class="md:text-2xl font-semibold">Deskripsi</p>

@@ -26,7 +26,7 @@
         <div class="flex flex-col">
           <p class="text-xl md:text-2xl font-bold">Email</p>
           <p>dekranasdakbb@gmail.com</p>
-          <a class="mt-1 w-fit rounded-lg py-2 px-3 bg-[#e00024] hover:bg-[#FF9684] text-md font-semibold text-white"
+          <a class="mt-1 w-1/2 rounded-lg py-2 px-3 bg-[#e00024] hover:bg-[#FF9684] text-sm text-center font-semibold text-white"
             href="mailto: dekranasdakbb@gmail.com">
             Kirim Email
           </a>
@@ -34,7 +34,7 @@
         <div class="flex flex-col mt-4">
           <p class="text-xl md:text-2xl font-bold">Instagram</p>
           <p>@dekranasda.kbb</p>
-          <a class="mt-1 w-fit rounded-lg py-2 px-3 bg-purple-600 hover:bg-opacity-50 text-md font-semibold text-white"
+          <a class="mt-1 w-1/2 rounded-lg py-2 px-3 bg-purple-600 hover:bg-opacity-50 text-sm text-center font-semibold text-white"
             href="https://www.instagram.com/dekranasda.kbb" target="_blank">
             <i class="bi bi-instagram"></i> Buka Instagram
           </a>

@@ -93,14 +93,15 @@
         </a>
       </div>
 
-      <div class="w-3/4 self-center bg-white shadow-lg p-5 rounded-lg flex md:flex-row flex-col gap-2">
-        <img src={{ asset('img/KetuaDekranasdaKBB.jpg')}} alt="Ketua Dekranasda KBB" class="w-80 rounded-full m-auto" />
+      <div class="w-3/4 self-center text-center bg-white shadow-lg p-5 rounded-lg flex md:flex-row flex-col gap-2">
+        {{-- <img src={{ asset('img/KetuaDekranasdaKBB.jpg')}} alt="Ketua Dekranasda KBB"
+          class="w-80 rounded-full m-auto" /> --}}
         <div class="md:text-xl font-semibold m-auto md:p-5 p-2">
           <p class="md:my-2">
             "Doa dan Harapan menjadi tenaga kami dalam memajukan kreatifitas masyarakat Bandung Barat"
           </p>
-          <p class="">
-            - Sonya Fatmala (Ketua Dekranasda KBB) -
+          <p class="text-base">
+            - Sonya Fatmala (Ketua Dekranasda KBB Periode 2018-2023) -
           </p>
         </div>
       </div>

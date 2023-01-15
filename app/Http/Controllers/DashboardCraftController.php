@@ -56,7 +56,7 @@ class DashboardCraftController extends Controller
           }
         },
       ],
-      'description' => ''
+      'description' => 'required'
     ]);
 
 
@@ -128,7 +128,7 @@ class DashboardCraftController extends Controller
           }
         },
       ],
-      'description' => '',
+      'description' => 'required',
     ];
 
     if ($request->image) {
@@ -218,7 +218,7 @@ class DashboardCraftController extends Controller
           }
         },
       ],
-      'description' => ''
+      'description' => 'required'
     ]);
 
     $validatedData['image'] = $request->file('image')->store('craft-images');
@@ -246,7 +246,7 @@ class DashboardCraftController extends Controller
           }
         },
       ],
-      'description' => '',
+      'description' => 'required',
     ];
 
     if ($request->image) {

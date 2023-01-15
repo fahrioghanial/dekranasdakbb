@@ -3826,6 +3826,10 @@ body[dir="rtl"] .checkbox:checked,
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;

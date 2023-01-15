@@ -37,9 +37,9 @@
         <h2>Facebook: {{ $craft->craftsman->facebook }}</h2>
         <h2>Instagram: {{ $craft->craftsman->instagram }}</h2>
       </div>
-      <div class="flex flex-col md:text-md my-7 ml-5 md:ml-0 md:w-1/4">
+      <div class="flex flex-col md:text-md my-7 mx-5 md:ml-0 md:w-1/4">
         <div class="flex md:flex-col flex-row gap-3 flex-wrap">
-          <a class="rounded-lg text-white bg-green-500 py-2 px-3 hover:bg-opacity-50 w-fit"
+          <a class="rounded-lg text-white bg-green-500 py-2 px-3 hover:bg-opacity-50 w-full"
             @if(@isset($craft->craftsman->whatsapp))
             href="https://wa.me/{{ $whatsapp
             }}?text=Saya%20tertarik%20untuk%20membeli%20kerajinan%20anda%20pada%20Dekranasda%20KBB.%0aNama%20kerajinan:%20{{
@@ -50,7 +50,7 @@
             ><i class="bi bi-whatsapp"></i> Pesan
             Melalui Whatsapp
           </a>
-          <a class="rounded-lg text-white bg-red-600 py-2 px-3 hover:bg-opacity-50 w-fit"
+          <a class="rounded-lg text-white bg-red-600 py-2 px-3 hover:bg-opacity-50 w-full"
             @if(@isset($craft->craftsman->email))
             href="mailto:{{ $craft->craftsman->email
             }}?subject=Pesan%20Kerajinan%20Dekranasda%20KBB&body=Saya%20tertarik%20untuk%20membeli%20kerajinan%20anda%20pada%20Dekranasda%20KBB.%0aNama%20kerajinan:%20{{
@@ -61,7 +61,7 @@
             ><i class="bi bi-envelope"></i> Pesan
             Melalui Email
           </a>
-          <a class="rounded-lg text-white bg-purple-600 py-2 px-3 hover:bg-opacity-50 w-fit"
+          <a class="rounded-lg text-white bg-purple-600 py-2 px-3 hover:bg-opacity-50 w-full"
             @if(@isset($craft->craftsman->instagram))
             href="https://ig.me/m/{{ $craft->craftsman->instagram }}"
             @else
@@ -70,7 +70,7 @@
             ><i class="bi bi-instagram"></i> Pesan
             Melalui Instagram
           </a>
-          <a class="rounded-lg text-white bg-blue-600 py-2 px-3 hover:bg-opacity-50 w-fit"
+          <a class="rounded-lg text-white bg-blue-600 py-2 px-3 hover:bg-opacity-50 w-full"
             @if(@isset($craft->craftsman->facebook))
             href="https://m.me/{{ $craft->craftsman->facebook }}"
             @else
@@ -79,7 +79,7 @@
             ><i class="bi bi-facebook"></i> Pesan
             Melalui Facebook
           </a>
-          <a class="rounded-lg text-white bg-gray-500 py-2 px-3 hover:bg-opacity-50 w-fit"
+          <a class="rounded-lg text-white bg-gray-500 py-2 px-3 hover:bg-opacity-50 w-full"
             @if(@isset($craft->craftsman->contact))
             href="tel:{{ $contact }}"
             @else

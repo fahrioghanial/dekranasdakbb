@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\Article;
 use App\Models\WebViewerCount;
 use App\Exports\UsersExport;
+use App\Models\UpdateHistory;
 use Maatwebsite\Excel\Facades\Excel;
 
 /*
@@ -34,6 +35,11 @@ Route::get('/', function () {
   return view('index', [
     'web_viewer_count' => $count,
   ]);
+});
+Route::get('/test', function () {
+  $user = User::latest()->first();
+  $updateHistory = UpdateHistory::where('user_id', $user->id)->latest()->first();
+  dd($updateHistory->admin->name);
 });
 
 Route::get('/contact', function () {
@@ -191,7 +197,8 @@ Route::get('/dashboard/craftsadmin/isconfirmed/{craft}', [DashboardCraftControll
 // Admin data anggota perajin
 Route::get('/dashboard/adminuser', function () {
   return view('dashboard.craftsmanadmin.index', [
-    "users" => User::withCount('crafts')->latest()->get()
+    "users" => User::withCount('crafts')->latest()->get(),
+    'update_histories' => UpdateHistory::latest()->get(),
   ]);
 })->middleware('admin');
 Route::get('/dashboard/adminuser/export', function () {

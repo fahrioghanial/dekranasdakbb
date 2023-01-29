@@ -16,9 +16,9 @@
         <label class="label">
           <span class="label-text text-black">Foto Profil</span>
         </label>
-        <input type="hidden" name="oldImage" value="{{ $user->profile_picture }}">
-        @if ($user->profile_picture)
-        <img src="{{ asset('storage/'. $user->profile_picture) }}" class="img-preview w-1/2">
+        <input type="hidden" name="oldImage" value="{{ $user->identity->profile_picture }}">
+        @if ($user->identity->profile_picture)
+        <img src="{{ asset('storage/'. $user->identity->profile_picture) }}" class="img-preview w-1/2">
         @else
         <img class="img-preview w-1/2">
         @endif
@@ -74,10 +74,10 @@
         <label class="label">
           <span class="label-text text-black">Nomor HP <br>(masukkan dengan awalan 0, contoh: 085123456789)</span>
         </label>
-        <input type="text" name="contact"
-          class="input input-bordered w-full {{ $errors->has('contact')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="contact" placeholder="Nomor HP" value="{{ old('contact', $user->contact) }}">
-        @error('contact')
+        <input type="text" name="phone"
+          class="input input-bordered w-full {{ $errors->has('phone')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="phone" placeholder="Nomor HP" value="{{ old('phone', $user->identity->phone) }}">
+        @error('phone')
         <div class="text-rose-500">
           {{ $message }}
         </div>
@@ -89,7 +89,7 @@
         </label>
         <input type="text" name="noktp"
           class="input input-bordered w-full {{ $errors->has('noktp')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="noktp" placeholder="Nomor KTP" value="{{ old('noktp', $user->noktp) }}">
+          id="noktp" placeholder="Nomor KTP" value="{{ old('noktp', $user->identity->noktp) }}">
         @error('noktp')
         <div class="text-rose-500">
           {{ $message }}
@@ -102,7 +102,7 @@
         </label>
         <input type="text" name="address"
           class="input input-bordered w-full {{ $errors->has('address')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="address" placeholder="Alamat" value="{{ old('address', $user->address) }}">
+          id="address" placeholder="Alamat" value="{{ old('address', $user->identity->address) }}">
         @error('address')
         <div class="text-rose-500">
           {{ $message }}
@@ -115,7 +115,7 @@
         </label>
         <input type="text" name="rt"
           class="input input-bordered w-full {{ $errors->has('rt')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="rt" placeholder="RT" value="{{ old('rt', $user->rt) }}">
+          id="rt" placeholder="RT" value="{{ old('rt', $user->identity->rt) }}">
         @error('rt')
         <div class="text-rose-500">
           {{ $message }}
@@ -128,7 +128,7 @@
         </label>
         <input type="text" name="rw"
           class="input input-bordered w-full {{ $errors->has('rw')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="rw" placeholder="RW" value="{{ old('rw', $user->rw) }}">
+          id="rw" placeholder="RW" value="{{ old('rw', $user->identity->rw) }}">
         @error('rw')
         <div class="text-rose-500">
           {{ $message }}
@@ -141,7 +141,7 @@
         </label>
         <input type="text" name="kecamatan"
           class="input input-bordered w-full {{ $errors->has('kecamatan')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="kecamatan" placeholder="Kecamatan" value="{{ old('kecamatan', $user->kecamatan) }}">
+          id="kecamatan" placeholder="Kecamatan" value="{{ old('kecamatan', $user->territory->kecamatan) }}">
 
         @error('kecamatan')
         <div class="text-rose-500">
@@ -155,7 +155,8 @@
         </label>
         <input type="text" name="kelurahan_desa"
           class="input input-bordered w-full {{ $errors->has('kelurahan_desa')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="kelurahan_desa" placeholder="Kelurahan/Desa" value="{{ old('kelurahan_desa', $user->kelurahan_desa) }}">
+          id="kelurahan_desa" placeholder="Kelurahan/Desa"
+          value="{{ old('kelurahan_desa', $user->territory->kelurahan_desa) }}">
         @error('kelurahan_desa')
         <div class="text-rose-500">
           {{ $message }}
@@ -168,7 +169,7 @@
         </label>
         <input type="text" name="kodepos"
           class="input input-bordered w-full {{ $errors->has('kodepos')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="kodepos" placeholder="Kode Pos" value="{{ old('kodepos', $user->kodepos) }}">
+          id="kodepos" placeholder="Kode Pos" value="{{ old('kodepos', $user->territory->kodepos) }}">
         @error('kodepos')
         <div class="text-rose-500">
           {{ $message }}
@@ -195,7 +196,7 @@
         </label>
         <input type="text" name="instagram"
           class="input input-bordered w-full {{ $errors->has('instagram')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="instagram" placeholder="Instagram" value="{{ old('instagram', $user->instagram) }}">
+          id="instagram" placeholder="Instagram" value="{{ old('instagram', $user->identity->instagram) }}">
         @error('instagram')
         <div class="text-rose-500">
           {{ $message }}
@@ -209,7 +210,7 @@
         </label>
         <input type="text" name="facebook"
           class="input input-bordered w-full {{ $errors->has('facebook')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="facebook" placeholder="Facebook" value="{{ old('facebook', $user->facebook) }}">
+          id="facebook" placeholder="Facebook" value="{{ old('facebook', $user->identity->facebook) }}">
         @error('facebook')
         <div class="text-rose-500">
           {{ $message }}
@@ -222,7 +223,7 @@
         </label>
         <input type="text" name="whatsapp"
           class="input input-bordered w-full {{ $errors->has('whatsapp')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="whatsapp" placeholder="Whatsapp" value="{{ old('whatsapp', $user->whatsapp) }}">
+          id="whatsapp" placeholder="Whatsapp" value="{{ old('whatsapp', $user->identity->whatsapp) }}">
         @error('whatsapp')
         <div class="text-rose-500">
           {{ $message }}

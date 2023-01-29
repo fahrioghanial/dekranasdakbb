@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Identity;
+use App\Models\Territory;
+use App\Models\UpdateHistory;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\WebViewerCount;
@@ -31,7 +34,7 @@ class RegisterController extends Controller
       'username' => 'required|min:5|max:255|unique:users',
       'email' => 'required|email|unique:users',
       'password' => 'required|min:5|max:255|confirmed',
-      'contact' => [
+      'phone' => [
         'required', 'numeric',
         function ($attribute, $value, $fail) {
           if ($value != null) {
@@ -46,7 +49,7 @@ class RegisterController extends Controller
       'address' => 'required',
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
-      'noktp' => 'required|numeric|unique:users',
+      'noktp' => 'required|numeric|unique:identities',
       'kodepos' => 'required|numeric',
       'profile_picture' => 'image|file|required',
       'kecamatan' => 'required',
@@ -56,8 +59,34 @@ class RegisterController extends Controller
     $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
     $validatedData['password'] = bcrypt($validatedData['password']);
     $validatedData['status_keanggotaan'] = true;
-
-    User::create($validatedData);
+    $identityData = [
+      'noktp' => $validatedData['noktp'],
+      'phone' => $validatedData['phone'],
+      'address' => $validatedData['address'],
+      'rt' => $validatedData['rt'],
+      'rw' => $validatedData['rw'],
+      'profile_picture' => $validatedData['profile_picture'],
+    ];
+    $territoryData = [
+      'kodepos' => $validatedData['kodepos'],
+      'kecamatan' => $validatedData['kecamatan'],
+      'kelurahan_desa' => $validatedData['kelurahan_desa'],
+    ];
+    Identity::create($identityData);
+    Territory::create($territoryData);
+    $getIdentityId = Identity::where('phone', $identityData['phone'])->get();
+    $getTerritoryId = Territory::where('kodepos', $territoryData['kodepos'])->get();
+    $userData = [
+      'name' => $validatedData['name'],
+      'email' => $validatedData['email'],
+      'password' => $validatedData['password'],
+      'identity_id' => $getIdentityId->first()->id,
+      'territory_id' => $getTerritoryId->first()->id,
+      'business_name' => $validatedData['business_name'],
+      'username' => $validatedData['username'],
+      'status_keanggotaan' => $validatedData['status_keanggotaan'],
+    ];
+    User::create($userData);
 
     return redirect('/login')->with('success', 'Registrasi Berhasil!, Silakan Masuk');
   }
@@ -69,8 +98,7 @@ class RegisterController extends Controller
       'business_name' => 'required',
       'username' => 'required|min:5|max:255|unique:users',
       'email' => 'required|email|unique:users',
-      // 'password' => 'required|min:5|max:255|confirmed',
-      'contact' => [
+      'phone' => [
         'required', 'numeric',
         function ($attribute, $value, $fail) {
           if ($value != null) {
@@ -85,7 +113,7 @@ class RegisterController extends Controller
       'address' => 'required',
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
-      'noktp' => 'required|numeric|unique:users',
+      'noktp' => 'required|numeric|unique:identities',
       'kodepos' => 'required|numeric',
       'profile_picture' => 'image|file|required',
       'kecamatan' => 'required',
@@ -110,14 +138,47 @@ class RegisterController extends Controller
         }
       }],
     ]);
-
     $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
-    // $validatedData['password'] = bcrypt($validatedData['password']);
     $validatedData['password'] = bcrypt($validatedData['noktp']);
     $validatedData['status_keanggotaan'] = true;
-    $validatedData['updated_by'] = auth()->user()->id;
 
-    User::create($validatedData);
+    $identityData = [
+      'noktp' => $validatedData['noktp'],
+      'phone' => $validatedData['phone'],
+      'address' => $validatedData['address'],
+      'rt' => $validatedData['rt'],
+      'rw' => $validatedData['rw'],
+      'instagram' => $validatedData['instagram'],
+      'facebook' => $validatedData['facebook'],
+      'whatsapp' => $validatedData['whatsapp'],
+      'profile_picture' => $validatedData['profile_picture'],
+    ];
+    $territoryData = [
+      'kodepos' => $validatedData['kodepos'],
+      'kecamatan' => $validatedData['kecamatan'],
+      'kelurahan_desa' => $validatedData['kelurahan_desa'],
+    ];
+    Identity::create($identityData);
+    Territory::create($territoryData);
+    $getIdentityId = Identity::where('phone', $identityData['phone'])->get();
+    $getTerritoryId = Territory::where('kodepos', $territoryData['kodepos'])->get();
+    $userData = [
+      'name' => $validatedData['name'],
+      'email' => $validatedData['email'],
+      'password' => $validatedData['password'],
+      'identity_id' => $getIdentityId->first()->id,
+      'territory_id' => $getTerritoryId->first()->id,
+      'business_name' => $validatedData['business_name'],
+      'username' => $validatedData['username'],
+      'status_keanggotaan' => $validatedData['status_keanggotaan'],
+    ];
+    User::create($userData);
+    $getUserId = User::where('email', $userData['email'])->get();
+    $updateHistoryData = [
+      'admin_id' => auth()->user()->id,
+      'user_id' => $getUserId->first()->id,
+    ];
+    UpdateHistory::create($updateHistoryData);
 
     return redirect('/dashboard/adminuser/')->with('success', 'Anggota Berhasil Ditambahkan');
   }

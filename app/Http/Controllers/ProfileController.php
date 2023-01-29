@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Identity;
+use App\Models\Territory;
+use App\Models\UpdateHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -81,12 +84,10 @@ class ProfileController extends Controller
     if ($user->id != auth()->user()->id) {
       abort(403);
     }
-    // dd(Hash::check($request->old_password, $user->password));
     $rules = [
       'name' => 'required|max:255',
       'business_name' => 'required',
-      // 'password' => 'required|min:5|max:255',
-      'contact' => [
+      'phone' => [
         'required', 'numeric',
         function ($attribute, $value, $fail) {
           if ($value != null) {
@@ -102,7 +103,6 @@ class ProfileController extends Controller
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
       'kodepos' => 'required|numeric',
-      // 'profile_picture' => 'image|file|required',
       'kecamatan' => 'required',
       'kelurahan_desa' => 'required',
       'instagram' => [function ($attribute, $value, $fail) {
@@ -132,8 +132,8 @@ class ProfileController extends Controller
     if ($request->email != $user->email) {
       $rules['email'] = 'required|email|unique:users';
     }
-    if ($request->noktp != $user->noktp) {
-      $rules['noktp'] = 'required|numeric|unique:users';
+    if ($request->noktp != $user->identity->noktp) {
+      $rules['noktp'] = 'required|numeric|unique:identities';
     }
 
     if ($request->profile_picture) {
@@ -161,9 +161,46 @@ class ProfileController extends Controller
       $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
     } else $validatedData['profile_picture'] = $request->oldImage;
 
-    $validatedData['updated_by'] = auth()->user()->id;
-
-    User::where('id', $user->id)->update($validatedData);
+    $identityData = [
+      // 'noktp' => $validatedData['noktp'],
+      'phone' => $validatedData['phone'],
+      'address' => $validatedData['address'],
+      'rt' => $validatedData['rt'],
+      'rw' => $validatedData['rw'],
+      'instagram' => $validatedData['instagram'],
+      'facebook' => $validatedData['facebook'],
+      'whatsapp' => $validatedData['whatsapp'],
+      'profile_picture' => $validatedData['profile_picture'],
+    ];
+    if (isset($validatedData['noktp'])) {
+      $identityData['noktp'] = $validatedData['noktp'];
+    }
+    $territoryData = [
+      'kodepos' => $validatedData['kodepos'],
+      'kecamatan' => $validatedData['kecamatan'],
+      'kelurahan_desa' => $validatedData['kelurahan_desa'],
+    ];
+    Identity::where('id', $user->identity_id)->update($identityData);
+    Territory::where('id', $user->territory_id)->update($territoryData);
+    $userData = [
+      'name' => $validatedData['name'],
+      'business_name' => $validatedData['business_name'],
+    ];
+    if (isset($validatedData['email'])) {
+      $userData['email'] = $validatedData['email'];
+    }
+    if (isset($validatedData['username'])) {
+      $userData['username'] = $validatedData['username'];
+    }
+    if (isset($validatedData['password'])) {
+      $userData['password'] = $validatedData['password'];
+    }
+    User::where('id', $user->id)->update($userData);
+    $updateHistoryData = [
+      'admin_id' => auth()->user()->id,
+      'user_id' => $user->id,
+    ];
+    UpdateHistory::create($updateHistoryData);
 
     return redirect('/dashboard/user')->with('success', 'Profil berhasil diubah!');
   }
@@ -184,8 +221,7 @@ class ProfileController extends Controller
     $rules = [
       'name' => 'required|max:255',
       'business_name' => 'required',
-      // 'password' => 'required|min:5|max:255',
-      'contact' => [
+      'phone' => [
         'required', 'numeric',
         function ($attribute, $value, $fail) {
           if ($value != null) {
@@ -201,7 +237,6 @@ class ProfileController extends Controller
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
       'kodepos' => 'required|numeric',
-      // 'profile_picture' => 'image|file|required',
       'kecamatan' => 'required',
       'kelurahan_desa' => 'required',
       'instagram' => [function ($attribute, $value, $fail) {
@@ -231,8 +266,8 @@ class ProfileController extends Controller
     if ($request->email != $user->email) {
       $rules['email'] = 'required|email|unique:users';
     }
-    if ($request->noktp != $user->noktp) {
-      $rules['noktp'] = 'required|numeric|unique:users';
+    if ($request->noktp != $user->identity->noktp) {
+      $rules['noktp'] = 'required|numeric|unique:identities';
     }
 
     if ($request->profile_picture) {
@@ -256,9 +291,46 @@ class ProfileController extends Controller
       $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
     } else $validatedData['profile_picture'] = $request->oldImage;
 
-    $validatedData['updated_by'] = auth()->user()->id;
-
-    User::where('id', $user->id)->update($validatedData);
+    $identityData = [
+      // 'noktp' => $validatedData['noktp'],
+      'phone' => $validatedData['phone'],
+      'address' => $validatedData['address'],
+      'rt' => $validatedData['rt'],
+      'rw' => $validatedData['rw'],
+      'instagram' => $validatedData['instagram'],
+      'facebook' => $validatedData['facebook'],
+      'whatsapp' => $validatedData['whatsapp'],
+      'profile_picture' => $validatedData['profile_picture'],
+    ];
+    if (isset($validatedData['noktp'])) {
+      $identityData['noktp'] = $validatedData['noktp'];
+    }
+    $territoryData = [
+      'kodepos' => $validatedData['kodepos'],
+      'kecamatan' => $validatedData['kecamatan'],
+      'kelurahan_desa' => $validatedData['kelurahan_desa'],
+    ];
+    Identity::where('id', $user->identity_id)->update($identityData);
+    Territory::where('id', $user->territory_id)->update($territoryData);
+    $userData = [
+      'name' => $validatedData['name'],
+      'business_name' => $validatedData['business_name'],
+    ];
+    if (isset($validatedData['email'])) {
+      $userData['email'] = $validatedData['email'];
+    }
+    if (isset($validatedData['username'])) {
+      $userData['username'] = $validatedData['username'];
+    }
+    if (isset($validatedData['password'])) {
+      $userData['password'] = $validatedData['password'];
+    }
+    User::where('id', $user->id)->update($userData);
+    $updateHistoryData = [
+      'admin_id' => auth()->user()->id,
+      'user_id' => $user->id,
+    ];
+    UpdateHistory::create($updateHistoryData);
 
     return redirect('/dashboard/adminuser')->with('success', 'Profil anggota berhasil diubah!');
   }
@@ -269,10 +341,11 @@ class ProfileController extends Controller
       abort(403);
     }
 
-    if ($user->profile_picture != "profile-pictures/contoh-fotoprofil.jpg") {
-      Storage::delete($user->profile_picture);
+    if ($user->identity->profile_picture != "profile-pictures/contoh-fotoprofil.jpg") {
+      Storage::delete($user->identity->profile_picture);
     }
 
+    Identity::destroy($user->identity_id);
     User::destroy($user->id);
 
     return redirect('/dashboard/adminuser')->with('success', 'Anggota berhasil dihapus!');

@@ -13,8 +13,8 @@
       <h2>Harga: Rp{{ $craft->price }}</h2>
       <h2>Pembuat: {{ $craft->craftsman->name }}</h2>
       <h2>Nama Usaha: {{ $craft->craftsman->business_name }}</h2>
-      <h2>Kontak: {{ $craft->craftsman->contact }}</h2>
-      <h2>Alamat: {{ $craft->craftsman->address }}</h2>
+      <h2>Kontak: {{ $craft->craftsman->identity->phone }}</h2>
+      <h2>Alamat: {{ $craft->craftsman->identity->address }}</h2>
       <div class="card-actions justify-end">
         <a href="/dashboard/crafts/" class="btn bg-blue-600 text-white border-0 w-full md:w-fit">Kembali</a>
         <a href="/dashboard/crafts/{{ $craft->id }}/edit"

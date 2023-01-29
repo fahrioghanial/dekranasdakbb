@@ -31,16 +31,16 @@
         <p>{{ $craft->description }}</p>
         <p class="md:text-2xl font-semibold mt-4">Kontak Penjual</p>
         <h2>Nama: {{ $craft->craftsman->name }}</h2>
-        <h2>Telepon: {{ $craft->craftsman->contact }}</h2>
-        <h2>Whatsapp: {{ $craft->craftsman->whatsapp }}</h2>
+        <h2>Telepon: {{ $craft->craftsman->identity->phone }}</h2>
+        <h2>Whatsapp: {{ $craft->craftsman->identity->whatsapp }}</h2>
         <h2>Email: {{ $craft->craftsman->email }}</h2>
-        <h2>Facebook: {{ $craft->craftsman->facebook }}</h2>
-        <h2>Instagram: {{ $craft->craftsman->instagram }}</h2>
+        <h2>Facebook: {{ $craft->craftsman->identity->facebook }}</h2>
+        <h2>Instagram: {{ $craft->craftsman->identity->instagram }}</h2>
       </div>
       <div class="flex flex-col md:text-md my-7 mx-5 md:ml-0 md:w-1/4">
         <div class="flex md:flex-col flex-row gap-3 flex-wrap">
           <a class="rounded-lg text-white bg-green-500 py-2 px-3 hover:bg-opacity-50 w-full"
-            @if(@isset($craft->craftsman->whatsapp))
+            @if(@isset($craft->craftsman->identity->whatsapp))
             href="https://wa.me/{{ $whatsapp
             }}?text=Saya%20tertarik%20untuk%20membeli%20kerajinan%20anda%20pada%20Dekranasda%20KBB.%0aNama%20kerajinan:%20{{
             $craft->title }}"
@@ -62,7 +62,7 @@
             Melalui Email
           </a>
           <a class="rounded-lg text-white bg-purple-600 py-2 px-3 hover:bg-opacity-50 w-full"
-            @if(@isset($craft->craftsman->instagram))
+            @if(@isset($craft->craftsman->identity->instagram))
             href="https://ig.me/m/{{ $craft->craftsman->instagram }}"
             @else
             href="#"
@@ -80,7 +80,7 @@
             Melalui Facebook
           </a>
           <a class="rounded-lg text-white bg-gray-500 py-2 px-3 hover:bg-opacity-50 w-full"
-            @if(@isset($craft->craftsman->contact))
+            @if(@isset($craft->craftsman->identity->phone))
             href="tel:{{ $contact }}"
             @else
             href="#"

@@ -39,13 +39,13 @@
         <tr>
           <td class="bg-slate-900">{{ $loop->iteration }}</td>
           <td class="bg-slate-900">
-            <img src="{{ asset('storage/'. $user->profile_picture)  }}" class="img-fluid" width="200"
+            <img src="{{ asset('storage/'. $user->identity->profile_picture)  }}" class="img-fluid" width="200"
               alt="{{ $user->name }}">
           </td>
           <td class="bg-slate-900">{{ $user->name }}</td>
           <td class="bg-slate-900">{{ $user->business_name }}</td>
           <td class="bg-slate-900">{{ $user->email }}</td>
-          <td class="bg-slate-900 whitespace-nowrap">{{ $user->contact }}</td>
+          <td class="bg-slate-900 whitespace-nowrap">{{ $user->identity->phone }}</td>
           <td class="bg-slate-900">{{ $user->crafts_count }}</td>
           <td class="bg-slate-900 whitespace-nowrap">{{ $user->created_at->format('d-m-Y') }}</td>
           <td class="bg-slate-900">
@@ -56,8 +56,9 @@
             @endif
           </td>
           <td class="bg-slate-900 whitespace-nowrap">
-            @if (isset($user->updatedBy->name))
-            {{ $user->updatedBy->name }}, pada {{ $user->updated_at->format('d-m-Y')}}
+            @if (null !== $update_histories->where('user_id', $user->id))
+            {{ $update_histories->where('user_id', $user->id)->first()->admin->name }}, pada {{
+            $update_histories->where('user_id', $user->id)->first()->created_at->format('d-m-Y')}}
             @else
             -
             @endif

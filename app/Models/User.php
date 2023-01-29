@@ -44,10 +44,24 @@ class User extends Authenticatable
     return $this->hasMany(Craft::class);
   }
 
-  public function updatedBy()
+  public function identity()
   {
-    return $this->belongsTo(User::class, "updated_by");
+    return $this->hasOne(Identity::class, "id");
   }
+
+  public function territory()
+  {
+    return $this->belongsTo(Territory::class, "territory_id");
+  }
+
+  public function updateHistories()
+  {
+    return $this->hasMany(UpdateHistory::class);
+  }
+  // public function updatedBy()
+  // {
+  //   return $this->belongsTo(User::class, "updated_by");
+  // }
 
   public function sluggable(): array
   {

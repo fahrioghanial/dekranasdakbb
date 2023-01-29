@@ -6,7 +6,7 @@
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost btn-circle avatar">
         <div class="w-28 rounded-full">
-          <img src="{{ asset('storage/'. auth()->user()->profile_picture ) }}" />
+          <img src="{{ asset('storage/'. auth()->user()->identity->profile_picture ) }}" />
         </div>
       </label>
       <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-gray-900 rounded-box w-52">

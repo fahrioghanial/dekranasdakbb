@@ -68,10 +68,10 @@
         <label class="label">
           <span class="label-text text-black">Nomor HP <br>(masukkan dengan awalan 0, contoh: 085123456789)</span>
         </label>
-        <input type="text" name="contact"
-          class="input input-bordered w-full {{ $errors->has('contact')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
-          id="contact" placeholder="Nomor HP" value="{{ old('contact') }}">
-        @error('contact')
+        <input type="text" name="phone"
+          class="input input-bordered w-full {{ $errors->has('phone')?'border-rose-500':'border-black' }} border-1 bg-white text-black"
+          id="phone" placeholder="Nomor HP" value="{{ old('phone') }}">
+        @error('phone')
         <div class="text-rose-500">
           {{ $message }}
         </div>

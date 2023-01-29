@@ -27,15 +27,15 @@
       @if ($users->count())
       @foreach ($users as $user)
       <div class="card card-compact w-full bg-white shadow-xl">
-        <img class="object-cover object-center h-52 w-52 mx-auto" src="{{ asset('storage/'. $user->profile_picture) }}"
-          alt="{{ $user->username }}" />
+        <img class="object-cover object-center h-52 w-52 mx-auto"
+          src="{{ asset('storage/'. $user->identity->profile_picture) }}" alt="{{ $user->username }}" />
         <div class="card-body">
           <h2 class="card-title">{{ $user->name }}</h2>
           <p class="text-md font-semibold">Nama Usaha: {{ $user->business_name }}</p>
-          <p class="text-md font-semibold">{{ $user->kelurahan_desa }}</p>
-          <p class="text-md font-semibold"><i class="bi bi-whatsapp"></i> {{ $user->whatsapp }}</p>
-          <p class="text-md font-semibold"><i class="bi bi-facebook"></i> {{ $user->facebook }}</p>
-          <p class="text-md font-semibold"><i class="bi bi-instagram"></i> {{ $user->instagram }}</p>
+          <p class="text-md font-semibold">{{ $user->territory->kelurahan_desa }}</p>
+          <p class="text-md font-semibold"><i class="bi bi-whatsapp"></i> {{ $user->identity->whatsapp }}</p>
+          <p class="text-md font-semibold"><i class="bi bi-facebook"></i> {{ $user->identity->facebook }}</p>
+          <p class="text-md font-semibold"><i class="bi bi-instagram"></i> {{ $user->identity->instagram }}</p>
           <div class="card-actions mt-3">
             <a class="rounded-lg text-white bg-[#e00024] md:text-xl py-2 px-3 hover:bg-[#FF9684] w-fit"
               href="/crafts?craftsman={{ $user->username }}">

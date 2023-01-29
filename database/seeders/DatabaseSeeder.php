@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
       'rw' => 1,
       'kodepos' => 40552,
       'noktp' => "12345678910",
+
       'kecamatan' => "Ngamprah",
       'kelurahan_desa' => "Ngamprah",
       'facebook' => 'dekranasdakbb',

@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\UpdateHistory;
 use App\Models\User;
 use Illuminate\Support\Facades\Date;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -47,9 +48,11 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
 
   public function map($user): array
   {
-    $user_picture_link = asset('storage/' . $user->profile_picture);
-    if (isset($user->updatedBy->name)) {
-      $last_updated_by = $user->updatedBy->name . ", pada " . $user->updated_at->format('d-m-Y');
+    $update_histories = UpdateHistory::latest()->get();
+
+    $user_picture_link = asset('storage/' . $user->identity->profile_picture);
+    if (null !== $update_histories->where('user_id', $user->id)) {
+      $last_updated_by = $update_histories->where('user_id', $user->id)->first()->admin->name . ", pada " . $update_histories->where('user_id', $user->id)->first()->created_at->format('d-m-Y');
     } else $last_updated_by = "-";
     if ($user->is_admin) {
       $status_keanggotaan = "Administrator";
@@ -61,19 +64,19 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
       $user_picture_link,
       $user->name,
       $user->business_name,
-      $user->noktp,
-      $user->address,
-      $user->rt,
-      $user->rw,
-      $user->kecamatan,
-      $user->kelurahan_desa,
-      $user->kodepos,
+      $user->identity->noktp,
+      $user->identity->address,
+      $user->identity->rt,
+      $user->identity->rw,
+      $user->territory->kecamatan,
+      $user->territory->kelurahan_desa,
+      $user->territory->kodepos,
       $user->crafts_count,
-      $user->contact,
+      $user->identity->phone,
       $user->email,
-      $user->facebook,
-      $user->instagram,
-      $user->whatsapp,
+      $user->identity->facebook,
+      $user->identity->instagram,
+      $user->identity->whatsapp,
       $status_keanggotaan,
       $user->created_at->format("d-m-Y"),
       $last_updated_by,

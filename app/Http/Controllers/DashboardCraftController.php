@@ -116,7 +116,6 @@ class DashboardCraftController extends Controller
       abort(403);
     }
     $rules = [
-      // 'image' => 'image|file|required',
       'title' => 'required|max:255',
       'slug' => 'required',
       'category_id' => 'required',
@@ -234,7 +233,6 @@ class DashboardCraftController extends Controller
   public function adminEditCraft(Request $request, Craft $craft)
   {
     $rules = [
-      // 'image' => 'image|file|required',
       'title' => 'required|max:255',
       'slug' => 'required',
       'category_id' => 'required',

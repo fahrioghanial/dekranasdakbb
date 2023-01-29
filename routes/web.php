@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AdminArticleController;
+use App\Http\Controllers\ContohController;
 use App\Models\Craft;
 use App\Models\Category;
 use App\Models\User;
@@ -35,6 +36,8 @@ Route::get('/', function () {
     'web_viewer_count' => $count,
   ]);
 });
+
+Route::get('/contohhalaman', [ContohController::class, 'ganjilgenap']);
 
 Route::get('/contact', function () {
   if (url()->previous() == url("/") . "/") {

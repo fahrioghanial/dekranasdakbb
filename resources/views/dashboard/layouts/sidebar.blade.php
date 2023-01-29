@@ -4,7 +4,7 @@
 <div
   class="sidebar hidden lg:block fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900 z-50">
   <div class="text-gray-100 text-xl">
-    <div class="p-2.5 mt-1 flex items-center">
+    <div class="p-2 flex items-center">
       <img src={{ asset('img/LogoDekranasda.png')}} class="w-10 rounded-full" alt="Dekranasda" />
       <h1 class="font-bold text-gray-200 text-[15px] ml-3">Dekranasda KBB</h1>
       <i class="bi bi-x cursor-pointer ml-28 lg:hidden" onclick="openSidebar()"></i>

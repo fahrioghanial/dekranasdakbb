@@ -81,11 +81,9 @@ class ProfileController extends Controller
     if ($user->id != auth()->user()->id) {
       abort(403);
     }
-    // dd(Hash::check($request->old_password, $user->password));
     $rules = [
       'name' => 'required|max:255',
       'business_name' => 'required',
-      // 'password' => 'required|min:5|max:255',
       'contact' => [
         'required', 'numeric',
         function ($attribute, $value, $fail) {
@@ -102,7 +100,6 @@ class ProfileController extends Controller
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
       'kodepos' => 'required|numeric',
-      // 'profile_picture' => 'image|file|required',
       'kecamatan' => 'required',
       'kelurahan_desa' => 'required',
       'instagram' => [function ($attribute, $value, $fail) {
@@ -184,7 +181,6 @@ class ProfileController extends Controller
     $rules = [
       'name' => 'required|max:255',
       'business_name' => 'required',
-      // 'password' => 'required|min:5|max:255',
       'contact' => [
         'required', 'numeric',
         function ($attribute, $value, $fail) {
@@ -201,7 +197,6 @@ class ProfileController extends Controller
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
       'kodepos' => 'required|numeric',
-      // 'profile_picture' => 'image|file|required',
       'kecamatan' => 'required',
       'kelurahan_desa' => 'required',
       'instagram' => [function ($attribute, $value, $fail) {

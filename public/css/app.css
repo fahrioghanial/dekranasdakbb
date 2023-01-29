@@ -3588,6 +3588,9 @@ body[dir="rtl"] .checkbox:checked,
 .rounded-box {
   border-radius: var(--rounded-box, 1rem);
 }
+.artboard.phone {
+  width: 320px;
+}
 .btm-nav-xs>*:where(.active) {
   border-top-width: 1px;
 }

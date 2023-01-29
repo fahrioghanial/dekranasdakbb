@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
+use App\Models\Territory;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\WebViewerCount;
@@ -31,7 +33,8 @@ class RegisterController extends Controller
       'username' => 'required|min:5|max:255|unique:users',
       'email' => 'required|email|unique:users',
       'password' => 'required|min:5|max:255|confirmed',
-      'contact' => [
+      'noktp' => 'required|numeric|unique:contacts',
+      'phone' => [
         'required', 'numeric',
         function ($attribute, $value, $fail) {
           if ($value != null) {
@@ -46,20 +49,47 @@ class RegisterController extends Controller
       'address' => 'required',
       'rt' => 'required|numeric',
       'rw' => 'required|numeric',
-      'noktp' => 'required|numeric|unique:users',
-      'kodepos' => 'required|numeric',
       'profile_picture' => 'image|file|required',
+      'kodepos' => 'required|numeric',
       'kecamatan' => 'required',
       'kelurahan_desa' => 'required',
     ]);
 
-    $validatedData['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
-    $validatedData['password'] = bcrypt($validatedData['password']);
-    $validatedData['status_keanggotaan'] = true;
 
-    User::create($validatedData);
+    $dataUser = [
+      'name' => $validatedData['name'],
+      'business_name' => $validatedData['business_name'],
+      'username' => $validatedData['username'],
+      'email' => $validatedData['email'],
+      'password' => $validatedData['password'],
+    ];
+    $dataContact = [
+      'noktp' => $validatedData['noktp'],
+      'phone' => $validatedData['phone'],
+      'address' => $validatedData['address'],
+      'rt' => $validatedData['rt'],
+      'rw' => $validatedData['rw'],
+      'profile_picture' => $validatedData['profile_picture'],
+    ];
+    dd($dataContact);
+    $dataTerritory = [
+      'kodepos' => $validatedData['kodepos'],
+      'kecamatan' => $validatedData['kecamatan'],
+      'kelurahan_desa' => $validatedData['kelurahan_desa'],
+    ];
 
-    return redirect('/login')->with('success', 'Registrasi Berhasil!, Silakan Masuk');
+    // $dataContact['profile_picture'] = $request->file('profile_picture')->store('profile-pictures');
+    // $dataUser['password'] = bcrypt($validatedData['password']);
+    // $dataUser['status_keanggotaan'] = true;
+    // Contact::create($dataContact);
+    // Territory::create($dataTerritory);
+    // $contactId = Contact::where('noktp', $dataContact['noktp'])->get();
+    // $territoryId = Territory::where('kodepos', $dataTerritory['kodepos'])->get();
+    // $validatedDataUser['contact_id'] = $contactId['id'];
+    // $validatedDataUser['territory_id'] = $territoryId['id'];
+    // User::create($validatedDataUser);
+
+    // return redirect('/login')->with('success', 'Registrasi Berhasil!, Silakan Masuk');
   }
 
   public function adminAddUser(Request $request)
@@ -69,7 +99,6 @@ class RegisterController extends Controller
       'business_name' => 'required',
       'username' => 'required|min:5|max:255|unique:users',
       'email' => 'required|email|unique:users',
-      // 'password' => 'required|min:5|max:255|confirmed',
       'contact' => [
         'required', 'numeric',
         function ($attribute, $value, $fail) {

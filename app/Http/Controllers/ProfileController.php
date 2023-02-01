@@ -162,7 +162,6 @@ class ProfileController extends Controller
     } else $validatedData['profile_picture'] = $request->oldImage;
 
     $identityData = [
-      // 'noktp' => $validatedData['noktp'],
       'phone' => $validatedData['phone'],
       'address' => $validatedData['address'],
       'rt' => $validatedData['rt'],
@@ -292,7 +291,6 @@ class ProfileController extends Controller
     } else $validatedData['profile_picture'] = $request->oldImage;
 
     $identityData = [
-      // 'noktp' => $validatedData['noktp'],
       'phone' => $validatedData['phone'],
       'address' => $validatedData['address'],
       'rt' => $validatedData['rt'],
